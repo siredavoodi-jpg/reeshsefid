@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+<meta name="description" content="دوره جامع مقدماتی هوش مصنوعی ویژه جامعه وکالت — باشگاه وکلای افرا. ده درس کوتاه، تمرین و آزمون پایان فصل.">
+<meta name="theme-color" content="#0e1826">
+<meta name="color-scheme" content="light">
+<meta property="og:title" content="هوش مصنوعی برای وکلا | باشگاه وکلای افرا">
+<meta property="og:description" content="دوره جامع مقدماتی هوش مصنوعی ویژه وکلا و حقوقدانان — بدون نیاز به دانش فنی.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fa_IR">
+<meta name="twitter:card" content="summary">
+<title>هوش مصنوعی برای وکلا | باشگاه وکلای افرا</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230e1826' stroke='%23cda753' stroke-width='4'/%3E%3Ctext x='50' y='58' text-anchor='middle' font-family='Tahoma,serif' font-size='28' font-weight='700' fill='%23cda753'%3Eافرا%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-deep:#0e1826;
+  --navy-mid:#152740;
+  --navy-line:#243a56;
+  --parchment:#f4eee0;
+  --parchment-dark:#e9e0c8;
+  --parchment-line:#d9cca3;
+  --ink:#1c2a3a;
+  --ink-soft:#4a4534;
+  --brass:#a9822f;
+  --brass-light:#cda753;
+  --brass-dim:#8a6d33;
+  --seal:#7c3626;
+  --seal-light:#a8523c;
+  --ok:#2f6b4f;
+  --paper-shadow: 0 18px 40px -20px rgba(14,24,38,.35);
+  --radius: 3px;
+  --serif: 'Noto Naskh Arabic', serif;
+  --sans: 'Vazirmatn', sans-serif;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{height:100%; overscroll-behavior:none;}
+body{
+  font-family: var(--sans);
+  background: var(--navy-deep);
+  color: var(--ink);
+  overflow:hidden;
+}
+::selection{ background: var(--brass-light); color: var(--navy-deep); }
+button{ font-family: inherit; cursor:pointer; border:none; background:none; color:inherit; }
+button:focus-visible, .lesson-item:focus-visible, .nav-btn:focus-visible, .reveal-btn:focus-visible, .quiz-submit:focus-visible{
+  outline: 2px solid var(--brass-light);
+  outline-offset: 2px;
+}
+a{ color:inherit; }
+
+/* ===== Layout shell ===== */
+.app{
+  display:grid;
+  grid-template-columns: 300px 1fr;
+  height:100vh;
+  height:100dvh;
+  width:100%;
+  max-width:100vw;
+  overflow:hidden;
+}
+.app > .sidebar{ grid-column: 1; }
+.app > .content-col{ grid-column: 2; min-width: 0; }
+@media (max-width: 880px){
+  .app{ grid-template-columns: 1fr; }
+  .app > .sidebar{ grid-column: auto; }
+  .app > .content-col{ grid-column: auto; }
+}
+
+.content-col{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  height:100vh;
+  height:100dvh;
+  overflow:hidden;
+  background: var(--parchment);
+}
+
+/* ===== Sidebar (the "spine" of the case file) ===== */
+.sidebar{
+  background:
+    linear-gradient(180deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
+  color:#e7ddc2;
+  display:flex;
+  flex-direction:column;
+  height:100vh;
+  height:100dvh;
+  overflow-y:auto;
+  border-inline-end: 1px solid var(--navy-line);
+  position: relative;
+  left: auto;
+  right: auto;
+  width: auto;
+  max-width: none;
+  transform: none;
+  z-index: auto;
+}
+.sidebar::-webkit-scrollbar{ width:6px; }
+.sidebar::-webkit-scrollbar-thumb{ background: var(--navy-line); border-radius:4px; }
+
+.brand{
+  padding: 26px 22px 18px;
+  border-bottom: 1px solid rgba(169,130,47,.25);
+}
+.brand-mark{
+  display:flex; align-items:center; gap:10px;
+  margin-bottom: 14px;
+}
+.brand-mark .seal-mini{
+  width:34px; height:34px; flex:none;
+  border:1.5px solid var(--brass-light);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family: var(--serif);
+  font-weight:700;
+  color: var(--brass-light);
+  font-size:14px;
+}
+.brand-club{
+  font-size:11.5px;
+  letter-spacing:.5px;
+  color:#b8ac8a;
+}
+.brand-title{
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight:700;
+  color:#f2ead4;
+  line-height:1.5;
+}
+.brand-sub{
+  margin-top:10px;
+  font-size:12px;
+  color:#9aa9bd;
+  line-height:1.8;
+}
+
+.progress-wrap{
+  padding: 16px 22px 18px;
+  border-bottom: 1px solid rgba(169,130,47,.25);
+}
+.progress-label{
+  display:flex; justify-content:space-between;
+  font-size:11.5px; color:#b8ac8a; margin-bottom:8px;
+}
+.progress-track{
+  height:5px; background: rgba(255,255,255,.08); border-radius:3px; overflow:hidden;
+}
+.progress-fill{
+  height:100%; background: linear-gradient(90deg, var(--brass-dim), var(--brass-light));
+  width:0%; transition: width .5s ease;
+}
+
+.chapters{ padding: 10px 0 26px; flex:1; }
+.chapter-block{ margin-bottom: 4px; }
+.chapter-head{
+  width:100%;
+  display:flex; align-items:center; gap:10px;
+  padding: 12px 22px;
+  font-size:13.5px;
+  color:#cdbf98;
+  font-weight:600;
+}
+.chapter-head .ch-num{
+  font-family: var(--serif);
+  color: var(--brass-light);
+  font-size:13px;
+}
+.chapter-head.locked{ color:#5f6c7f; }
+.chapter-head .lock{ margin-inline-start:auto; font-size:12px; color:#5f6c7f; }
+.chapter-head.locked .ch-num{ color:#5f6c7f; }
+
+.lesson-list{ display:flex; flex-direction:column; }
+.lesson-item{
+  display:flex; align-items:center; gap:11px;
+  padding: 10px 22px 10px 14px;
+  font-size:13px;
+  color:#c3c9d4;
+  border-inline-start: 2px solid transparent;
+  transition: background .15s ease, border-color .15s ease;
+  text-align:right;
+}
+.lesson-item:hover{ background: rgba(255,255,255,.04); }
+.lesson-item.active{
+  background: rgba(169,130,47,.14);
+  border-inline-start-color: var(--brass-light);
+  color:#f2ead4;
+}
+.lesson-tag{
+  flex:none;
+  width:22px; height:22px;
+  border-radius:50%;
+  border:1.5px solid #3a4c66;
+  display:flex; align-items:center; justify-content:center;
+  font-size:10.5px;
+  color:#7d8ba0;
+}
+.lesson-item.active .lesson-tag{ border-color: var(--brass-light); color: var(--brass-light); }
+.lesson-item.done .lesson-tag{
+  background: var(--brass-light); border-color: var(--brass-light); color: var(--navy-deep);
+}
+.lesson-item.done .lesson-tag::after{ content:"✓"; font-weight:700; }
+.lesson-item.done .lesson-tag span{ display:none; }
+.lesson-name{ flex:1; line-height:1.5; }
+.lesson-final .lesson-tag{ border-color: var(--seal-light); }
+.lesson-final.active .lesson-tag{ color: var(--seal-light); border-color: var(--seal-light); }
+
+.locked-list{ padding: 0 22px 8px; font-size:12px; color:#5f6c7f; line-height:2; }
+
+.sidebar-foot{
+  padding: 16px 22px 22px;
+  font-size:11px;
+  color:#5f6c7f;
+  border-top: 1px solid rgba(169,130,47,.18);
+}
+
+/* backdrop always out of document flow */
+.backdrop{
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,15,24,.55);
+  z-index: 35;
+}
+
+/* mobile toggler */
+.mobile-bar{ display:none; }
+@media (max-width: 880px){
+  .sidebar{
+    position: fixed !important;
+    top: 0; bottom: 0;
+    width: min(300px, 82vw) !important;
+    max-width: 300px;
+    z-index: 40 !important;
+    transition: transform .28s ease;
+    border-left: none;
+    border-right: 1px solid var(--navy-line);
+    /* LTR: slide from left */
+    left: 0 !important;
+    right: auto !important;
+    transform: translateX(-105%) !important;
+  }
+  html[dir="rtl"] .sidebar{
+    /* RTL: slide from right (correct side for Persian) */
+    left: auto !important;
+    right: 0 !important;
+    border-right: none;
+    border-left: 1px solid var(--navy-line);
+    transform: translateX(105%) !important;
+  }
+  .app.nav-open .sidebar{ transform: translateX(0) !important; }
+  .app.nav-open .backdrop{ display: block; }
+  .app.nav-open{ overflow: hidden; }
+  .mobile-bar{
+    display:flex; align-items:center; gap:12px;
+    background: var(--navy-deep); color:#f2ead4;
+    padding: 14px 16px; flex:none; z-index:30;
+    border-bottom: 1px solid var(--navy-line);
+  }
+  .mobile-bar .mb-title{ font-family: var(--serif); font-size:15px; }
+  .mobile-bar button{
+    font-size:20px; color: var(--brass-light);
+    width:40px; height:40px; display:flex; align-items:center; justify-content:center;
+    border-radius:4px;
+  }
+  .mobile-bar button:focus-visible{ outline:2px solid var(--brass-light); outline-offset:2px; }
+}
+
+/* ===== Main / reading pane ===== */
+.main{
+  flex:1 1 auto;
+  min-height:0;
+  height:100%;
+  overflow-y:auto;
+  -webkit-overflow-scrolling: touch;
+  background:
+    radial-gradient(1200px 600px at 100% -10%, rgba(169,130,47,.06), transparent 60%),
+    var(--parchment);
+  color: var(--ink);
+}
+.main::-webkit-scrollbar{ width:8px; }
+.main::-webkit-scrollbar-thumb{ background: var(--parchment-line); border-radius:4px; }
+
+.page{
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 40px 90px;
+  animation: pageIn .35s ease;
+}
+@keyframes pageIn{
+  from{ opacity:0; transform: translateY(8px); }
+  to{ opacity:1; transform: none; }
+}
+@media (max-width: 880px){
+  .page{ padding: 28px 20px calc(48px + env(safe-area-inset-bottom, 0px)); }
+}
+
+.page-eyebrow{
+  display:flex; align-items:center; gap:10px;
+  font-size:12.5px; color: var(--brass-dim); letter-spacing:.3px; margin-bottom:14px;
+}
+.page-eyebrow .dot{ width:5px; height:5px; border-radius:50%; background: var(--brass); }
+
+.page-title{
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight:700;
+  line-height:1.4;
+  color: var(--navy-deep);
+  margin-bottom: 16px;
+}
+@media (max-width:880px){ .page-title{ font-size:26px; } }
+
+.meta-row{
+  display:flex; flex-wrap:wrap; gap:10px;
+  margin-bottom: 30px;
+}
+.meta-pill{
+  font-size:12px; color: var(--ink-soft);
+  border:1px solid var(--parchment-line);
+  background: rgba(255,255,255,.35);
+  padding:5px 12px; border-radius: 999px;
+}
+
+.objectives{
+  background: var(--parchment-dark);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 34px;
+  position:relative;
+}
+.objectives::before{
+  content:"";
+  position:absolute; inset-inline-start:0; top:0; bottom:0; width:3px;
+  background: var(--brass);
+}
+.objectives h3{
+  font-family: var(--serif); font-size:14.5px; color: var(--navy-deep);
+  margin-bottom:10px; font-weight:700;
+}
+.objectives ul{ list-style:none; }
+.objectives li{
+  font-size: 14px; line-height:1.9; color: var(--ink-soft);
+  padding-inline-start: 20px; position:relative; margin-bottom:6px;
+}
+.objectives li::before{
+  content:"◆"; position:absolute; inset-inline-start:0; top:2px;
+  color: var(--brass); font-size:9px;
+}
+
+.section-block{ margin-bottom: 30px; }
+.section-block h2{
+  font-family: var(--serif);
+  font-size: 19px; font-weight:700; color: var(--navy-deep);
+  margin-bottom: 12px;
+  padding-bottom:8px;
+  border-bottom: 1px solid var(--parchment-line);
+}
+.section-block p{
+  font-size: 15.5px; line-height:2.05; color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.card-grid{
+  display:grid; grid-template-columns: 1fr; gap:14px;
+  margin: 26px 0;
+}
+.info-card{
+  background: rgba(255,255,255,.5);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.info-card h4{
+  display:flex; align-items:center; gap:8px;
+  font-size:13.5px; font-weight:700; color: var(--navy-deep); margin-bottom:10px;
+}
+.info-card h4 .ic{ font-size:14px; }
+.info-card ul{ list-style:none; }
+.info-card li{
+  font-size:14px; line-height:1.85; color: var(--ink-soft);
+  padding-inline-start:16px; position:relative; margin-bottom:6px;
+}
+.info-card li::before{ content:"—"; position:absolute; inset-inline-start:0; color: var(--brass-dim); }
+
+.card-examples{ border-inline-start: 3px solid var(--brass); }
+.card-tips{ border-inline-start: 3px solid var(--ok); }
+.card-mistakes{ border-inline-start: 3px solid var(--seal); }
+
+.glossary-list{ display:flex; flex-direction:column; gap:10px; margin: 20px 0 30px; }
+.gloss-item{
+  background: rgba(255,255,255,.5);
+  border:1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+}
+.gloss-term{
+  font-family: var(--serif); font-weight:700; color: var(--navy-deep); font-size:14.5px; margin-bottom:4px;
+}
+.gloss-def{ font-size:13.5px; color: var(--ink-soft); line-height:1.8; }
+
+.exercise-box{
+  background: var(--navy-deep);
+  color:#e9e0c8;
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin: 30px 0;
+}
+.exercise-box h4{
+  font-family: var(--serif); font-size:15px; color: var(--brass-light); margin-bottom:10px;
+}
+.exercise-box p{ font-size:14.5px; line-height:1.95; color:#d7cead; margin-bottom:14px; }
+.reveal-btn{
+  font-size:13px; color: var(--navy-deep); background: var(--brass-light);
+  padding:8px 16px; border-radius:3px; font-weight:600;
+}
+.reveal-btn:hover{ background:#e0c584; }
+.answer-box{
+  margin-top:14px; padding-top:14px; border-top:1px dashed rgba(233,224,200,.25);
+  font-size:14px; line-height:1.9; color:#c9c0a2;
+  display:none;
+}
+.answer-box.show{ display:block; }
+.answer-box .lbl{ color: var(--brass-light); font-weight:600; font-size:12.5px; margin-bottom:6px; display:block; }
+
+.summary-box{
+  border: 1.5px solid var(--brass);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin: 32px 0 10px;
+  background: repeating-linear-gradient(135deg, rgba(169,130,47,.04) 0 12px, transparent 12px 24px);
+}
+.summary-box h4{ font-family: var(--serif); font-size:15px; color: var(--brass-dim); margin-bottom:10px; }
+.summary-box ul{ list-style:none; }
+.summary-box li{
+  font-size:14px; line-height:1.9; color: var(--ink); padding-inline-start:20px; position:relative; margin-bottom:7px;
+}
+.summary-box li::before{ content:"›"; position:absolute; inset-inline-start:0; color: var(--brass); font-weight:700; }
+
+.keywords{ display:flex; flex-wrap:wrap; gap:8px; margin: 22px 0 6px; }
+.kw{
+  font-size:11.5px; color: var(--brass-dim);
+  border:1px solid var(--brass-dim); border-radius:999px;
+  padding:4px 12px;
+}
+
+/* completion seal */
+.seal-mark{
+  display:flex; align-items:center; gap:14px;
+  margin: 34px 0 8px;
+  padding: 16px 18px;
+  border: 1px dashed var(--parchment-line);
+  border-radius: var(--radius);
+}
+.seal-svg{ flex:none; width:56px; height:56px; }
+.seal-mark .st{ font-size:13.5px; color: var(--ink-soft); }
+.seal-mark .st b{ display:block; color: var(--navy-deep); font-family: var(--serif); font-size:14.5px; margin-bottom:2px; }
+
+/* nav footer */
+.page-nav{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top: 46px; padding-top:22px; border-top: 1px solid var(--parchment-line);
+  gap: 12px;
+}
+.nav-btn{
+  display:flex; align-items:center; gap:8px;
+  font-size:13.5px; color: var(--navy-deep); font-weight:600;
+  padding:10px 16px; border-radius:3px; border:1px solid var(--parchment-line);
+  background: rgba(255,255,255,.4);
+  transition: background .15s ease;
+}
+.nav-btn:hover{ background: rgba(255,255,255,.8); }
+.nav-btn.primary{ background: var(--navy-deep); color:#f2ead4; border-color:var(--navy-deep); }
+.nav-btn.primary:hover{ background: var(--navy-mid); }
+.nav-btn[disabled]{ opacity:.35; pointer-events:none; }
+.nav-btn small{ font-weight:400; color: inherit; opacity:.7; font-size:11px; }
+@media (max-width: 520px){
+  .page-nav{ flex-direction:column-reverse; align-items:stretch; }
+  .nav-btn{ justify-content:center; }
+}
+
+/* quiz */
+.quiz-q{
+  background: rgba(255,255,255,.5); border:1px solid var(--parchment-line);
+  border-radius: var(--radius); padding:18px 20px; margin-bottom:16px;
+}
+.quiz-q p.qtext{ font-size:14.5px; font-weight:600; color: var(--navy-deep); margin-bottom:12px; line-height:1.8; }
+.quiz-opt{
+  display:flex; align-items:center; gap:10px;
+  font-size:13.5px; color: var(--ink); padding:9px 12px; border-radius:3px;
+  border:1px solid var(--parchment-line); margin-bottom:8px; background:rgba(255,255,255,.4);
+}
+.quiz-opt:hover{ background: rgba(169,130,47,.08); }
+.quiz-opt input{ accent-color: var(--brass); }
+.quiz-opt.correct{ border-color: var(--ok); background: rgba(47,107,79,.1); }
+.quiz-opt.wrong{ border-color: var(--seal); background: rgba(124,54,38,.08); }
+.quiz-submit{
+  margin-top:20px; padding:12px 26px; background: var(--brass); color:#fff; border-radius:3px; font-weight:700; font-size:14px;
+}
+.quiz-submit:hover{ background: var(--brass-dim); }
+.quiz-result{
+  margin-top:22px; padding:20px; border-radius:3px; text-align:center;
+  font-family: var(--serif); font-size:17px; display:none;
+}
+.quiz-result.show{ display:block; }
+.quiz-result.pass{ background: rgba(47,107,79,.12); color: var(--ok); border:1px solid var(--ok); }
+.quiz-result.fail{ background: rgba(124,54,38,.1); color: var(--seal); border:1px solid var(--seal); }
+
+.locked-note{
+  margin-top:6px; padding: 3px 0 0 0;
+}
+
+/* welcome screen */
+.welcome{
+  max-width:640px; margin: 8vh auto; padding: 0 30px; text-align:center;
+  animation: pageIn .4s ease;
+}
+.welcome .seal-svg{ width:84px; height:84px; margin:0 auto 22px; }
+.welcome h1{ font-family: var(--serif); font-size:30px; color: var(--navy-deep); margin-bottom:14px; }
+.welcome p{ font-size:15px; color: var(--ink-soft); line-height:2; margin-bottom:26px; }
+.welcome .nav-btn{ display:inline-flex; }
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+  <div class="backdrop" onclick="toggleNav(false)"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">
+        <div class="seal-mini">افرا</div>
+        <div>
+          <div class="brand-club">باشگاه وکلای افرا</div>
+        </div>
+      </div>
+      <div class="brand-title">هوش مصنوعی برای وکلا</div>
+      <div class="brand-sub">دوره جامع مقدماتی هوش مصنوعی، ویژه جامعه وکالت</div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-label"><span>پیشرفت فصل اول</span><span id="progress-pct">۰٪</span></div>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+
+    <nav class="chapters" id="chapters"></nav>
+
+    <div class="sidebar-foot">نسخه مقدماتی — فصل ۱ از ۱۲ فعال است. فصل‌های بعدی به‌زودی اضافه می‌شوند.</div>
+  </aside>
+
+  <div class="content-col">
+    <div class="mobile-bar">
+      <button type="button" onclick="toggleNav(true)" aria-label="باز کردن فهرست دروس" aria-expanded="false" id="menu-btn">☰</button>
+      <div class="mb-title">هوش مصنوعی برای وکلا</div>
+    </div>
+    <main class="main" id="main"></main>
+  </div>
+</div>
+
+<script id="course-data" type="application/json">{"lessons": [{"id": 1, "chapter": 1, "title": "هوش مصنوعی چیست؟", "icon": "brain", "readingTime": "۷ دقیقه", "difficulty": "مقدماتی", "objectives": ["تعریف ساده و دقیقی از هوش مصنوعی ارائه دهید.", "تفاوت هوش مصنوعی با یک نرم‌افزار معمولی را توضیح دهید.", "بگویید چرا این فناوری برای شغل وکالت اهمیت پیدا کرده است."], "sections": [{"heading": "تعریفی که به کار وکیل می‌آید", "paragraphs": ["هوش مصنوعی به مجموعه‌ای از فناوری‌ها گفته می‌شود که به رایانه توانایی می‌دهند کارهایی را انجام دهد که معمولاً نیازمند «فهم» انسانی است؛ کارهایی مانند خواندن یک متن و درک منظور آن، تشخیص الگو در حجم زیادی از اطلاعات، یا نوشتن متنی که از نظر ساختار و لحن شبیه نوشته انسان باشد.", "نکته مهم برای وکیل این است که هوش مصنوعی «قانون» را نمی‌داند، بلکه الگوهای زبانی و استدلالی را از حجم عظیمی از متن آموخته است. این تفاوت، پایه بسیاری از بحث‌های فصل‌های بعدی درباره اعتبار پاسخ‌هاست."]}, {"heading": "چرا با نرم‌افزار معمولی فرق دارد؟", "paragraphs": ["یک نرم‌افزار سنتی، مثل نرم‌افزار محاسبه هزینه دادرسی، دقیقاً همان کاری را می‌کند که برنامه‌نویس از پیش برایش نوشته است؛ اگر ورودی از قبل پیش‌بینی نشده باشد، نرم‌افزار یا خطا می‌دهد یا کار نمی‌کند.", "هوش مصنوعی مولد اما برای ورودی‌هایی که هرگز عیناً ندیده، پاسخ تازه تولید می‌کند؛ درست مثل وکیلی که پرونده‌ای مشابه دیده و همان تجربه را روی پرونده جدید تطبیق می‌دهد، نه اینکه متن آماده‌ای را کپی کند."]}, {"heading": "چرا حالا برای وکالت مهم شده است؟", "paragraphs": ["تا چند سال پیش، این فناوری‌ها عمدتاً در آزمایشگاه‌ها یا کاربردهای بسیار تخصصی (مثل تشخیص تصویر پزشکی) به کار می‌رفتند. آنچه تغییر کرده، ظهور ابزارهایی است که با زبان طبیعی فارسی یا انگلیسی مکالمه می‌کنند و هرکسی بدون دانش برنامه‌نویسی می‌تواند از آن‌ها استفاده کند.", "برای وکیل، این یعنی دسترسی به دستیاری که می‌تواند در تحلیل اولیه پرونده، جست‌وجوی مفهومی، یا پیش‌نویس نامه‌های تکراری کمک کند؛ اما تصمیم نهایی و مسئولیت حرفه‌ای همچنان بر عهده خود وکیل باقی می‌ماند."]}], "examples": ["وقتی یک اپلیکیشن نقشه، سریع‌ترین مسیر بین دو نقطه را حساب می‌کند، این یک الگوریتم سنتی است نه هوش مصنوعی مولد.", "وقتی همان اپلیکیشن با تحلیل ترافیک لحظه‌ای، مسیر را در میانه راه تغییر می‌دهد و دلیل تغییر را به زبان ساده توضیح می‌دهد، به سمت هوش مصنوعی نزدیک می‌شود.", "وقتی از یک دستیار هوش مصنوعی می‌خواهید «این قرارداد اجاره را به زبان ساده برای موکل من خلاصه کن»، این دقیقاً همان کاری است که فصل‌های بعدی روی آن تمرکز می‌کنند."], "tips": ["هر جا کلمه «هوش مصنوعی» را در تبلیغات دیدید، از خود بپرسید: آیا واقعاً پاسخ تازه تولید می‌کند یا فقط یک نرم‌افزار با قوانین از پیش تعیین‌شده است؟", "برای شروع، لازم نیست جزئیات فنی مدل‌ها را بدانید؛ همین که بدانید چه کاری از این ابزارها برمی‌آید و چه کاری برنمی‌آید، برای استفاده حرفه‌ای کافی است."], "commonMistakes": ["تصور اینکه هوش مصنوعی یک بانک اطلاعاتی قوانین است که همیشه به‌روز و دقیق پاسخ می‌دهد.", "مقایسه هوش مصنوعی مولد با نرم‌افزارهای اداری قدیمی و انتظار رفتار کاملاً قابل‌پیش‌بینی از آن.", "این تصور که چون ابزار «هوشمند» نامیده می‌شود، نیازی به بازبینی حرفه‌ای پاسخ‌های آن نیست."], "exercise": ["دو نرم‌افزار یا اپلیکیشنی که هر روز استفاده می‌کنید را نام ببرید؛ یکی که به نظرتان هوش مصنوعی مولد است و یکی که یک نرم‌افزار سنتی با قوانین ثابت است. دلیل انتخابتان را در یک یا دو جمله بنویسید."], "answer": ["پاسخ نمونه: ماشین‌حساب گوشی یک نرم‌افزار سنتی است، چون همیشه طبق فرمول ثابت ریاضی جواب می‌دهد و هرگز پاسخ «تازه» تولید نمی‌کند. در مقابل، دستیاری که به یک پیام متنی که هرگز عیناً ندیده پاسخ نو و متناسب می‌دهد، نمونه‌ای از هوش مصنوعی مولد است. معیار اصلی، توانایی تولید پاسخ تازه برای ورودی‌های پیش‌بینی‌نشده است، نه صرفاً اجرای قوانین از پیش نوشته‌شده."], "summary": ["هوش مصنوعی یعنی توانایی رایانه در انجام کارهایی شبیه فهم انسانی.", "برخلاف نرم‌افزار سنتی، هوش مصنوعی مولد برای ورودی‌های تازه، پاسخ تازه تولید می‌کند.", "این فناوری «قانون» نمی‌داند؛ الگوی زبان و استدلال را از داده‌های زیاد آموخته است.", "مسئولیت حرفه‌ای و تصمیم نهایی همیشه بر عهده وکیل باقی می‌ماند."], "keywords": ["هوش مصنوعی", "AI", "هوش مصنوعی مولد", "الگوریتم", "نرم‌افزار سنتی"]}, {"id": 2, "chapter": 1, "title": "انواع هوش مصنوعی", "icon": "layers", "readingTime": "۷ دقیقه", "difficulty": "مقدماتی", "objectives": ["دسته‌بندی‌های اصلی هوش مصنوعی را نام ببرید.", "جایگاه ابزارهایی مانند ChatGPT و Claude را در این دسته‌بندی مشخص کنید.", "توضیح دهید چرا این دسته‌بندی برای انتخاب ابزار مناسب در کار حقوقی مهم است."], "sections": [{"heading": "دسته‌بندی بر اساس توانایی", "paragraphs": ["متخصصان معمولاً هوش مصنوعی را در سه سطح فرضی توصیف می‌کنند: هوش مصنوعی محدود (Narrow AI) که فقط یک یا چند وظیفه مشخص را انجام می‌دهد؛ هوش مصنوعی عمومی (General AI) که هنوز وجود خارجی ندارد و فرضاً می‌تواند مانند انسان در هر زمینه‌ای فکر کند؛ و ابرهوش (Superintelligence) که یک مفهوم کاملاً نظری است.", "تمام ابزارهایی که امروز در کار حقوقی استفاده می‌شوند، از جمله دستیارهای مکالمه‌ای، در دسته هوش مصنوعی محدود قرار می‌گیرند؛ هرچند دامنه کاری‌شان بسیار گسترده به نظر می‌رسد، اما همچنان محدود به الگوهایی است که از داده آموخته‌اند."]}, {"heading": "دسته‌بندی بر اساس نوع کار", "paragraphs": ["از منظر کاربردی، تقسیم‌بندی مفیدتری وجود دارد: هوش مصنوعی تشخیصی (Discriminative) که کارش دسته‌بندی و تشخیص است، مثل تشخیص اسپم بودن یک ایمیل یا طبقه‌بندی اسناد؛ و هوش مصنوعی مولد (Generative) که محتوای تازه مانند متن، تصویر یا کد تولید می‌کند.", "دستیارهایی مانند ChatGPT، Claude، Gemini و Copilot که در فصل بعد معرفی می‌شوند، همگی از نوع مولد هستند؛ یعنی نقش اصلی‌شان تولید متن تازه است، نه صرفاً طبقه‌بندی داده‌های موجود."]}, {"heading": "چرا این تفاوت برای وکیل مهم است؟", "paragraphs": ["نرم‌افزارهایی که اسناد را برای کشف تخلف یا تعارض منافع پیمایش می‌کنند، اغلب از نوع تشخیصی هستند و دقت بالایی در طبقه‌بندی دارند اما محتوای تازه تولید نمی‌کنند. در مقابل، دستیاری که برایتان پیش‌نویس لایحه می‌نویسد، از نوع مولد است و باید با معیارهای متفاوتی — از جمله احتمال اشتباه در تولید محتوای تازه — ارزیابی شود.", "دانستن این تفاوت کمک می‌کند انتظار درستی از هر ابزار داشته باشید: از ابزار تشخیصی انتظار طبقه‌بندی دقیق دارید، از ابزار مولد انتظار پیش‌نویس اولیه‌ای که نیازمند بازبینی شماست."]}], "examples": ["نرم‌افزار تشخیص تقلب در اسناد بانکی، نمونه‌ای از هوش مصنوعی تشخیصی محدود است.", "دستیاری که از روی یک شرح ساده، پیش‌نویس اظهارنامه می‌نویسد، نمونه‌ای از هوش مصنوعی مولد محدود است.", "هیچ‌کدام از ابزارهای امروزی، نمونه‌ای از هوش مصنوعی عمومی نیستند؛ این سطح هنوز در حد فرضیه علمی است."], "tips": ["وقتی تبلیغی می‌گوید «هوش مصنوعی عمومی»، با تردید به آن نگاه کنید؛ این سطح هنوز به‌طور واقعی ساخته نشده است.", "قبل از استفاده از هر ابزار، از خود بپرسید: آیا این ابزار چیزی را طبقه‌بندی می‌کند یا چیزی تازه تولید می‌کند؟ پاسخ، نوع دقتی که باید روی خروجی اعمال کنید را مشخص می‌کند."], "commonMistakes": ["یکسان دانستن هوش مصنوعی محدود امروزی با هوش مصنوعی عمومی که در فیلم‌ها و رسانه‌ها نمایش داده می‌شود.", "استفاده از ابزار تشخیصی برای کاری که نیاز به تولید متن تازه دارد، یا برعکس.", "این باور که چون ابزار دامنه گسترده‌ای از موضوعات را پوشش می‌دهد، پس «هوشمندی عمومی» دارد."], "exercise": ["با توجه به آنچه خواندید، مشخص کنید نرم‌افزار تشخیص چهره در دوربین‌های امنیتی دادگستری، از نوع تشخیصی است یا مولد؛ و یک جمله دلیل بنویسید."], "answer": ["پاسخ نمونه: تشخیص چهره از نوع هوش مصنوعی تشخیصی است، زیرا وظیفه آن مقایسه و طبقه‌بندی یک تصویر ورودی با نمونه‌های شناخته‌شده است، نه تولید محتوای تازه‌ای که پیش از آن وجود نداشته باشد."], "summary": ["از نظر سطح توانایی، همه ابزارهای امروزی «محدود» هستند، نه «عمومی».", "از نظر کارکرد، هوش مصنوعی یا تشخیصی است (طبقه‌بندی) یا مولد (تولید محتوای تازه).", "دستیارهای مکالمه‌ای مانند Claude و ChatGPT در دسته مولد قرار می‌گیرند.", "شناخت این دسته‌بندی، انتظار درست از هر ابزار را ممکن می‌سازد."], "keywords": ["هوش مصنوعی محدود", "هوش مصنوعی عمومی", "هوش مصنوعی تشخیصی", "هوش مصنوعی مولد"]}, {"id": 3, "chapter": 1, "title": "هوش مصنوعی مولد چیست؟", "icon": "sparkles", "readingTime": "۸ دقیقه", "difficulty": "مقدماتی", "objectives": ["هوش مصنوعی مولد را با مثال‌های ملموس توضیح دهید.", "بگویید چرا خروجی این ابزارها هر بار می‌تواند کمی متفاوت باشد.", "کاربردهای اولیه آن در کار حقوقی را فهرست کنید."], "sections": [{"heading": "«مولد» یعنی چه؟", "paragraphs": ["هوش مصنوعی مولد، محتوای تازه تولید می‌کند: متن، تصویر، صوت یا حتی کد نرم‌افزاری. کلمه «مولد» در برابر «بازیابی‌کننده» به کار می‌رود؛ یک موتور جستجو محتوای موجود را پیدا و بازیابی می‌کند، اما ابزار مولد، جمله‌به‌جمله متنی می‌سازد که پیش از آن به همین شکل وجود نداشته است.", "برای وکیل، این یعنی وقتی از ابزاری می‌خواهید «این دادخواست را خلاصه کن»، خلاصه نهایی از جایی کپی نشده؛ بلکه بر اساس الگوهای زبانی، جمله‌به‌جمله ساخته شده است. همین ویژگی هم قدرت اصلی این ابزارهاست و هم منشأ ریسک آن‌ها."]}, {"heading": "چرا هر بار پاسخ کمی فرق می‌کند؟", "paragraphs": ["این ابزارها در هر مرحله، محتمل‌ترین کلمه بعدی را بر اساس آنچه تا آن لحظه نوشته شده، انتخاب می‌کنند؛ اما این انتخاب کاملاً قطعی نیست و درجه‌ای از تنوع در آن وجود دارد. به همین دلیل، اگر یک سؤال را دو بار بپرسید، ممکن است دو پاسخ با ساختار یا جزئیات کمی متفاوت دریافت کنید، حتی اگر هر دو از نظر محتوا درست باشند.", "این ویژگی برای نگارش خلاقانه یا پیش‌نویس اولیه مفید است، اما برای وظایفی که به دقت واژه‌به‌واژه نیاز دارند (مثل نقل‌قول مستقیم از یک ماده قانونی)، همیشه باید متن نهایی با منبع اصلی تطبیق داده شود."]}, {"heading": "جایگاه آن در کار روزمره وکیل", "paragraphs": ["هوش مصنوعی مولد در نقش «دستیار پیش‌نویس» بهترین عملکرد را دارد: خلاصه‌سازی متون طولانی، تبدیل نکات پراکنده به یک پیش‌نویس منسجم، یا بازنویسی یک نامه با لحنی رسمی‌تر. در نقش «مرجع نهایی حقوقی» عملکرد قابل‌اعتمادی ندارد، چون ممکن است ماده قانونی یا رأیی را با اطمینان کامل اما نادرست بیان کند؛ موضوعی که در فصل «توهم هوش مصنوعی» به‌طور مفصل بررسی می‌شود."]}], "examples": ["درخواست «این ایمیل موکل را به لحنی رسمی‌تر بازنویسی کن» یک استفاده مولد کم‌ریسک است.", "درخواست «رأی دیوان عالی در پرونده فلان را با شماره دقیق پیدا کن» پرریسک است، چون ابزار ممکن است شماره‌ای قابل‌قبول اما نادرست بسازد.", "درخواست «از این ۵ نکته، یک پاراگراف مقدماتی برای لایحه بساز» نمونه خوبی از کاربرد ایمن مولد بودن است."], "tips": ["برای کارهایی که نیاز به خلاقیت یا سازمان‌دهی متن دارند، از قابلیت مولد بودن استفاده کنید.", "برای هر عدد، تاریخ، شماره ماده یا نقل‌قول مستقیم که ابزار تولید می‌کند، همیشه منبع اصلی را جداگانه بررسی کنید."], "commonMistakes": ["اعتماد به شماره ماده قانونی یا شماره دادنامه‌ای که ابزار «با اطمینان» بیان کرده، بدون راستی‌آزمایی.", "انتظار پاسخ کاملاً یکسان در هر بار پرسیدن یک سؤال مشابه.", "استفاده از خروجی مولد به‌عنوان متن نهایی بدون ویرایش و بازبینی حقوقی."], "exercise": ["یک کار روزمره در دفتر خود را نام ببرید که فکر می‌کنید برای هوش مصنوعی مولد «کم‌ریسک» است، و یک کار دیگر که «پرریسک» است. دلیل هرکدام را در یک جمله بنویسید."], "answer": ["پاسخ نمونه: خلاصه کردن یک قرارداد چندصفحه‌ای برای درک سریع موکل، کم‌ریسک است چون خطای جزئی در آن به‌سادگی با مطالعه اصل قرارداد قابل اصلاح است. اما استخراج مستقیم شماره و تاریخ یک رأی وحدت رویه، پرریسک است چون خطا در این مورد می‌تواند مستقیماً به اشتباه در لایحه یا دادخواست منجر شود."], "summary": ["هوش مصنوعی مولد محتوای تازه می‌سازد، نه اینکه محتوای موجود را بازیابی کند.", "به همین دلیل، خروجی آن ممکن است هر بار کمی متفاوت باشد.", "بهترین کاربرد آن، پیش‌نویس و سازمان‌دهی متن است، نه مرجع نهایی حقوقی.", "هر عدد، تاریخ یا نقل‌قول مستقیمی که تولید می‌کند، باید جداگانه راستی‌آزمایی شود."], "keywords": ["هوش مصنوعی مولد", "Generative AI", "پیش‌نویس هوشمند", "تنوع پاسخ"]}, {"id": 4, "chapter": 1, "title": "مدل زبانی بزرگ (LLM) چیست؟", "icon": "book-text", "readingTime": "۸ دقیقه", "difficulty": "مقدماتی", "objectives": ["اصطلاح مدل زبانی بزرگ (LLM) را به زبان ساده تعریف کنید.", "رابطه بین LLM و ابزارهایی مانند Claude یا ChatGPT را توضیح دهید.", "بگویید عبارت «بزرگ» در این اصطلاح به چه معناست."], "sections": [{"heading": "تعریف ساده", "paragraphs": ["مدل زبانی بزرگ (Large Language Model یا LLM) موتور اصلی پشت ابزارهایی مانند Claude، ChatGPT و Gemini است. این مدل، یک برنامه ریاضی عظیم است که با خواندن حجم بسیار زیادی متن، یاد گرفته چگونه زبان را بفهمد و تولید کند؛ درست مانند فرهنگ لغت زنده‌ای که علاوه بر معنای کلمات، الگوی کنار هم قرارگرفتن آن‌ها را هم آموخته است.", "نکته مهم: «مدل زبانی» و «ابزاری که با آن چت می‌کنید» دو چیز متفاوت‌اند. مدل، موتور است؛ Claude یا ChatGPT، خودرویی است که آن موتور را در خود جای داده و رابط کاربری، حافظه گفتگو، و امکانات دیگر را به آن اضافه کرده است. این تفاوت در فصل دوم دقیق‌تر توضیح داده می‌شود."]}, {"heading": "چرا «بزرگ» می‌گویند؟", "paragraphs": ["کلمه «بزرگ» به دو چیز اشاره دارد: حجم داده‌ای که مدل با آن آموزش دیده (میلیاردها صفحه متن از کتاب، وب‌سایت، مقاله و غیره) و تعداد پارامترهای داخلی مدل — یعنی مقادیر عددی‌ای که طی آموزش تنظیم شده‌اند تا مدل بتواند الگوهای زبانی را به خاطر بسپارد. هرچه این اعداد بیشتر باشند، مدل معمولاً توانایی بیشتری در فهم ظرافت‌های زبانی و استدلال دارد.", "این مقیاس عظیم، دلیل اصلی توانایی این ابزارها در نوشتن متن روان فارسی، درک اصطلاحات حقوقی رایج، یا خلاصه‌سازی متون پیچیده است؛ هرچند همان‌طور که در فصل‌های بعد می‌بینید، این توانایی به‌معنای دانستن دقیق و به‌روز هر قانون خاص نیست."]}], "examples": ["وقتی می‌گویید «Claude یک مدل زبانی بزرگ است»، منظور موتور زیرین آن است، نه کل اپلیکیشنی که با آن گفتگو می‌کنید.", "شرکت‌های مختلف مدل‌های خودشان را دارند: مدل‌های خانواده Claude از آنتروپیک، مدل‌های GPT از OpenAI، و مدل‌های Gemini از گوگل — هرکدام با نقاط قوت خودشان."], "tips": ["وقتی نام یک مدل را می‌شنوید (مثلاً نسخه‌ای خاص از یک مدل)، آن را مانند «مدل خودرو» در نظر بگیرید، نه نام کلی محصول؛ نسخه‌های جدیدتر معمولاً توانایی بیشتری دارند.", "برای کار حقوقی روزمره، دانستن جزئیات فنی مدل ضروری نیست؛ آنچه اهمیت دارد، شناخت محدودیت‌های عملی آن است که در فصل‌های بعد می‌آید."], "commonMistakes": ["یکی‌دانستن نام اپلیکیشن (مثل ChatGPT) با نام مدل زبانی که پشت آن قرار دارد.", "این تصور که «بزرگ‌تر بودن» مدل به‌طور خودکار یعنی «همیشه درست‌تر بودن» پاسخ در هر موضوع خاص حقوقی.", "نادیده گرفتن این نکته که مدل‌های مختلف، در وظایف مختلف عملکرد متفاوتی دارند."], "exercise": ["با کلمات خودتان، در یک یا دو جمله برای همکاری که هیچ پیش‌زمینه‌ای ندارد، تفاوت «مدل زبانی» و «اپلیکیشنی مثل Claude» را توضیح دهید."], "answer": ["پاسخ نمونه: مدل زبانی همان موتور هوشمندی است که متن را می‌فهمد و تولید می‌کند، اما خودش رابط کاربری ندارد. اپلیکیشنی مثل Claude، همان موتور را به همراه صفحه گفتگو، حافظه، و امکانات دیگر در اختیار کاربر قرار می‌دهد؛ درست مثل تفاوت موتور خودرو با خود خودرو."], "summary": ["مدل زبانی بزرگ (LLM) موتور اصلی پشت ابزارهای هوش مصنوعی مکالمه‌ای است.", "«بزرگ» به حجم داده آموزشی و تعداد پارامترهای داخلی مدل اشاره دارد.", "مدل و اپلیکیشن دو چیز متفاوت‌اند؛ مدل موتور است و اپلیکیشن خودرو.", "بزرگ‌تر بودن مدل، لزوماً به‌معنای دقیق‌تر بودن در هر موضوع خاص حقوقی نیست."], "keywords": ["LLM", "مدل زبانی بزرگ", "پارامتر", "داده آموزشی"]}, {"id": 5, "chapter": 1, "title": "مدل زبانی چگونه آموزش می‌بیند؟", "icon": "graduation-cap", "readingTime": "۸ دقیقه", "difficulty": "مقدماتی", "objectives": ["مراحل کلی آموزش یک مدل زبانی را نام ببرید.", "توضیح دهید چرا دانش مدل به یک «تاریخ مشخص» محدود می‌شود.", "رابطه میان آموزش مدل و نیاز به راستی‌آزمایی پاسخ‌ها را توضیح دهید."], "sections": [{"heading": "مرحله اول: یادگیری زبان از حجم عظیم متن", "paragraphs": ["در مرحله نخست، مدل حجم بسیار زیادی متن عمومی (کتاب، مقاله، وب‌سایت و غیره) را می‌خواند و یاد می‌گیرد که با توجه به یک جمله ناقص، چه کلمه‌ای احتمالاً بعدی است. این فرایند شبیه یادگیری زبان توسط یک دانشجوی پرکار است که هزاران متن مختلف را می‌خواند تا سبک، دستور زبان و دانش عمومی را جذب کند.", "در همین مرحله است که مدل با اصطلاحات حقوقی عمومی، ساختار قراردادها، یا سبک نگارش رسمی آشنا می‌شود — نه از طریق «حفظ کردن قانون»، بلکه از طریق دیدن هزاران نمونه متن مشابه."]}, {"heading": "مرحله دوم: تنظیم دقیق و راهنمایی انسانی", "paragraphs": ["پس از مرحله اول، شرکت سازنده مدل را با کمک ارزیاب‌های انسانی «تنظیم دقیق» می‌کند: به مدل نشان می‌دهند کدام نوع پاسخ مفیدتر، مؤدبانه‌تر یا دقیق‌تر است. همین مرحله باعث می‌شود مدل به‌جای صرفاً حدس‌زدن کلمه بعدی، در قالب یک گفتگوی مفید و منظم پاسخ دهد."]}, {"heading": "چرا مدل «تاریخ انقضا» دارد؟", "paragraphs": ["آموزش یک مدل زبانی، فرایندی زمان‌بر و پرهزینه است و روی داده‌هایی انجام می‌شود که تا یک تاریخ مشخص جمع‌آوری شده‌اند؛ به این تاریخ «تاریخ برش دانش» (Knowledge Cutoff) گفته می‌شود. هر رویداد، قانون جدید، یا رأی صادرشده پس از این تاریخ، به‌طور پیش‌فرض در دانش مدل وجود ندارد، مگر اینکه ابزار قابلیت جست‌وجوی زنده در وب داشته باشد.", "برای وکیل، این نکته حیاتی است: قوانین و آیین‌نامه‌ها دائم به‌روزرسانی می‌شوند، بنابراین هرگز نباید فرض کرد پاسخ مدل درباره آخرین تغییرات قانونی، لزوماً به‌روز است."]}], "examples": ["اگر قانونی در سال جاری اصلاح شده و مدل تاریخ برش دانشش قبل از آن اصلاحیه باشد، ممکن است همچنان نسخه قدیمی قانون را به‌عنوان پاسخ درست ارائه دهد.", "ابزارهایی که به وب متصل هستند و می‌توانند جست‌وجوی زنده انجام دهند، می‌توانند تا حدی این محدودیت را جبران کنند."], "tips": ["همیشه بپرسید یا بررسی کنید که آیا ابزار مورد استفاده شما امکان جست‌وجوی زنده در وب دارد یا فقط بر پایه دانش آموزش‌دیده پاسخ می‌دهد.", "برای هر پرسش درباره «آخرین تغییرات» یک قانون، این عادت را بسازید که تاریخ برش دانش ابزار را در نظر بگیرید و در صورت نیاز از منابع رسمی به‌روز تأیید بگیرید."], "commonMistakes": ["فرض کردن اینکه مدل زبانی مانند یک پایگاه داده حقوقی، همیشه به‌طور خودکار به‌روزرسانی می‌شود.", "نادیده گرفتن این نکته که تنظیم دقیق مدل توسط انسان انجام شده و ممکن است سوگیری‌های ظریفی از این مرحله باقی بماند (موضوع فصل هفتم).", "استفاده از مدل بدون جست‌وجوی وب برای پرسش‌های کاملاً به‌روز و حساس به زمان."], "exercise": ["فرض کنید قانونی در شش ماه اخیر اصلاح شده است. توضیح دهید چرا نباید صرفاً به پاسخ یک دستیار هوش مصنوعی درباره متن فعلی آن قانون اکتفا کرد، حتی اگر پاسخ با اطمینان کامل بیان شده باشد."], "answer": ["پاسخ نمونه: چون دانش مدل به تاریخ برش آموزشی محدود است و اصلاحیه‌های پس از آن تاریخ ممکن است اصلاً در داده آموزشی وجود نداشته باشند. مدل حتی وقتی اطلاعاتش قدیمی است، معمولاً با لحنی مطمئن پاسخ می‌دهد، بنابراین اطمینان لحن هیچ تضمینی برای به‌روز بودن محتوا نیست و باید با متن رسمی و به‌روز قانون تطبیق داده شود."], "summary": ["آموزش مدل دو مرحله دارد: یادگیری عمومی زبان از حجم زیاد متن، و تنظیم دقیق با راهنمایی انسانی.", "دانش مدل به یک «تاریخ برش» محدود است و رویدادهای پس از آن را به‌طور پیش‌فرض نمی‌داند.", "برخی ابزارها با جست‌وجوی زنده وب، این محدودیت را تا حدی جبران می‌کنند.", "لحن مطمئن پاسخ، هیچ تضمینی برای به‌روز یا درست بودن آن نیست."], "keywords": ["آموزش مدل", "تاریخ برش دانش", "Knowledge Cutoff", "تنظیم دقیق"]}, {"id": 6, "chapter": 1, "title": "مدل زبانی چگونه پاسخ تولید می‌کند؟", "icon": "cpu", "readingTime": "۸ دقیقه", "difficulty": "مقدماتی", "objectives": ["فرایند «پیش‌بینی کلمه بعدی» را به زبان ساده توضیح دهید.", "بگویید چرا این فرایند می‌تواند به «توهم» منجر شود.", "اهمیت طرح پرسش دقیق و روشن را با توجه به این فرایند توضیح دهید."], "sections": [{"heading": "پاسخ، کلمه به کلمه ساخته می‌شود", "paragraphs": ["وقتی سؤالی می‌پرسید، مدل زبانی کل متن گفتگو تا آن لحظه (سؤال شما و هر پیام قبلی) را می‌خواند و سپس، بر اساس آنچه در آموزش یاد گرفته، محتمل‌ترین کلمه بعدی را پیش‌بینی می‌کند. این کلمه به متن اضافه می‌شود، سپس دوباره همین فرایند برای کلمه بعدی تکرار می‌شود — تا جایی که پاسخ کامل شود.", "این فرایند بسیار سریع اتفاق می‌افتد، اما نکته مهم این است: مدل از ابتدا «طرح کلی» پاسخ را در ذهن ندارد و بعد آن را می‌نویسد؛ بلکه پاسخ به‌تدریج و کلمه‌به‌کلمه شکل می‌گیرد."]}, {"heading": "چرا این موضوع می‌تواند به خطا منجر شود؟", "paragraphs": ["چون مدل در هر لحظه صرفاً «محتمل‌ترین» کلمه بعدی را انتخاب می‌کند، ممکن است در جایی که دانش دقیقی ندارد (مثلاً شماره یک رأی خاص)، همچنان کلمه‌ای را انتخاب کند که از نظر زبانی و ساختاری منطقی به نظر می‌رسد اما از نظر واقعیت نادرست است. این پدیده «توهم» (Hallucination) نام دارد و در فصل هفتم به‌طور مفصل بررسی می‌شود.", "درک این نکته کمک می‌کند بفهمیم چرا مدل هرگز نمی‌گوید «نمی‌دانم» به همان شکلی که یک انسان می‌گوید، مگر اینکه به‌طور خاص برای این کار طراحی و تنظیم شده باشد؛ چون کار اصلی‌اش، همیشه تولید محتمل‌ترین ادامه متن است، نه اعلام آگاهانه عدم قطعیت."]}, {"heading": "چرا نحوه پرسیدن سؤال اهمیت دارد؟", "paragraphs": ["چون هر پاسخ بر اساس متن قبلی گفتگو ساخته می‌شود، هرچه سؤال یا درخواست شما روشن‌تر و دقیق‌تر باشد، مدل اطلاعات بیشتری برای پیش‌بینی کلمه بعدی درست دارد. این پایه اصلی «پرامپت‌نویسی» است که در فصل چهارم به‌طور کامل آموزش داده می‌شود."]}], "examples": ["اگر بگویید «این را خلاصه کن» بدون آنکه بگویید در چند خط یا برای چه مخاطبی، مدل باید حدس بزند و ممکن است طولانی‌تر یا کوتاه‌تر از انتظار شما بنویسد.", "اگر بگویید «این قرارداد را در سه خط، برای موکلی بدون سواد حقوقی خلاصه کن»، مدل اطلاعات دقیق‌تری برای پیش‌بینی پاسخ مناسب دارد."], "tips": ["هر وقت پاسخ نامرتبط یا نادقیق دریافت کردید، پیش از هر چیز به وضوح سؤال خودتان نگاه کنید؛ اغلب مشکل از ابهام در درخواست است، نه نقص مطلق ابزار.", "برای موضوعات حساس، درخواست کنید مدل در صورت عدم اطمینان، آن را صریحاً اعلام کند."], "commonMistakes": ["تصور اینکه مدل قبل از نوشتن، یک «طرح ذهنی» کامل و بررسی‌شده از پاسخ دارد.", "نپرسیدن دقیق سؤال و انتظار پاسخ دقیق.", "این باور که چون پاسخ روان و مطمئن نوشته شده، پس حتماً درست است."], "exercise": ["یک درخواست مبهم برای دستیار هوش مصنوعی بنویسید (مثلاً «درباره فسخ قرارداد بنویس») و سپس همان درخواست را با جزئیات دقیق‌تر (موضوع، طول متن، مخاطب) بازنویسی کنید."], "answer": ["پاسخ نمونه مبهم: «درباره فسخ قرارداد بنویس». پاسخ نمونه دقیق: «در سه پاراگراف، شرایط فسخ یک‌طرفه قرارداد اجاره را برای موکلی که دانش حقوقی ندارد توضیح بده و در پایان یک جمع‌بندی یک‌خطی بیاور.» نسخه دوم به مدل چارچوب روشنی برای پیش‌بینی محتمل‌ترین و مناسب‌ترین کلمات می‌دهد."], "summary": ["مدل زبانی پاسخ را کلمه‌به‌کلمه و بر اساس محتمل‌ترین انتخاب در هر لحظه می‌سازد.", "این فرایند می‌تواند در نبود دانش دقیق، به تولید محتوای نادرست اما قانع‌کننده (توهم) منجر شود.", "مدل به‌طور طبیعی از ابتدا طرح کامل پاسخ را در ذهن ندارد.", "سؤال روشن و دقیق، مستقیماً کیفیت پاسخ را بهبود می‌دهد."], "keywords": ["پیش‌بینی کلمه بعدی", "توهم هوش مصنوعی", "پرامپت", "تولید متن"]}, {"id": 7, "chapter": 1, "title": "تفاوت موتور جستجو و مدل زبانی", "icon": "search", "readingTime": "۷ دقیقه", "difficulty": "مقدماتی", "objectives": ["تفاوت اصلی میان موتور جستجو و مدل زبانی را توضیح دهید.", "بگویید هرکدام برای چه نوع نیاز حقوقی مناسب‌ترند.", "مفهوم «استناد به منبع» را در هرکدام مقایسه کنید."], "sections": [{"heading": "جستجو، پیدا می‌کند؛ مدل زبانی، می‌سازد", "paragraphs": ["وقتی در یک موتور جستجو عبارتی را تایپ می‌کنید، نتیجه، فهرستی از صفحات موجود در وب است که از قبل نوشته شده‌اند؛ موتور جستجو چیزی «تولید» نمی‌کند، فقط بازیابی و رتبه‌بندی می‌کند. مسئولیت خواندن و انتخاب پاسخ درست، کاملاً با شماست.", "مدل زبانی برعکس عمل می‌کند: یک پاسخ یکپارچه و تازه می‌سازد که ترکیبی از الگوهای آموخته‌شده است، نه یک صفحه وب مشخص. مگر آنکه ابزار به‌طور خاص به وب متصل باشد و منبع دقیق را نشان دهد، معمولاً نمی‌توانید بفهمید پاسخ از کجای «حافظه» مدل بیرون آمده است."]}, {"heading": "چرا این تفاوت برای وکیل حیاتی است؟", "paragraphs": ["در کار حقوقی، استناد دقیق به منبع (ماده قانونی، رأی، دادنامه) اهمیت حیاتی دارد. موتور جستجو معمولاً منبع اصلی را نشان می‌دهد و شما می‌توانید مستقیماً آن را بررسی کنید. مدل زبانی، مگر در حالت جست‌وجوی وب فعال، معمولاً منبع دقیق ارائه نمی‌دهد و ممکن است بدون آنکه اشاره کند، محتوایی را «بازسازی» کند که با اصل کمی متفاوت است.", "به همین دلیل، بهترین رویکرد، ترکیب هوشمند این دو ابزار است: از مدل زبانی برای فهم اولیه، سازمان‌دهی فکر، یا نوشتن پیش‌نویس استفاده کنید و از موتور جستجو یا پایگاه‌های رسمی حقوقی برای تأیید نهایی هر استناد."]}], "examples": ["برای یافتن متن دقیق و فعلیِ یک ماده قانونی، موتور جستجو یا پایگاه رسمی قوانین گزینه مطمئن‌تری است.", "برای فهمیدن اینکه یک ماده قانونی به زبان ساده یعنی چه، یا برای سازمان‌دهی چند نکته پراکنده در قالب یک یادداشت منسجم، مدل زبانی مفیدتر است."], "tips": ["قانونی برای خودتان بسازید: «هر عدد و منبع را جستجو کن، هر توضیح و سازمان‌دهی را از مدل زبانی بگیر».", "اگر ابزار شما قابلیت جست‌وجوی وب دارد و آن را فعال کرده‌اید، همچنان لینک منبع نمایش‌داده‌شده را باز کنید و شخصاً بررسی کنید."], "commonMistakes": ["استفاده از مدل زبانی به‌جای موتور جستجو برای یافتن متن دقیق و به‌روز یک قانون.", "این تصور که پاسخ مدل زبانی، مانند نتیجه موتور جستجو، همیشه قابل ردیابی به یک منبع مشخص است.", "نادیده گرفتن تفاوت میان «جست‌وجوی وب فعال» و «پاسخ صرفاً از دانش آموزش‌دیده» در تنظیمات ابزار."], "exercise": ["یک نیاز واقعی در کار روزانه خود را مثال بزنید که برایش موتور جستجو مناسب‌تر است، و یک نیاز دیگر که مدل زبانی مناسب‌تر است."], "answer": ["پاسخ نمونه: برای پیدا کردن متن دقیق آخرین اصلاحیه یک ماده قانونی خاص، موتور جستجو یا پایگاه رسمی مناسب‌تر است چون منبع اصلی و قابل‌استناد را نشان می‌دهد. برای تبدیل یادداشت‌های پراکنده جلسه با موکل به یک گزارش منسجم داخلی، مدل زبانی مناسب‌تر است چون کار اصلی، سازمان‌دهی و نگارش است نه یافتن یک واقعیت دقیق."], "summary": ["موتور جستجو محتوای موجود را بازیابی می‌کند؛ مدل زبانی محتوای تازه می‌سازد.", "موتور جستجو معمولاً منبع دقیق نشان می‌دهد؛ مدل زبانی معمولاً این‌طور نیست، مگر در حالت جست‌وجوی وب فعال.", "برای استناد دقیق حقوقی، موتور جستجو یا منابع رسمی اولویت دارند.", "بهترین نتیجه از ترکیب هوشمند هر دو ابزار به دست می‌آید، نه جایگزینی یکی با دیگری."], "keywords": ["موتور جستجو", "استناد به منبع", "جست‌وجوی وب", "بازیابی اطلاعات"]}, {"id": 8, "chapter": 1, "title": "نقاط قوت و ضعف مدل‌های زبانی", "icon": "scale", "readingTime": "۹ دقیقه", "difficulty": "مقدماتی", "objectives": ["سه نقطه قوت اصلی مدل‌های زبانی در کار حقوقی را نام ببرید.", "سه محدودیت جدی آن‌ها را نام ببرید.", "بر اساس این نقاط قوت و ضعف، یک قاعده کلی برای تفویض کار به هوش مصنوعی بسازید."], "sections": [{"heading": "نقاط قوت", "paragraphs": ["سرعت در سازمان‌دهی متن: مدل زبانی می‌تواند در چند ثانیه، یادداشت‌های پراکنده را به یک متن منسجم تبدیل کند یا یک متن طولانی را خلاصه کند.", "انعطاف در لحن و قالب: می‌توانید همان محتوا را به لحن‌های مختلف (رسمی، ساده، دوستانه) یا قالب‌های مختلف (نامه، ایمیل، فهرست) دوباره بنویسید بدون آنکه از صفر شروع کنید.", "کمک به شروع نوشتن: برای بسیاری از افراد، سخت‌ترین بخش نوشتن، صفحه سفید ابتدایی است؛ مدل زبانی می‌تواند یک نقطه شروع بدهد که سپس با دانش حقوقی خودتان اصلاح و تکمیل می‌کنید."]}, {"heading": "محدودیت‌ها", "paragraphs": ["عدم قطعیت واقعی: همان‌طور که در درس‌های قبل دیدید، مدل ممکن است با اطمینان کامل، اطلاعات نادرست بسازد (توهم).", "دانش زمان‌دار: دانش مدل به یک تاریخ مشخص محدود است و ممکن است آخرین تغییرات قانونی را نداند.", "بی‌اطلاعی از پرونده خاص شما: مدل هیچ چیزی درباره پرونده، موکل، یا شرایط خاص شما نمی‌داند مگر آنکه شما آن را در گفتگو توضیح دهید؛ و حتی در آن صورت هم، جزئیات حساس باید با احتیاط وارد شوند (موضوع فصل هفتم)."]}, {"heading": "یک قاعده عملی برای تفویض کار", "paragraphs": ["قاعده‌ای ساده که در طول این دوره بارها به آن بازمی‌گردیم: کارهایی که «سازمان‌دهی و بیان» هستند را می‌توان با اطمینان بیشتری به مدل زبانی سپرد؛ کارهایی که «صحت واقعی و قطعیت حقوقی» هستند را باید همیشه خودتان یا با منابع رسمی راستی‌آزمایی کنید. هرچه یک وظیفه به این دو سر طیف نزدیک‌تر باشد، تصمیم درباره میزان اعتماد به آن ساده‌تر می‌شود."]}], "examples": ["تبدیل یک تماس تلفنی یادداشت‌برداری‌شده به یک گزارش داخلی منظم — نمونه‌ای عالی از «سازمان‌دهی و بیان».", "تأیید اینکه آیا مهلت تجدیدنظر در یک پرونده خاص هنوز باقی است یا خیر — نمونه‌ای از «صحت واقعی» که هرگز نباید صرفاً بر پایه پاسخ مدل تصمیم‌گیری شود."], "tips": ["پیش از ارسال هر درخواست، یک ثانیه مکث کنید و از خود بپرسید: «این کار، سازمان‌دهی متن است یا نیاز به صحت واقعی قطعی دارد؟»", "برای کارهای «صحت واقعی»، از مدل زبانی به‌عنوان نقطه شروع تحقیق استفاده کنید، نه پایان آن."], "commonMistakes": ["استفاده از مدل زبانی به‌عنوان منبع نهایی برای مهلت‌های قانونی یا محاسبات دقیق حقوقی.", "نادیده گرفتن نقاط قوت واقعی ابزار به دلیل یک تجربه بد قبلی با آن.", "این تصور که «محدودیت» به‌معنای «بی‌فایده بودن» ابزار است؛ در حالی‌که هدف، استفاده هوشمندانه در محدوده درست است."], "exercise": ["سه وظیفه از کارهای هفتگی خودتان را فهرست کنید و هرکدام را در یکی از دو دسته «سازمان‌دهی و بیان» یا «صحت واقعی و قطعیت حقوقی» قرار دهید."], "answer": ["پاسخ نمونه: (۱) خلاصه‌سازی یک جلسه مشاوره برای پرونده → سازمان‌دهی و بیان. (۲) بررسی اینکه آیا رأی خاصی هنوز معتبر است یا نقض شده → صحت واقعی. (۳) بازنویسی یک نامه رسمی به لحن مؤدبانه‌تر برای طرف مقابل → سازمان‌دهی و بیان."], "summary": ["نقاط قوت اصلی: سرعت در سازمان‌دهی متن، انعطاف در لحن و قالب، و کمک به شروع نوشتن.", "محدودیت‌های اصلی: احتمال توهم، دانش زمان‌دار، و بی‌اطلاعی از جزئیات خاص پرونده شما.", "قاعده عملی: کارهای «سازمان‌دهی و بیان» را با اطمینان بیشتری تفویض کنید؛ کارهای «صحت واقعی» را همیشه راستی‌آزمایی کنید.", "هدف، شناخت محدوده درست استفاده است، نه رد کامل یا اعتماد کامل به ابزار."], "keywords": ["نقاط قوت", "محدودیت‌ها", "توهم", "تفویض کار"]}, {"id": 9, "chapter": 1, "title": "اصطلاحات پایه هوش مصنوعی", "icon": "list", "readingTime": "۶ دقیقه", "difficulty": "مقدماتی", "objectives": ["معنای ساده مهم‌ترین اصطلاحات پایه این حوزه را بیان کنید.", "این اصطلاحات را در گفت‌وگوی حرفه‌ای با همکاران به‌درستی به کار ببرید."], "sections": [{"heading": "واژه‌نامه کوتاه فصل اول", "paragraphs": ["در این درس، به‌جای متن پیوسته، یک واژه‌نامه کوتاه از اصطلاحاتی که در این فصل دیدید (و چند اصطلاح تکمیلی) آورده شده تا مرور آن‌ها ساده‌تر باشد. هدف، حفظ‌کردن تعریف‌های فنی نیست؛ هدف این است که وقتی این کلمات را در تبلیغات، مقالات یا گفت‌وگوی همکاران شنیدید، معنای کاربردی‌شان را بدانید."]}], "glossary": [{"term": "هوش مصنوعی (AI)", "definition": "توانایی رایانه در انجام کارهایی که معمولاً نیازمند فهم انسانی است."}, {"term": "هوش مصنوعی مولد (Generative AI)", "definition": "نوعی هوش مصنوعی که محتوای تازه (متن، تصویر، کد) تولید می‌کند، نه صرفاً طبقه‌بندی داده موجود."}, {"term": "مدل زبانی بزرگ (LLM)", "definition": "موتور اصلی پشت ابزارهایی مانند Claude و ChatGPT که با خواندن حجم زیاد متن، زبان را یاد گرفته است."}, {"term": "پرامپت (Prompt)", "definition": "متنی که کاربر به‌عنوان درخواست یا سؤال به مدل زبانی می‌دهد."}, {"term": "تاریخ برش دانش (Knowledge Cutoff)", "definition": "آخرین تاریخی که داده‌های آموزشی مدل تا آن جمع‌آوری شده‌اند."}, {"term": "توهم (Hallucination)", "definition": "زمانی که مدل با اطمینان، اطلاعاتی نادرست یا ساختگی تولید می‌کند."}, {"term": "پارامتر (Parameter)", "definition": "مقادیر عددی داخلی مدل که طی آموزش تنظیم می‌شوند و توانایی مدل را شکل می‌دهند."}, {"term": "تنظیم دقیق (Fine-tuning)", "definition": "مرحله‌ای از آموزش که در آن مدل با راهنمایی انسانی برای پاسخ‌گویی مفیدتر تنظیم می‌شود."}, {"term": "جست‌وجوی وب فعال (Web Search)", "definition": "قابلیتی در برخی ابزارها که به مدل اجازه می‌دهد اطلاعات به‌روز را از اینترنت جست‌وجو کند."}, {"term": "API", "definition": "روشی که به‌کمک آن، نرم‌افزارهای دیگر می‌توانند مستقیماً از یک مدل زبانی استفاده کنند، بدون رابط چت معمولی."}], "examples": ["به‌جای گفتن «برنامه با هوش مصنوعی جواب داد اما اشتباه بود»، می‌توانید دقیق‌تر بگویید «مدل زبانی در این مورد دچار توهم شد».", "به‌جای «این ابزار قدیمی است»، می‌توانید بگویید «تاریخ برش دانش این ابزار قدیمی است، مگر جست‌وجوی وب را فعال کنیم»."], "tips": ["برای مرور سریع پیش از جلسات یا کارگاه‌های آموزشی، فقط همین واژه‌نامه کوتاه را دوباره بخوانید؛ نیازی به حفظ‌کردن متن کامل فصل نیست."], "commonMistakes": ["استفاده نادرست از اصطلاحات فنی به‌جای هم (مثلاً یکی‌دانستن «هوش مصنوعی» با «مدل زبانی بزرگ»).", "ترس از استفاده از این اصطلاحات در گفت‌وگوی حرفه‌ای به دلیل ناآشنایی؛ در حالی‌که معنای آن‌ها ساده‌تر از ظاهرشان است."], "exercise": ["با استفاده از حداقل سه اصطلاح از واژه‌نامه بالا، یک پاراگراف کوتاه (سه تا چهار جمله) درباره تجربه خودتان با یک ابزار هوش مصنوعی بنویسید."], "answer": ["پاسخ نمونه: «هفته گذشته از یک مدل زبانی بزرگ برای خلاصه‌سازی یک قرارداد استفاده کردم. پرامپت اولیه‌ام مبهم بود، بنابراین خلاصه خیلی کلی شد. وقتی درخواست را دقیق‌تر نوشتم، نتیجه بهتر شد؛ هرچند برای بررسی یک تاریخ حساس، ترجیح دادم چون نگران توهم بودم، به متن اصلی مراجعه کنم.»"], "summary": ["این درس، ده اصطلاح پایه‌ای که در فصل اول دیدید را در قالب یک واژه‌نامه کوتاه مرور کرد.", "دانستن معنای دقیق این اصطلاحات، ارتباط حرفه‌ای درباره هوش مصنوعی را ساده‌تر می‌کند.", "این واژه‌نامه، مرجع سریع شماست؛ می‌توانید هر زمان لازم شد به آن بازگردید."], "keywords": ["واژه‌نامه", "اصطلاحات هوش مصنوعی", "مرور فصل"]}, {"id": 10, "chapter": 1, "title": "جمع‌بندی فصل و آزمون نهایی", "icon": "flag", "readingTime": "۱۰ دقیقه", "difficulty": "مقدماتی", "isFinal": true, "objectives": ["مرور کلی مفاهیم فصل اول را انجام دهید.", "با پاسخ به آزمون نهایی، میزان یادگیری خود را بسنجید."], "sections": [{"heading": "مسیری که تا اینجا طی کردید", "paragraphs": ["در این فصل، از تعریف پایه‌ای هوش مصنوعی شروع کردیم، انواع آن را دسته‌بندی کردیم، وارد دنیای هوش مصنوعی مولد و مدل‌های زبانی بزرگ شدیم، دیدیم این مدل‌ها چگونه آموزش می‌بینند و چگونه پاسخ می‌سازند، تفاوت آن‌ها با موتور جستجو را روشن کردیم، نقاط قوت و ضعفشان را در کنار هم گذاشتیم و در نهایت با واژه‌نامه پایه آشنا شدیم.", "این پایه مفهومی، برای فصل‌های بعدی حیاتی است: در فصل دوم، ابزارهای مشخص (Claude، ChatGPT، Gemini، Copilot، Perplexity) را با هم مقایسه می‌کنید و در فصل چهارم، مهارت عملی نوشتن پرامپت خوب را قدم‌به‌قدم یاد می‌گیرید."]}], "examples": [], "tips": ["پیش از رفتن سراغ آزمون نهایی، اگر نسبت به یکی از درس‌های قبلی مطمئن نیستید، دوباره خلاصه (Summary) همان درس را مرور کنید."], "commonMistakes": [], "exercise": [], "answer": [], "summary": ["فصل اول، پایه مفهومی لازم برای استفاده حرفه‌ای و مسئولانه از هوش مصنوعی در کار حقوقی را ساخت.", "فصل‌های بعدی روی این پایه، مهارت‌های عملی‌تر (انتخاب ابزار، پرامپت‌نویسی، کاربردهای تخصصی حقوقی) را اضافه می‌کنند."], "keywords": ["جمع‌بندی", "آزمون فصل اول"]}], "quiz": [{"q": "تفاوت اصلی هوش مصنوعی مولد با یک نرم‌افزار سنتی چیست؟", "options": ["هوش مصنوعی مولد فقط برای ورودی‌های از پیش‌دیده‌شده کار می‌کند", "هوش مصنوعی مولد برای ورودی‌های تازه، پاسخ تازه تولید می‌کند", "نرم‌افزار سنتی هم می‌تواند محتوای کاملاً تازه بسازد", "هیچ تفاوتی وجود ندارد"], "correct": 1}, {"q": "ابزارهایی مانند Claude و ChatGPT در کدام دسته از هوش مصنوعی قرار می‌گیرند؟", "options": ["هوش مصنوعی عمومی", "هوش مصنوعی محدود و مولد", "ابرهوش", "هوش مصنوعی تشخیصی صرف"], "correct": 1}, {"q": "چرا خروجی هوش مصنوعی مولد ممکن است هر بار کمی متفاوت باشد؟", "options": ["چون مدل هر بار از یک منبع تصادفی وب کپی می‌کند", "چون انتخاب کلمه بعدی در هر مرحله، درجه‌ای از تنوع دارد", "چون سرورها هر بار خراب می‌شوند", "این ادعا نادرست است و خروجی همیشه ثابت است"], "correct": 1}, {"q": "رابطه «مدل زبانی بزرگ» و اپلیکیشنی مانند Claude چیست؟", "options": ["کاملاً یک چیز هستند و تفاوتی ندارند", "مدل زبانی، موتور است و اپلیکیشن، خودرویی است که آن موتور را در خود دارد", "اپلیکیشن، بخشی کوچک از مدل زبانی است", "مدل زبانی فقط برای تصویر به کار می‌رود"], "correct": 1}, {"q": "«تاریخ برش دانش» (Knowledge Cutoff) به چه معناست؟", "options": ["تاریخی که کاربر باید حساب خود را تمدید کند", "آخرین تاریخی که داده‌های آموزشی مدل تا آن جمع‌آوری شده‌اند", "تاریخ انتشار رسمی هر مدل", "تاریخی که مدل دیگر کار نمی‌کند"], "correct": 1}, {"q": "مدل زبانی چگونه پاسخ خود را می‌سازد؟", "options": ["با کپی‌کردن مستقیم یک صفحه وب مشخص", "با پیش‌بینی کلمه‌به‌کلمه محتمل‌ترین ادامه متن", "با پرسیدن سؤال از یک انسان در پشت صحنه", "با اجرای یک فرمول ثابت ریاضی مانند ماشین‌حساب"], "correct": 1}, {"q": "برای یافتن متن دقیق و به‌روز یک ماده قانونی خاص، کدام ابزار معمولاً مناسب‌تر است؟", "options": ["مدل زبانی بدون جست‌وجوی وب", "موتور جستجو یا پایگاه رسمی قوانین", "هیچ‌کدام قابل‌اعتماد نیستند", "فقط حافظه شخصی وکیل"], "correct": 1}, {"q": "کدام مورد نمونه‌ای از «سازمان‌دهی و بیان» است که می‌توان با اطمینان بیشتری به هوش مصنوعی سپرد؟", "options": ["تأیید اعتبار قانونی یک رأی خاص", "محاسبه دقیق مهلت تجدیدنظر یک پرونده", "بازنویسی یک نامه با لحن رسمی‌تر", "استخراج شماره دقیق یک دادنامه از حافظه مدل"], "correct": 2}, {"q": "«توهم» (Hallucination) در مدل‌های زبانی به چه معناست؟", "options": ["خرابی سرورهای شرکت سازنده مدل", "تولید اطلاعات نادرست اما با لحنی مطمئن", "کند شدن سرعت پاسخ‌دهی", "قطع ارتباط اینترنت کاربر"], "correct": 1}, {"q": "چرا سؤال روشن و دقیق، کیفیت پاسخ مدل زبانی را بهبود می‌بخشد؟", "options": ["چون مدل بدون سؤال روشن اصلاً پاسخی تولید نمی‌کند", "چون مدل پاسخ را بر اساس متن ورودی، کلمه‌به‌کلمه پیش‌بینی می‌کند و اطلاعات بیشتر یعنی پیش‌بینی دقیق‌تر", "چون سؤال طولانی‌تر همیشه امتیاز بیشتری از سرور می‌گیرد", "این ادعا نادرست است و وضوح سؤال تأثیری ندارد"], "correct": 1}]}</script>
+
+<script>
+const DATA = JSON.parse(document.getElementById('course-data').textContent);
+const LESSONS = DATA.lessons;
+const QUIZ = DATA.quiz;
+const STORAGE_KEY = 'afra-ai-course-ch1-v1';
+
+let state = {
+  currentId: null, // null = welcome screen
+  lastId: null,
+  done: new Set()
+};
+
+const ICONS = {
+  brain: "🧠", layers: "🗂", sparkles: "✦", "book-text": "📖",
+  "graduation-cap": "🎓", cpu: "⚙", search: "🔎", scale: "⚖",
+  list: "📋", flag: "🏁"
+};
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return;
+    const s = JSON.parse(raw);
+    if(Array.isArray(s.done)) state.done = new Set(s.done);
+    if(s.lastId != null) state.lastId = s.lastId;
+  }catch(e){ /* ignore corrupt storage */ }
+}
+
+function saveState(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      done: [...state.done],
+      lastId: state.currentId != null ? state.currentId : (state.lastId || null)
+    }));
+  }catch(e){ /* quota or private mode */ }
+}
+
+function toggleNav(open){
+  const app = document.getElementById('app');
+  const btn = document.getElementById('menu-btn');
+  if(typeof open === 'boolean'){
+    app.classList.toggle('nav-open', open);
+  } else {
+    app.classList.toggle('nav-open');
+  }
+  const isOpen = app.classList.contains('nav-open');
+  if(btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+function sealSVG(size, label){
+  return `<svg class="seal-svg" viewBox="0 0 100 100" width="${size}" height="${size}">
+    <circle cx="50" cy="50" r="46" fill="none" stroke="var(--brass)" stroke-width="2"/>
+    <circle cx="50" cy="50" r="39" fill="none" stroke="var(--brass)" stroke-width="1"/>
+    <text x="50" y="46" text-anchor="middle" font-family="Noto Naskh Arabic, serif" font-size="12" fill="var(--brass-dim)" font-weight="700">افرا</text>
+    <text x="50" y="63" text-anchor="middle" font-family="Vazirmatn, sans-serif" font-size="8" fill="var(--brass-dim)">${label}</text>
+  </svg>`;
+}
+
+function renderSidebar(){
+  const wrap = document.getElementById('chapters');
+  let html = '<div class="chapter-block">';
+  html += `<div class="chapter-head"><span class="ch-num">فصل ۱</span><span>آشنایی با هوش مصنوعی</span></div>`;
+  html += '<div class="lesson-list">';
+  LESSONS.forEach((l, i) => {
+    const active = state.currentId === l.id ? 'active' : '';
+    const done = state.done.has(l.id) ? 'done' : '';
+    const fin = l.isFinal ? 'lesson-final' : '';
+    html += `<button type="button" class="lesson-item ${active} ${done} ${fin}" onclick="goTo(${l.id})" ${active ? 'aria-current="page"' : ''}>
+      <span class="lesson-tag"><span>${toFa(i+1)}</span></span>
+      <span class="lesson-name">${l.title}</span>
+    </button>`;
+  });
+  html += '</div></div>';
+
+  const otherChapters = [
+    "آشنایی با ابزارها","شروع کار","پرامپت‌نویسی","تکنیک‌های حرفه‌ای",
+    "هوش مصنوعی برای وکلا","امنیت و اخلاق","کار عملی","اشتباهات رایج",
+    "کتابخانه پرامپت","تمرین","مسیر یادگیری"
+  ];
+  otherChapters.forEach((name, idx) => {
+    html += `<div class="chapter-head locked"><span class="ch-num">فصل ${toFa(idx+2)}</span><span>${name}</span><span class="lock">🔒</span></div>`;
+  });
+
+  wrap.innerHTML = html;
+  updateProgress();
+}
+
+function toFa(n){
+  const map = {0:'۰',1:'۱',2:'۲',3:'۳',4:'۴',5:'۵',6:'۶',7:'۷',8:'۸',9:'۹'};
+  return String(n).split('').map(d => map[d] !== undefined ? map[d] : d).join('');
+}
+
+function updateProgress(){
+  const pct = Math.round((state.done.size / LESSONS.length) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = toFa(pct) + '٪';
+}
+
+function goTo(id){
+  try {
+    state.currentId = id;
+    if(id != null) state.lastId = id;
+    saveState();
+    renderSidebar();
+    renderMain();
+    toggleNav(false);
+    const mainEl = document.getElementById('main');
+    if (mainEl) mainEl.scrollTop = 0;
+  } catch (err) {
+    console.error('goTo error:', err);
+    const main = document.getElementById('main');
+    if (main) {
+      main.innerHTML = `<div class="page" style="padding:40px;text-align:center">
+        <h1 class="page-title">خطا در نمایش درس</h1>
+        <p style="color:var(--seal);margin:20px 0">${err && err.message ? err.message : err}</p>
+        <button class="nav-btn primary" onclick="goTo(null)">بازگشت به شروع</button>
+      </div>`;
+    }
+  }
+}
+
+function markDone(id){
+  if(!state.done.has(id)){
+    state.done.add(id);
+    saveState();
+    renderSidebar();
+  }
+}
+
+function renderWelcome(){
+  const main = document.getElementById('main');
+  const doneCount = state.done.size;
+  const continueId = state.lastId && LESSONS.some(l => l.id === state.lastId) ? state.lastId : null;
+  const continueLesson = continueId ? LESSONS.find(l => l.id === continueId) : null;
+  let actions = '';
+  if(continueLesson && doneCount > 0){
+    actions = `
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:8px">
+        <button class="nav-btn primary" onclick="goTo(${continueLesson.id})">ادامه: ${continueLesson.title} ←</button>
+        <button class="nav-btn" onclick="goTo(${LESSONS[0].id})">شروع از ابتدا</button>
+      </div>
+      <p style="margin-top:18px;font-size:13px;color:var(--ink-soft)">${toFa(doneCount)} از ${toFa(LESSONS.length)} درس مطالعه شده</p>`;
+  } else {
+    actions = `<button class="nav-btn primary" onclick="goTo(${LESSONS[0].id})">شروع فصل اول ←</button>`;
+  }
+  main.innerHTML = `
+    <div class="welcome">
+      ${sealSVG(84,'فصل یکم')}
+      <h1>هوش مصنوعی برای وکلا</h1>
+      <p>یک دوره مقدماتی و کاربردی، ساخته‌شده برای اعضای باشگاه وکلای افرا، تا بدون هیچ پیش‌زمینه فنی، فهم درستی از هوش مصنوعی و کاربرد آن در کار حقوقی پیدا کنید. فصل اول شامل ده درس کوتاه است؛ در پایان هر درس، خلاصه و تمرین کوچکی برای تثبیت یادگیری آمده و در پایان فصل، یک آزمون کوتاه منتظر شماست.</p>
+      ${actions}
+    </div>
+  `;
+}
+
+function renderMain(){
+  const l = LESSONS.find(x => x.id === state.currentId);
+  if(!l){ renderWelcome(); return; }
+  const idx = LESSONS.findIndex(x => x.id === l.id);
+  const main = document.getElementById('main');
+
+  let html = `<div class="page">`;
+  html += `<div class="page-eyebrow"><span class="dot"></span>فصل اول &nbsp;/&nbsp; درس ${toFa(idx+1)} از ${toFa(LESSONS.length)}</div>`;
+  html += `<h1 class="page-title">${ICONS[l.icon] || ''} ${l.title}</h1>`;
+  html += `<div class="meta-row">
+      <span class="meta-pill">⏱ زمان مطالعه: ${l.readingTime}</span>
+      <span class="meta-pill">سطح: ${l.difficulty}</span>
+    </div>`;
+
+  if(l.objectives && l.objectives.length){
+    html += `<div class="objectives"><h3>در پایان این درس می‌توانید:</h3><ul>`;
+    l.objectives.forEach(o => html += `<li>${o}</li>`);
+    html += `</ul></div>`;
+  }
+
+  (l.sections || []).forEach(s => {
+    html += `<div class="section-block"><h2>${s.heading}</h2>`;
+    (s.paragraphs || []).forEach(p => html += `<p>${p}</p>`);
+    html += `</div>`;
+  });
+
+  if(l.glossary && l.glossary.length){
+    html += `<div class="glossary-list">`;
+    l.glossary.forEach(g => {
+      html += `<div class="gloss-item"><div class="gloss-term">${g.term}</div><div class="gloss-def">${g.definition}</div></div>`;
+    });
+    html += `</div>`;
+  }
+
+  const hasCards = (l.examples && l.examples.length) || (l.tips && l.tips.length) || (l.commonMistakes && l.commonMistakes.length);
+  if(hasCards){
+    html += `<div class="card-grid">`;
+    if(l.examples && l.examples.length){
+      html += `<div class="info-card card-examples"><h4><span class="ic">✦</span> مثال‌ها</h4><ul>`;
+      l.examples.forEach(e => html += `<li>${e}</li>`);
+      html += `</ul></div>`;
+    }
+    if(l.tips && l.tips.length){
+      html += `<div class="info-card card-tips"><h4><span class="ic">✓</span> نکات کاربردی</h4><ul>`;
+      l.tips.forEach(t => html += `<li>${t}</li>`);
+      html += `</ul></div>`;
+    }
+    if(l.commonMistakes && l.commonMistakes.length){
+      html += `<div class="info-card card-mistakes"><h4><span class="ic">⚠</span> اشتباهات رایج</h4><ul>`;
+      l.commonMistakes.forEach(m => html += `<li>${m}</li>`);
+      html += `</ul></div>`;
+    }
+    html += `</div>`;
+  }
+
+  if(l.exercise && l.exercise.length){
+    html += `<div class="exercise-box"><h4>✎ تمرین این درس</h4>`;
+    l.exercise.forEach(e => html += `<p>${e}</p>`);
+    html += `<button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show')">نمایش پاسخ پیشنهادی</button>
+      <div class="answer-box">`;
+    (l.answer || []).forEach(a => html += `<span class="lbl">پاسخ پیشنهادی</span>${a}`);
+    html += `</div></div>`;
+  }
+
+  if(l.summary && l.summary.length){
+    html += `<div class="summary-box"><h4>خلاصه درس</h4><ul>`;
+    l.summary.forEach(s => html += `<li>${s}</li>`);
+    html += `</ul></div>`;
+  }
+
+  if(l.keywords && l.keywords.length){
+    html += `<div class="keywords">`;
+    l.keywords.forEach(k => html += `<span class="kw">#${k}</span>`);
+    html += `</div>`;
+  }
+
+  if(state.done.has(l.id)){
+    html += `<div class="seal-mark">${sealSVG(56,'خوانده شد')}<div class="st"><b>این درس مطالعه شد</b>مهر تأیید در فهرست کناری نیز ثبت شد.</div></div>`;
+  }
+
+  if(l.isFinal){
+    html += renderQuiz();
+  }
+
+  html += `<div class="page-nav">`;
+  if(idx > 0){
+    html += `<button class="nav-btn" onclick="goTo(${LESSONS[idx-1].id})">→ <span>${LESSONS[idx-1].title}<br><small>درس قبلی</small></span></button>`;
+  } else {
+    html += `<span></span>`;
+  }
+  if(!l.isFinal){
+    html += `<button class="nav-btn primary" onclick="completeAndNext(${l.id}, ${idx < LESSONS.length-1 ? LESSONS[idx+1].id : 'null'})">
+      <span>${idx < LESSONS.length-1 ? LESSONS[idx+1].title : 'پایان فصل'}<br><small>${idx < LESSONS.length-1 ? 'درس بعدی' : ''}</small></span> ←
+    </button>`;
+  } else {
+    html += `<span></span>`;
+  }
+  html += `</div>`;
+
+  html += `</div>`;
+  main.innerHTML = html;
+
+  if(!l.isFinal) markDone(l.id);
+}
+
+function completeAndNext(currentId, nextId){
+  markDone(currentId);
+  if(nextId) goTo(nextId);
+}
+
+function renderQuiz(){
+  let html = `<div class="section-block" style="margin-top:38px;">
+    <h2>🏁 آزمون پایان فصل اول</h2>
+    <p>به ده سؤال زیر پاسخ دهید و در پایان نتیجه را ببینید. این آزمون فقط برای سنجش شخصی شماست.</p>
+  </div><form id="quiz-form">`;
+  QUIZ.forEach((q, qi) => {
+    html += `<div class="quiz-q"><p class="qtext">${toFa(qi+1)}. ${q.q}</p>`;
+    q.options.forEach((opt, oi) => {
+      html += `<label class="quiz-opt" data-q="${qi}" data-o="${oi}">
+        <input type="radio" name="q${qi}" value="${oi}"> <span>${opt}</span>
+      </label>`;
+    });
+    html += `</div>`;
+  });
+  html += `<button type="button" class="quiz-submit" onclick="submitQuiz()">مشاهده نتیجه آزمون</button>
+    <div class="quiz-result" id="quiz-result" role="status" aria-live="polite"></div>
+  </form>`;
+  return html;
+}
+
+function submitQuiz(){
+  let score = 0;
+  QUIZ.forEach((q, qi) => {
+    const chosen = document.querySelector(`input[name="q${qi}"]:checked`);
+    const opts = document.querySelectorAll(`.quiz-opt[data-q="${qi}"]`);
+    opts.forEach(o => {
+      const oi = parseInt(o.dataset.o);
+      o.classList.remove('correct','wrong');
+      if(oi === q.correct) o.classList.add('correct');
+      else if(chosen && parseInt(chosen.value) === oi) o.classList.add('wrong');
+    });
+    if(chosen && parseInt(chosen.value) === q.correct) score++;
+  });
+  const result = document.getElementById('quiz-result');
+  const pass = score >= 7;
+  result.className = 'quiz-result show ' + (pass ? 'pass' : 'fail');
+  result.innerHTML = pass
+    ? `آفرین! نمره شما ${toFa(score)} از ${toFa(QUIZ.length)} — فصل اول را با موفقیت گذراندید.`
+    : `نمره شما ${toFa(score)} از ${toFa(QUIZ.length)} — پیشنهاد می‌شود درس‌های مربوط به سؤالات نادرست را مرور کنید.`;
+  if(pass) markDone(LESSONS.find(l => l.isFinal).id);
+  result.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') toggleNav(false);
+});
+
+// init
+try {
+  loadState();
+  renderSidebar();
+  renderWelcome();
+} catch (err) {
+  console.error('Course init error:', err);
+  const main = document.getElementById('main');
+  if (main) {
+    main.innerHTML = `<div class="page" style="padding:40px;text-align:center">
+      <h1 class="page-title">خطا در بارگذاری دوره</h1>
+      <p style="color:var(--seal);margin:20px 0">${err && err.message ? err.message : err}</p>
+      <p style="color:var(--ink-soft)">لطفاً کنسول مرورگر (F12) را باز کنید و خطا را گزارش دهید.</p>
+      <button class="nav-btn primary" onclick="location.reload()">تلاش مجدد</button>
+    </div>`;
+  }
+}
+</script>
+</body>
+</html>
