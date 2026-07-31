@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کتابخانه پرامپت‌های حقوقی | باشگاه وکلای افرا</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <!-- آیکون‌ها (می‌توانید از FontAwesome یا آیکون‌های موجود در سایت استفاده کنید) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- منوی کناری (یکسان در تمام صفحات) -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>⚖️ باشگاه افرا</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="../index.html"><i class="fas fa-home"></i> صفحه اصلی</a>
+            <a href="../courses/index.html"><i class="fas fa-graduation-cap"></i> دوره‌ها</a>
+            <a href="../services/index.html"><i class="fas fa-briefcase"></i> خدمات</a>
+            <a href="index.html" class="active"><i class="fas fa-book-open"></i> کتابخانه پرامپت‌ها</a>
+        </nav>
+    </aside>
+
+    <!-- محتوای اصلی -->
+    <main class="main-content">
+        <!-- هدر صفحه -->
+        <header class="page-header">
+            <h1>📚 کتابخانه پرامپت‌های حقوقی</h1>
+            <div class="header-actions">
+                <button id="theme-toggle" class="btn-icon" title="تغییر تم">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-icon btn-logout" title="خروج">
+                    <i class="fas fa-sign-out-alt"></i> خروج
+                </button>
+            </div>
+        </header>
+
+        <!-- نوار اطلاعات و امنیت -->
+        <div class="info-banner">
+            <div class="info-item">
+                <i class="fas fa-shield-alt"></i>
+                <span><strong>تضمین حریم خصوصی:</strong> این ابزار به‌صورت کاملاً محلی در مرورگر شما اجرا می‌شود و هیچ اطلاعاتی به سرور ارسال نمی‌کند.</span>
+            </div>
+            <div class="info-item latest-update">
+                <i class="fas fa-clock"></i>
+                <span><strong>آخرین به‌روزرسانی:</strong> مرور ادبیات دانشگاهی حقوقی | پیشنهاددهنده: وکیل امیررضا مومنی‌فرد | نسخه فعلی: ۱.۰۲ (شامل ۱۱ پرامپت)</span>
+            </div>
+        </div>
+
+        <!-- نوار ابزار -->
+        <div class="toolbar">
+            <div class="categories">
+                <span class="label">دسته‌بندی پرامپت‌ها:</span>
+                <select class="form-select">
+                    <option value="all">همه پرامپت‌ها</option>
+                    <option value="research">پژوهش و ادبیات حقوقی</option>
+                    <option value="drafting">تنظیم لوایح و دادخواست</option>
+                    <option value="analysis">تحلیل پرونده</option>
+                </select>
+            </div>
+            <button class="btn-primary">
+                <i class="fas fa-plus-circle"></i> پیشنهاد پرامپت جدید
+            </button>
+        </div>
+
+        <!-- لیست پرامپت‌ها -->
+        <div class="prompts-grid">
+            
+            <!-- پرامپت نمونه ۱ (بر اساس فایل ارسالی) -->
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <h3>مرور ادبیات دانشگاهی حقوقی</h3>
+                    <span class="badge">پژوهش</span>
+                </div>
+                <div class="prompt-body">
+                    <p class="prompt-text" id="prompt-1">به عنوان یک دستیار پژوهشی حقوقی، لطفاً یک مرور ادبیات (Literature Review) ساختاریافته در مورد "[موضوع پژوهش، مثلاً: مسئولیت مدنی هوش مصنوعی]" ارائه بده. شامل: ۱. مکاتب فکری اصلی، ۲. چالش‌های حقوقی فعلی در نظام حقوقی ایران، ۳. خلاهای قانونی، و ۴. ۵ منبع یا مقاله کلیدی پیشنهادی (با فرمت APA). پاسخ باید آکادمیک و مستند باشد.</p>
+                </div>
+                <div class="prompt-footer">
+                    <button class="btn-copy" onclick="copyPrompt('prompt-1', this)">
+                        <i class="fas fa-copy"></i> کپی متن پرامپت
+                    </button>
+                </div>
+            </div>
+
+            <!-- پرامپت نمونه ۲ -->
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <h3>تحلیل نقاط ضعف و قوت دادخواست</h3>
+                    <span class="badge">تحلیل</span>
+                </div>
+                <div class="prompt-body">
+                    <p class="prompt-text" id="prompt-2">متن دادخواست زیر را که توسط طرف مقابل تنظیم شده است تحلیل کن. لطفاً به صورت جداگانه: ۱. سه نقطه قوت استدلالی آن‌ها، ۲. سه نقطه ضعف یا تناقض حقوقی، و ۳. بهترین مواد قانونی برای پاسخ و دفاع در لایحه را به من پیشنهاد بده. متن دادخواست: [متن را اینجا قرار دهید]</p>
+                </div>
+                <div class="prompt-footer">
+                    <button class="btn-copy" onclick="copyPrompt('prompt-2', this)">
+                        <i class="fas fa-copy"></i> کپی متن پرامپت
+                    </button>
+                </div>
+            </div>
+
+            <!-- می‌توانید ۹ پرامپت دیگر را به همین شکل اضافه کنید -->
+
+        </div>
+    </main>
+</div>
+
+<script>
+    // منطق کپی کردن متن
+    function copyPrompt(elementId, btn) {
+        const text = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> کپی شد!';
+            btn.classList.add('success');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('success');
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+
+    // منطق دارک مود (اگر در فایل اصلی ندارید)
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const icon = themeToggle.querySelector('i');
+        if (document.body.classList.contains('dark-mode')) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    });
+</script>
+
+</body>
+</html>
