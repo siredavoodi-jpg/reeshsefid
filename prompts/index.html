@@ -1,145 +1,367 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کتابخانه پرامپت‌های حقوقی | باشگاه وکلای افرا</title>
-    <link rel="stylesheet" href="../assets/style.css">
-    <!-- آیکون‌ها (می‌توانید از FontAwesome یا آیکون‌های موجود در سایت استفاده کنید) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>افرا | کتابخانه پرامپت‌های حقوقی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --radius: 10px; }
+  html[data-theme="light"]{
+    --bg: #EFE7D2; --bg-elevated: #FBF7EC; --bg-card: #F8F3E4; --ink: #1E2530; --ink-soft: #5B6373; --ink-faint: #8B8267; --brass: #9C7A3C; --brass-strong: #7C5F29; --brass-light: #C9A66B; --rule: #D9CBA3; --seal: #7B3232; --seal-ink: #FBF3E4; --success: #3F6A52; --shadow: 0 10px 30px -12px rgba(60, 45, 15, .35); --paper-noise: radial-gradient(circle at 20% 20%, rgba(156,122,60,.05), transparent 40%), radial-gradient(circle at 80% 60%, rgba(123,50,50,.04), transparent 45%);
+  }
+  html[data-theme="dark"]{
+    --bg: #10161E; --bg-elevated: #171F29; --bg-card: #1A2330; --ink: #E9E3D2; --ink-soft: #A9B2C1; --ink-faint: #6C7688; --brass: #C9A66B; --brass-strong: #E0C48C; --brass-light: #D9BC8C; --rule: #2B3644; --seal: #B15A5A; --seal-ink: #10161E; --success: #6FA98A; --shadow: 0 14px 34px -14px rgba(0,0,0,.55); --paper-noise: radial-gradient(circle at 15% 15%, rgba(201,166,107,.05), transparent 40%), radial-gradient(circle at 85% 65%, rgba(177,90,90,.06), transparent 45%);
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; background: var(--bg); background-image: var(--paper-noise); color: var(--ink); font-family:'Vazirmatn', sans-serif; min-height:100vh; transition: background-color .35s ease, color .35s ease; }
+  ::selection{ background: var(--brass-light); color:#10161E; }
+  a{ color:inherit; text-decoration: none; }
+  header.masthead{ position: sticky; top:0; z-index: 40; background: var(--bg-elevated); border-bottom: 1px solid var(--rule); box-shadow: 0 1px 0 rgba(0,0,0,.02); }
+  .masthead-inner{ max-width: 1280px; margin:0 auto; display:flex; align-items:center; gap:18px; padding: 14px 24px; }
+  .brand{ display:flex; align-items:center; gap:12px; flex-shrink:0; }
+  .brand-seal{ width:42px; height:42px; border-radius:50%; border:1.5px solid var(--brass); display:flex; align-items:center; justify-content:center; font-family:'Noto Naskh Arabic', serif; font-weight:700; font-size:15px; color:var(--brass-strong); flex-shrink:0; }
+  .brand-text .brand-title{ font-family:'Noto Naskh Arabic', serif; font-weight:700; font-size:19px; letter-spacing:.2px; line-height:1.3; }
+  .brand-text .brand-sub{ font-size:11.5px; color:var(--ink-faint); letter-spacing:.3px; }
+  .search-wrap{ flex:1; max-width: 460px; position:relative; }
+  .search-wrap input{ width:100%; padding: 10px 40px 10px 14px; background: var(--bg-card); border:1px solid var(--rule); border-radius: 999px; color: var(--ink); font-family:'Vazirmatn', sans-serif; font-size:14px; outline:none; transition: border-color .2s ease, box-shadow .2s ease; }
+  .search-wrap input:focus{ border-color: var(--brass); box-shadow: 0 0 0 3px color-mix(in srgb, var(--brass) 18%, transparent); }
+  .search-wrap svg{ position:absolute; right:14px; top:50%; transform:translateY(-50%); width:16px; height:16px; color: var(--ink-faint); pointer-events:none; }
+  .masthead-actions{ display:flex; align-items:center; gap:8px; flex-shrink:0; }
+  .icon-btn{ display:flex; align-items:center; gap:6px; background: transparent; border:1px solid var(--rule); color: var(--ink-soft); padding: 9px 13px; border-radius: 999px; font-family:'Vazirmatn', sans-serif; font-size: 13px; cursor:pointer; transition: all .2s ease; }
+  .icon-btn:hover{ border-color: var(--brass); color: var(--brass-strong); background: color-mix(in srgb, var(--brass) 8%, transparent); }
+  .icon-btn svg{ width:15px; height:15px; }
+  .layout{ max-width:1280px; margin:0 auto; display:grid; grid-template-columns: 250px 1fr; gap: 28px; padding: 28px 24px 80px; align-items:start; }
+  @media (max-width: 880px){ .layout{ grid-template-columns: 1fr; } }
+  aside.docket{ position: sticky; top: 84px; background: var(--bg-elevated); border:1px solid var(--rule); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+  .docket-title{ font-size:11px; letter-spacing:.6px; color: var(--ink-faint); margin: 0 0 12px; padding-bottom:10px; border-bottom: 1px dashed var(--rule); }
+  .cat-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px; }
+  .cat-item{ display:flex; align-items:center; justify-content:space-between; gap:8px; padding:9px 10px; border-radius: 7px; font-size: 13.5px; color: var(--ink-soft); cursor:pointer; border-inline-start: 2px solid transparent; transition: all .15s ease; }
+  .cat-item:hover{ background: color-mix(in srgb, var(--brass) 8%, transparent); color: var(--ink); }
+  .cat-item.active{ background: color-mix(in srgb, var(--brass) 14%, transparent); border-inline-start-color: var(--brass); color: var(--brass-strong); font-weight:600; }
+  .cat-count{ font-size:11px; min-width: 22px; text-align:center; background: var(--bg-card); border:1px solid var(--rule); border-radius: 999px; padding: 1px 6px; color: var(--ink-faint); }
+  .cat-item.active .cat-count{ color: var(--brass-strong); border-color: var(--brass-light); }
+  .suggest-box{ margin-top:18px; padding-top:14px; border-top:1px dashed var(--rule); }
+  .suggest-box h4{ font-size:12px; margin:0 0 6px; color: var(--brass-strong); font-weight:600; }
+  .suggest-box p{ font-size:11.5px; line-height:1.8; color: var(--ink-faint); margin:0 0 6px; }
+  .suggest-box .contrib{ font-size:10.5px; color: var(--ink-faint); background: var(--bg-card); border:1px solid var(--rule); border-radius: 6px; padding: 6px 10px; display:flex; align-items:center; gap:6px; }
+  .suggest-box .contrib strong{ color: var(--brass-strong); }
+  aside.docket .about{ margin-top:12px; padding-top:12px; border-top:1px dashed var(--rule); font-size:12px; line-height:1.9; color: var(--ink-faint); }
+  .results-bar{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:16px; }
+  .results-bar h1{ font-family:'Noto Naskh Arabic', serif; font-size: 21px; margin:0; font-weight:600; }
+  .results-bar span{ font-size:12.5px; color: var(--ink-faint); }
+  .grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .card{ position:relative; background: var(--bg-card); border:1px solid var(--rule); border-radius: var(--radius); padding: 20px 18px 18px; cursor:pointer; box-shadow: var(--shadow); transition: transform .18s ease, border-color .18s ease; }
+  .card::before{ content:""; position:absolute; top:0; left:0; width:0; height:0; border-style:solid; border-width: 0 0 16px 16px; border-color: transparent transparent var(--bg) transparent; border-bottom-left-radius: 2px; filter: drop-shadow(-1px 1px 1px rgba(0,0,0,.08)); }
+  .card:hover{ transform: translateY(-3px); border-color: var(--brass-light); }
+  .card-top{ display:flex; align-items:flex-start; justify-content:space-between; margin-bottom: 12px; }
+  .docket-seal{ flex-shrink:0; width:34px; height:34px; border-radius:50%; background: var(--seal); color: var(--seal-ink); display:flex; align-items:center; justify-content:center; font-family:'Noto Naskh Arabic', serif; font-weight:700; font-size:13px; box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--seal-ink) 30%, transparent); }
+  .card-cat{ font-size:10.5px; color: var(--brass-strong); background: color-mix(in srgb, var(--brass) 14%, transparent); border: 1px solid var(--brass-light); padding: 3px 9px; border-radius: 999px; white-space:nowrap; }
+  .card h3{ font-family:'Noto Naskh Arabic', serif; font-size:16.5px; margin: 0 0 8px; line-height:1.5; font-weight:600; }
+  .card-stitch{ border-top: 1px dashed var(--rule); margin: 10px 0 10px; }
+  .card p.excerpt{ font-size:12.8px; color: var(--ink-soft); line-height:1.9; margin:0; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+  .card-open{ margin-top:14px; font-size:12px; color: var(--brass-strong); display:flex; align-items:center; gap:5px; }
+  .card-open svg{ width:13px; height:13px; }
+  .empty-state{ grid-column: 1/-1; text-align:center; padding: 60px 20px; color: var(--ink-faint); font-size:14px; }
+  .overlay{ position:fixed; inset:0; z-index:100; background: color-mix(in srgb, #000 55%, transparent); backdrop-filter: blur(3px); display:flex; align-items:flex-start; justify-content:center; padding: 40px 20px; opacity:0; pointer-events:none; transition: opacity .25s ease; overflow-y:auto; }
+  .overlay.open{ opacity:1; pointer-events:auto; }
+  .dossier{ width:100%; max-width: 760px; background: var(--bg-elevated); border:1px solid var(--rule); border-radius: 14px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.5); transform: translateY(16px) scale(.98); transition: transform .25s ease; overflow:hidden; }
+  .overlay.open .dossier{ transform: translateY(0) scale(1); }
+  .dossier-header{ padding: 22px 26px 18px; display:flex; align-items:flex-start; justify-content:space-between; gap:16px; border-bottom: 1px solid var(--rule); background: linear-gradient(180deg, color-mix(in srgb, var(--brass) 6%, transparent), transparent); }
+  .dossier-header .meta{ display:flex; align-items:center; gap:12px; }
+  .dossier-header h2{ font-family:'Noto Naskh Arabic', serif; font-size: 21px; margin:0 0 4px; font-weight:700; }
+  .dossier-header .cat-tag{ font-size:11px; color: var(--brass-strong); }
+  .dossier-close{ background:none; border:1px solid var(--rule); color:var(--ink-soft); width:32px; height:32px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition: all .15s ease; }
+  .dossier-close:hover{ border-color: var(--seal); color: var(--seal); }
+  .ribbon{ height:3px; background: repeating-linear-gradient(90deg, var(--brass) 0 10px, transparent 10px 16px); opacity:.6; }
+  .dossier-body{ padding: 22px 26px 10px; font-size: 14px; line-height: 2; color: var(--ink); max-height: 55vh; overflow-y:auto; }
+  .dossier-body h4{ font-family:'Vazirmatn'; font-weight:700; font-size:14.5px; color: var(--brass-strong); margin: 20px 0 8px; padding-top:10px; border-top:1px dashed var(--rule); }
+  .dossier-body h4:first-child{ margin-top:0; border-top:none; padding-top:0; }
+  .dossier-body p{ margin: 0 0 10px; }
+  .dossier-body p.num-line{ font-weight:600; margin: 14px 0 4px; }
+  .dossier-body ul{ margin: 0 0 12px; padding-inline-start: 22px; }
+  .dossier-body li{ margin-bottom:6px; }
+  .dossier-body strong{ color: var(--brass-strong); font-weight:700; }
+  .dossier-body code{ background: var(--bg-card); border:1px solid var(--rule); border-radius:4px; padding: 1px 6px; font-size:12.5px; font-family: 'Vazirmatn', monospace; }
+  .dossier-body table{ width:100%; border-collapse:collapse; margin: 8px 0 16px; font-size:13px; }
+  .dossier-body th, .dossier-body td{ border:1px solid var(--rule); padding:7px 10px; text-align:right; }
+  .dossier-body th{ background: var(--bg-card); color: var(--brass-strong); font-weight:600; }
+  .dossier-footer{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding: 16px 26px 22px; border-top: 1px solid var(--rule); }
+  .copy-btn{ background: var(--brass); color: var(--seal-ink); border:none; padding: 10px 20px; border-radius: 999px; font-family:'Vazirmatn'; font-size:13.5px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:7px; transition: filter .15s ease, transform .1s ease; }
+  .copy-btn:hover{ filter: brightness(1.08); }
+  .copy-btn:active{ transform: scale(.97); }
+  .copy-btn svg{ width:15px; height:15px; }
+  .copy-btn.copied{ background: var(--success); }
+  .dossier-footer .id-tag{ font-size:11.5px; color: var(--ink-faint); }
+  @media (max-width:600px){ .masthead-inner{ flex-wrap:wrap; } .search-wrap{ order:3; max-width:none; flex-basis:100%; } }
+</style>
 </head>
 <body>
 
-<div class="app-container">
-    <!-- منوی کناری (یکسان در تمام صفحات) -->
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <h2>⚖️ باشگاه افرا</h2>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="brand">
+      <div class="brand-seal">افرا</div>
+      <div class="brand-text">
+        <div class="brand-title">کتابخانه پرامپت حقوقی افرا</div>
+        <div class="brand-sub">باشگاه وکلای افرا</div>
+      </div>
+    </div>
+    <div class="search-wrap">
+      <input id="searchInput" type="text" placeholder="جستجو در عنوان و متن پرامپت‌ها…" autocomplete="off">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    </div>
+    <div class="masthead-actions">
+      <button class="icon-btn" id="themeToggle" title="حالت روشن/تاریک">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
+        <span id="themeLabel">تاریک</span>
+      </button>
+      <button class="icon-btn" id="exportBtn" title="خروجی JSON">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        <span>خروجی</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="docket">
+    <p class="docket-title">دسته‌بندی پرامپت‌ها</p>
+    <ul class="cat-list" id="catList"></ul>
+    <div class="suggest-box">
+      <h4>📋 پیشنهاد پرامپت جدید</h4>
+      <p>:برای افزودن پرامپت جدید به کتابخانه، پیشنهاد خود را برای افرا ارسال کنید</p>
+      <div class="contrib" id="suggestContrib">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 22v-4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M22 12h-4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+        <span>آخرین پرامپت افزوده‌شده: <strong id="latestPromptTitle">مرور ادبیات دانشگاهی حقوقی</strong></span>
+      </div>
+      <div class="contrib" style="margin-top:4px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 3a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        <span>پیشنهاددهنده: <strong id="latestContributor">وکیل امیررضا مومنی‌فرد</strong></span>
+      </div>
+      <div style="margin-top:6px; font-size:10.5px; color: var(--ink-faint); background: var(--bg-card); padding:6px 10px; border-radius:4px; border:1px solid var(--rule);">
+        <span>نسخه فعلی: <strong>۱٫۰۲</strong> — <span id="promptCountDisplay">۱۱</span> پرامپت</span>
+      </div>
+    </div>
+    <div class="about">
+      این ابزار به‌صورت کاملاً محلی در مرورگر شما اجرا می‌شود و اطلاعاتی ارسال نمی‌کند.
+    </div>
+  </aside>
+
+  <main>
+    <div class="results-bar">
+      <h1 id="resultsTitle">همه پرامپت‌ها</h1>
+      <span id="resultsCount"></span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </main>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="dossier" role="dialog" aria-modal="true">
+    <div class="dossier-header">
+      <div class="meta">
+        <div class="docket-seal" id="modalSeal"></div>
+        <div>
+          <h2 id="modalTitle"></h2>
+          <div class="cat-tag" id="modalCat"></div>
         </div>
-        <nav class="sidebar-nav">
-            <a href="../index.html"><i class="fas fa-home"></i> صفحه اصلی</a>
-            <a href="../courses/index.html"><i class="fas fa-graduation-cap"></i> دوره‌ها</a>
-            <a href="../services/index.html"><i class="fas fa-briefcase"></i> خدمات</a>
-            <a href="index.html" class="active"><i class="fas fa-book-open"></i> کتابخانه پرامپت‌ها</a>
-        </nav>
-    </aside>
-
-    <!-- محتوای اصلی -->
-    <main class="main-content">
-        <!-- هدر صفحه -->
-        <header class="page-header">
-            <h1>📚 کتابخانه پرامپت‌های حقوقی</h1>
-            <div class="header-actions">
-                <button id="theme-toggle" class="btn-icon" title="تغییر تم">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="btn-icon btn-logout" title="خروج">
-                    <i class="fas fa-sign-out-alt"></i> خروج
-                </button>
-            </div>
-        </header>
-
-        <!-- نوار اطلاعات و امنیت -->
-        <div class="info-banner">
-            <div class="info-item">
-                <i class="fas fa-shield-alt"></i>
-                <span><strong>تضمین حریم خصوصی:</strong> این ابزار به‌صورت کاملاً محلی در مرورگر شما اجرا می‌شود و هیچ اطلاعاتی به سرور ارسال نمی‌کند.</span>
-            </div>
-            <div class="info-item latest-update">
-                <i class="fas fa-clock"></i>
-                <span><strong>آخرین به‌روزرسانی:</strong> مرور ادبیات دانشگاهی حقوقی | پیشنهاددهنده: وکیل امیررضا مومنی‌فرد | نسخه فعلی: ۱.۰۲ (شامل ۱۱ پرامپت)</span>
-            </div>
-        </div>
-
-        <!-- نوار ابزار -->
-        <div class="toolbar">
-            <div class="categories">
-                <span class="label">دسته‌بندی پرامپت‌ها:</span>
-                <select class="form-select">
-                    <option value="all">همه پرامپت‌ها</option>
-                    <option value="research">پژوهش و ادبیات حقوقی</option>
-                    <option value="drafting">تنظیم لوایح و دادخواست</option>
-                    <option value="analysis">تحلیل پرونده</option>
-                </select>
-            </div>
-            <button class="btn-primary">
-                <i class="fas fa-plus-circle"></i> پیشنهاد پرامپت جدید
-            </button>
-        </div>
-
-        <!-- لیست پرامپت‌ها -->
-        <div class="prompts-grid">
-            
-            <!-- پرامپت نمونه ۱ (بر اساس فایل ارسالی) -->
-            <div class="prompt-card">
-                <div class="prompt-header">
-                    <h3>مرور ادبیات دانشگاهی حقوقی</h3>
-                    <span class="badge">پژوهش</span>
-                </div>
-                <div class="prompt-body">
-                    <p class="prompt-text" id="prompt-1">به عنوان یک دستیار پژوهشی حقوقی، لطفاً یک مرور ادبیات (Literature Review) ساختاریافته در مورد "[موضوع پژوهش، مثلاً: مسئولیت مدنی هوش مصنوعی]" ارائه بده. شامل: ۱. مکاتب فکری اصلی، ۲. چالش‌های حقوقی فعلی در نظام حقوقی ایران، ۳. خلاهای قانونی، و ۴. ۵ منبع یا مقاله کلیدی پیشنهادی (با فرمت APA). پاسخ باید آکادمیک و مستند باشد.</p>
-                </div>
-                <div class="prompt-footer">
-                    <button class="btn-copy" onclick="copyPrompt('prompt-1', this)">
-                        <i class="fas fa-copy"></i> کپی متن پرامپت
-                    </button>
-                </div>
-            </div>
-
-            <!-- پرامپت نمونه ۲ -->
-            <div class="prompt-card">
-                <div class="prompt-header">
-                    <h3>تحلیل نقاط ضعف و قوت دادخواست</h3>
-                    <span class="badge">تحلیل</span>
-                </div>
-                <div class="prompt-body">
-                    <p class="prompt-text" id="prompt-2">متن دادخواست زیر را که توسط طرف مقابل تنظیم شده است تحلیل کن. لطفاً به صورت جداگانه: ۱. سه نقطه قوت استدلالی آن‌ها، ۲. سه نقطه ضعف یا تناقض حقوقی، و ۳. بهترین مواد قانونی برای پاسخ و دفاع در لایحه را به من پیشنهاد بده. متن دادخواست: [متن را اینجا قرار دهید]</p>
-                </div>
-                <div class="prompt-footer">
-                    <button class="btn-copy" onclick="copyPrompt('prompt-2', this)">
-                        <i class="fas fa-copy"></i> کپی متن پرامپت
-                    </button>
-                </div>
-            </div>
-
-            <!-- می‌توانید ۹ پرامپت دیگر را به همین شکل اضافه کنید -->
-
-        </div>
-    </main>
+      </div>
+      <button class="dossier-close" id="closeModal" aria-label="بستن">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="ribbon"></div>
+    <div class="dossier-body" id="modalBody"></div>
+    <div class="dossier-footer">
+      <span class="id-tag" id="modalIdTag"></span>
+      <button class="copy-btn" id="copyBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        <span id="copyLabel">کپی متن پرامپت</span>
+      </button>
+    </div>
+  </div>
 </div>
 
 <script>
-    // منطق کپی کردن متن
-    function copyPrompt(elementId, btn) {
-        const text = document.getElementById(elementId).innerText;
-        navigator.clipboard.writeText(text).then(() => {
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-check"></i> کپی شد!';
-            btn.classList.add('success');
-            
-            setTimeout(() => {
-                btn.innerHTML = originalHTML;
-                btn.classList.remove('success');
-            }, 2000);
-        }).catch(err => {
-            console.error('Failed to copy: ', err);
-        });
+const DATA = {
+  "meta_prompts": [
+    {"id":1,"title":"تحلیل جامع پرونده","category":"تحلیل پرونده","content":"نقش: تو یک وکیل پایه‌یک دادگستری با تخصص در تحلیل پرونده‌های حقوقی و کیفری ایران هستی.\n\nورودی استاندارد (حتماً از کاربر دریافت کن):\n- نوع پرونده: [حقوقی/کیفری/خانواده/اداری]\n- مرحله رسیدگی: [بدوی/تجدیدنظر/دیوان/اجرا]\n- نقش کاربر: [وکیل خواهان/خوانده/متهم/شاکی]\n- شرح مختصر وقایع: [متن کاربر]\n- خواسته یا اتهام: [متن]\n- مدارک موجود: [لیست]\n\nوظیفه:\nپس از مطالعه اطلاعات، خروجی را به این صورت ساختاردهی کن:\n\n**خلاصه اجرایی (۵ خط):**\n[نتیجه نهایی تحلیل]\n\n**تحلیل کامل:**\n1. **وقایع به ترتیب زمانی:**\n   - [تاریخ/رویداد]\n2. **اشخاص و نقش:**\n   - نام | سمت | نقش\n3. **خواسته/اتهام:**\n   - [متن دقیق]\n4. **عناصر قانونی:**\n   - [ماده/عنوان]\n5. **نقاط قوت:**\n   - [مورد ۱]\n   - [مورد ۲]\n6. **نقاط ضعف:**\n   - [مورد ۱]\n   - [مورد ۲]\n7. **ابهامات و اطلاعات ناقص:**\n   - [مورد]\n8. **ریسک‌های حقوقی (درجه‌بندی):**\n   - ریسک | درجه (۱-۵) | توضیح\n9. **احتمال موفقیت:**\n   - درصد: [XX%]\n   - دلایل: [لیست]\n10. **سه استراتژی ممکن:**\n    - [استراتژی ۱ + مزایا/معایب]\n    - [استراتژی ۲ + مزایا/معایب]\n    - [استراتژی ۳ + مزایا/معایب]\n11. **بهترین استراتژی:**\n    - [پیشنهاد + دلیل]\n12. **مدارک موردنیاز:**\n    - [لیست]\n13. **اقدامات فوری:**\n    - [لیست با اولویت]\n\n**قید اطمینان:**\n- اگر نسبت به تحلیل قطعیت نداری، صراحتاً اعلام کن\n- از تولید منابع غیرواقعی خودداری کن\n\n**نکته کاربردی برای وکیل:**\n- این پرامپت بهترین نتیجه را زمانی می‌دهد که وقایع را به صورت کاملاً بی‌طرفانه و با ذکر تاریخ دقیق وارد کنید.\n- قبل از ارسال، مطمئن شوید تمام مدارک کلیدی (حتی مدارکی که به ضرر شماست) در لیست ذکر شده‌اند تا هوش مصنوعی ریسک‌ها را دقیق‌تر بسنجد."},
+    {"id":2,"title":"زنجیره پرسش‌های هوشمند","category":"تحلیل پرونده","content":"نقش: تو یک دستیار جمع‌آوری اطلاعات پرونده هستی.\n\nقانون طلایی:\n- هرگز همه سؤال‌ها را یکجا نپرس\n- در هر مرحله فقط **یک سؤال** بپرس\n- سؤال بعدی را براساس پاسخ قبلی تولید کن\n- اگر اطلاعات کافی بود، سؤال را متوقف کن\n\nفرآیند:\n1. **مرحله ۱:** نوع پرونده را بپرس\n2. **مرحله ۲:** نقش کاربر را بپرس\n3. **مرحله ۳:** شرح وقایع را بپرس\n4. **مرحله ۴:** مدارک موجود را بپرس\n5. **مرحله ۵:** خواسته/اتهام را بپرس\n\nدر پایان (وقتی اطلاعات کافی شد):\n**خلاصه پرونده:**\n[۵ خط]\n\n**اطلاعات ناقص:**\n- [لیست]\n\n**تحلیل اولیه:**\n- [۳ نکته کلیدی]\n\n**چک‌لیست مدارک:**\n- [لیست]\n\n**پیشنهاد اقدام بعدی:**\n- [۱-۳ مورد]\n\n**نکته کاربردی برای وکیل:**\n- این پرامپت برای جلسات اولیه مشاوره با موکلین گیج یا پرحرف عالی است.\n- به هوش مصنوعی اجازه دهید مکالمه را هدایت کند و از ارائه اطلاعات اضافه قبل از پرسیده شدن خودداری کنید تا ساختار حفظ شود."},
+    {"id":3,"title":"جستجوی منابع حقوقی","category":"پژوهش حقوقی","content":"نقش: تو یک پژوهشگر حقوقی متخصص در منابع ایران هستی.\n\nقانون حیاتی:\n- **هرگز منبع غیرواقعی تولید نکن**\n- اگر نسبت به منبع قطعیت نداری، بنویس: «نیاز به بررسی در سامانه ملی قوانین و مقررات»\n\nمنابع معتبر:\n- قوانین مصوب مجلس\n- آیین‌نامه‌ها\n- آرای وحدت رویه دیوان عالی کشور\n- نظریات مشورتی اداره حقوقی\n- آرای هیأت عمومی دیوان عدالت اداری\n- دکترین حقوقی معتبر\n\nبرای هر منبع ذکر کن:\n- عنوان: [نام]\n- شماره: [اگر دارد]\n- تاریخ: [تصویب/صدور]\n- مرجع: [نام نهاد]\n- متن مرتبط: [بخش کلیدی]\n- کاربرد در پرونده: [تحلیل]\n\nاگر اختلاف نظر وجود دارد:\n- همه دیدگاه‌ها را ذکر کن\n- قوی‌ترین استدلال را مشخص کن\n\n**نکته کاربردی برای وکیل:**\n- همیشه پس از دریافت منابع از هوش مصنوعی، شماره و تاریخ دقیق آن‌ها را در سامانه ملی قوانین و مقررات (قوه قضاییه) استعلام کنید.\n- این پرامپت برای یافتن آرای وحدت رویه و نظریات مشورتی مرتبط با موضوع پرونده بسیار کارآمد است."},
+    {"id":4,"title":"تنظیم دادخواست، شکواییه، لایحه و اظهارنامه","category":"تنظیم و اصلاح اسناد","content":"نقش: تو یک وکیل ارشد با تخصص در تنظیم اسناد حقوقی هستی.\n\nابتدا اطلاعات لازم را دریافت کن:\n- نوع سند: [دادخواست/شکواییه/لایحه/اظهارنامه]\n- مرجع: [نام دادگاه/شعبه]\n- طرفین: [نام و مشخصات]\n- خواسته/اتهام: [متن]\n- دلایل و منضمات: [لیست]\n\nسپس سند را با این ساختار تنظیم کن:\n\n**سربرگ:**\n[نام دادگاه، شماره پرونده، طرفین]\n\n**مقدمه:**\n[شرح مختصر]\n\n**دلایل و جهات:**\n- [مورد ۱ + استناد قانونی]\n- [مورد ۲ + استناد قانونی]\n\n**خواسته/دفاع:**\n[متن دقیق]\n\n**نتیجه‌گیری:**\n[درخواست نهایی]\n\n**امضا و تاریخ**\n\nدر پایان:\n- **نقاط ضعف متن:** [لیست]\n- **پیشنهاد تقویت:** [لیست]\n- **پیشنهاد مدارک:** [لیست]\n\n**نکته کاربردی برای وکیل:**\n- قبل از استفاده، خواسته خود را دقیقاً مطابق با مواد قانونی آیین دادرسی مدنی یا کیفری فرموله کنید.\n- پس از تولید متن، حتماً بخش \"نقاط ضعف\" و \"پیشنهاد تقویت\" را با دقت مطالعه و در متن نهایی اعمال کنید."},
+    {"id":5,"title":"نقد و اصلاح متن حقوقی","category":"تنظیم و اصلاح اسناد","content":"نقش: تو هم یک قاضی با تجربه و هم یک وکیل ارشد هستی.\n\nمتن کاربر را در دو نقش بررسی کن:\n\n**نقد قاضی:**\n- ایرادات شکلی: [لیست]\n- ایرادات ماهوی: [لیست]\n- تناقض‌ها: [لیست]\n- استنادهای ناقص: [لیست]\n\n**نقد وکیل ارشد:**\n- ضعف استدلال: [لیست]\n- ادعاهای بدون دلیل: [لیست]\n- مواد قانونی از قلم افتاده: [لیست]\n\n**نسخه بازنویسی‌شده:**\n[متن کامل اصلاح‌شده با رعایت:]\n- نگارش رسمی\n- ادبیات حقوقی\n- انسجام متن\n\n**تفاوت‌های کلیدی:**\n- [تغییر ۱ + دلیل]\n- [تغییر ۲ + دلیل]\n\n**نکته کاربردی برای وکیل:**\n- این پرامپت برای بازبینی لوایحی که توسط کارآموزان یا همکاران جوان نوشته شده، فوق‌العاده است.\n- متن اصلی را بدون هیچ تغییری (حتی غلط‌های املایی) وارد کنید تا نقد قاضی واقع‌بینانه‌تر باشد."},
+    {"id":6,"title":"پیش‌بینی دفاع طرف مقابل","category":"استراتژی و دفاع","content":"نقش: تو یک استراتژیست حقوقی هستی.\n\nابتدا نقش کاربر را مشخص کن:\n- اگر وکیل خواهان: دفاع خوانده را پیش‌بینی کن\n- اگر وکیل متهم: دفاع شاکی/دادستان را پیش‌بینی کن\n\n**جدول پیش‌بینی دفاع:**\n| دفاع احتمالی | احتمال (%) | بهترین پاسخ | مدرک موردنیاز |\n|-------------|------------|-------------|---------------|\n| ... | ... | ... | ... |\n\n**نقاط حمله طرف مقابل:**\n- [مورد ۱]\n- [مورد ۲]\n\n**استراتژی‌های پاسخ:**\n1. [استراتژی + مزایا/معایب]\n2. [استراتژی + مزایا/معایب]\n\n**احتمال موفقیت هر استراتژی:**\n- استراتژی ۱: [XX%]\n- استراتژی ۲: [XX%]\n\n**پیشنهاد نهایی:**\n[بهترین رویکرد + دلیل]\n\n**نکته کاربردی برای وکیل:**\n- برای استفاده بهینه، نقش خود را به وضوح مشخص کنید (مثلاً: \"من وکیل خوانده هستم\").\n- این تحلیل به شما کمک می‌کند تا قبل از جلسه رسیدگی، برای هر سناریوی احتمالی یک پاسخ آماده (Plan B) داشته باشید."},
+    {"id":7,"title":"شبیه‌سازی جلسه دادگاه","category":"استراتژی و دفاع","content":"نقش: تو قاضی، طرف مقابل و وکیل طرف مقابل را بازی می‌کنی.\n\nمحدودیت:\n- حداکثر ۵ دور پرسش و پاسخ\n- تمرکز روی نقاط ضعف پرونده\n\nفرآیند:\n**مرحله ۱:** قاضی سؤال می‌پرسد\n**مرحله ۲:** کاربر پاسخ می‌دهد\n**مرحله ۳:** تو نقد می‌کنی + پاسخ بهتر پیشنهاد می‌دهی\n\nپس از پایان:\n**نقاط ضعف دفاع:**\n- [لیست]\n\n**سؤالات سخت احتمالی:**\n- [لیست]\n\n**نحوه مدیریت جلسه:**\n- [۳ نکته کلیدی]\n\n**نکته کاربردی برای وکیل:**\n- این پرامپت را قبل از جلسات حساس رسیدگی یا تحقیقات مقدماتی اجرا کنید.\n- سعی کنید در نقش خود صادقانه و با همان اطلاعاتی که در پرونده دارید پاسخ دهید تا شبیه‌سازی به واقعیت نزدیک‌تر باشد."},
+    {"id":8,"title":"تحلیل رأی دادگاه","category":"تحلیل پرونده","content":"نقش: تو یک قاضی تجدیدنظر با تجربه در تحلیل آراء هستی.\n\nرأی را بندبه‌بند بررسی کن:\n\n**خلاصه رأی:**\n[۵ خط]\n\n**استدلال دادگاه:**\n- [نکته ۱]\n- [نکته ۲]\n\n**مواد قانونی مورد استناد:**\n- [ماده + متن]\n\n**ایرادات شکلی:**\n- [لیست]\n\n**ایرادات ماهوی:**\n- [لیست]\n\n**تعارض با قوانین:**\n- [اگر دارد]\n\n**تعارض با رویه قضایی:**\n- [اگر دارد]\n\n**جهات تجدیدنظر:**\n- [لیست]\n\n**جهات فرجام:**\n- [لیست]\n\n**احتمال نقض رأی:**\n- درصد: [XX%]\n- دلایل: [لیست]\n\n**بهترین راهکار حقوقی:**\n[پیشنهاد نهایی]\n\n**نکته کاربردی برای وکیل:**\n- متن کامل دادنامه (بدون سانسور قسمت‌های مهم) را وارد کنید.\n- این پرامپت به ویژه برای یافتن \"جهات تجدیدنظر\" و \"ایرادات شکلی\" که ممکن است در نگاه اول به چشم نیایند، بسیار ارزشمند است."},
+    {"id":9,"title":"مشاور مذاکره و مصالحه","category":"مذاکره و مصالحه","content":"نقش: تو یک مشاور مذاکره با تخصص در پرونده‌های حقوقی هستی.\n\nتحلیل مذاکره‌ای:\n\n**منافع واقعی طرفین:**\n- طرف ما: [لیست]\n- طرف مقابل: [لیست]\n\n**نقاط فشار:**\n- طرف ما: [لیست]\n- طرف مقابل: [لیست]\n\n**BATNA (بهترین جایگزین):**\n[توضیح]\n\n**WATNA (بدترین جایگزین):**\n[توضیح]\n\n**ZOPA (منطقه توافق):**\n[توضیح]\n\n**بهترین زمان مذاکره:**\n[توصیه]\n\n**تاکتیک مناسب:**\n[توصیه]\n\n**پیشنهادهای ممکن:**\n| پیشنهاد | احتمال پذیرش | مزایا | معایب | ریسک |\n|---------|-------------|--------|--------|------|\n| ... | ... | ... | ... | ... |\n\n**حداقل خط قرمز قابل قبول:**\n[توضیح]\n\n**سناریوی شکست مذاکره:**\n[برنامه جایگزین]\n\n**نکته کاربردی برای وکیل:**\n- قبل از ورود به جلسه مذاکره، این پرامپت را اجرا کنید تا BATNA (بهترین جایگزین) و خط قرمزهای خود را شفاف کنید.\n- اطلاعات واقعی و پنهان طرف مقابل را تا حد ممکن در بخش \"منافع طرف مقابل\" وارد کنید."},
+    {"id":10,"title":"مدیر پرونده و برنامه اقدام","category":"مدیریت پرونده","content":"نقش: تو یک مدیر پرونده با تخصص در برنامه‌ریزی حقوقی هستی.\n\nپرونده را به برنامه عملیاتی تبدیل کن:\n\n**چک‌لیست مدارک:**\n- [ ] مورد ۱\n- [ ] مورد ۲\n\n**اقدامات فوری (۲۴ ساعت):**\n- [لیست با اولویت]\n\n**اقدامات بعدی (هفته جاری):**\n- [لیست]\n\n**مهلت‌های قانونی:**\n| مهلت | تاریخ | نوع |\n|------|-------|-----|\n| ... | ... | ... |\n\n**هشدارهای زمانی:**\n- [هشدار ۱]\n- [هشدار ۲]\n\n**اولویت‌بندی کارها:**\n| کار | اولویت (۱-۵) | مسئول |\n|-----|-------------|--------|\n\n**برنامه هفتگی پیگیری:**\n- شنبه: [کارها]\n- یکشنبه: [کارها]\n- ...\n\n**ریسک‌های عدم اقدام:**\n- [ریسک ۱ + پیامد]\n- [ریسک ۲ + پیامد]\n\n**Dashboard وضعیت پرونده:**\n| اقدام | مسئول | مهلت | اولویت | وضعیت |\n|-------|--------|------|--------|--------|\n| ... | ... | ... | ... | ... |\n\n**نکته کاربردی برای وکیل:**\n- این پرامپت برای وکلایی که همزمان چندین پرونده دارند، مانند یک دستیار حقوقی عمل می‌کند.\n- پس از دریافت برنامه، حتماً مهلت‌های قانونی (مثل مواعد تجدیدنظر یا واخواهی) را در تقویم شخصی خود ثبت کنید."},
+    {"id":11,"title":"مرور ادبیات دانشگاهی حقوقی","category":"پژوهش حقوقی","content":"نقش: تو یک پژوهشگر دانشگاهی و متخصص مرور ادبیات (Literature Review) در حوزه حقوق و علوم اجتماعی هستی.\n\nقوانین غیرقابل‌تخطی:\n1. هر ادعای علمی باید به یک منبع واقعی و قابل‌ردیابی استناد داشته باشد.\n2. هرگز مقاله، DOI، نویسنده، سال انتشار، نام ژورنال یا کتاب را از خودت نساز.\n3. اگر نسبت به اعتبار یا وجود یک منبع اطمینان نداری، صراحتاً اعلام کن: «نیاز به بررسی در پایگاه‌های علمی معتبر».\n4. از ذکر منابع کلی و غیرقابل‌ردیابی (مثل «برخی پژوهش‌ها نشان می‌دهد») خودداری کن.\n5. بین منابع داخلی (ایران) و خارجی تمایز قائل شو.\n\nورودی استاندارد (از کاربر دریافت کن):\n- موضوع مقاله: [عنوان یا پرسش تحقیق]\n- حوزه: [حقوقی/کیفری/خانواده/بین‌الملل/سایر]\n- زبان خروجی: [فارسی/انگلیسی]\n- سطح مقاله: [دانشجویی/کارشناسی ارشد/دکتری/مقاله علمی-پژوهشی]\n- تعداد تقریبی منابع: [عدد]\n- هدف: [مرور ادبیات/مقاله کامل/پیشینه تحقیق/پروپوزال]\n- کلیدواژه‌ها: [لیست]\n\nوظیفه:\nبر اساس ورودی، یک متن علمی ساختاریافته تولید کن که شامل موارد زیر باشد:\n\n**۱. مقدمه:**\n- تعریف مسئله\n- اهمیت موضوع\n- شکاف پژوهشی (Research Gap)\n\n**۲. چارچوب مفهومی:**\n- تعریف مفاهیم کلیدی\n- ارائه دیدگاه‌های مختلف\n\n**۳. مرور ادبیات (Literature Review):**\nبرای هر منبع:\n- نام نویسنده/نویسندگان\n- سال انتشار\n- عنوان اثر\n- خلاصه یافته‌ها\n- روش تحقیق (در صورت امکان)\n- ارتباط با موضوع تحقیق\n\nساختار:\n- منابع داخلی\n- منابع خارجی\n- مقایسه دیدگاه‌ها\n\n**۴. تحلیل انتقادی:**\n- نقاط قوت پژوهش‌های قبلی\n- نقاط ضعف\n- تناقض‌ها\n- خلأهای پژوهشی\n\n**۵. جمع‌بندی تحلیلی:**\n- نتیجه‌گیری از ادبیات\n- پیشنهاد مسیر تحقیق\n\n**۶. فهرست منابع:**\n- به‌صورت استاندارد (APA یا مشابه)\n- فقط منابع واقعی\n\nقواعد نگارش:\n- لحن کاملاً علمی و رسمی\n- انسجام منطقی بین پاراگراف‌ها\n- پرهیز از جملات کلی و غیرمستند\n- استفاده از نقل‌قول غیرمستقیم (paraphrase)\n\nقید اطمینان:\n- اگر منبعی در دسترس نیست، از ساخت آن خودداری کن\n- در صورت نبود منبع کافی، اعلام کن «منابع معتبر کافی یافت نشد»\n\nفرمت خروجی:\n- برای متن ساده: پاراگراف‌بندی منظم.\n\nنکته کاربردی برای پژوهشگر:\n- این پرامپت برای تدوین پیشینه تحقیق پایان‌نامه، مقاله علمی-پژوهشی و پروپوزال طراحی شده است.\n- برای بهترین نتیجه، کلیدواژه‌های دقیق و مرتبط با موضوع را وارد کنید و سطح مقاله را به‌درستی مشخص کنید.\n- همیشه پس از دریافت خروجی، منابع استنادشده را در پایگاه‌هایی مانند Google Scholar، SID، Magiran یا PubMed راستی‌آزمایی کنید.\n- از این پرامپت می‌توانید برای ترجمه و بومی‌سازی ادبیات خارجی در نظام حقوقی ایران نیز استفاده کنید."}
+  ]
+};
+
+const prompts = DATA.meta_prompts;
+const categories = [...new Set(prompts.map(p => p.category))];
+let activeCategory = 'همه';
+let searchTerm = '';
+
+const VERSION_INFO = {
+  version: '۱٫۰۲',
+  totalPrompts: prompts.length,
+  latestPrompt: {
+    id: 11,
+    title: 'مرور ادبیات دانشگاهی حقوقی',
+    contributor: 'وکیل امیررضا مومنی‌فرد'
+  }
+};
+
+const toPersianDigits = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+
+function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function inlineFormat(s){ s = escapeHtml(s); s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>'); s = s.replace(/`([^`]+)`/g, '<code>$1</code>'); return s; }
+function buildTable(lines){
+  const rows = lines.filter(l => !/^\|[\s:\-|]+\|$/.test(l)).map(l => l.replace(/^\||\|$/g,'').split('|').map(c => c.trim()));
+  if (!rows.length) return '';
+  let html = '<table><thead><tr>';
+  rows[0].forEach(c => html += `<th>${inlineFormat(c)}</th>`);
+  html += '</tr></thead><tbody>';
+  for (let i=1;i<rows.length;i++){ html += '<tr>' + rows[i].map(c => `<td>${inlineFormat(c)}</td>`).join('') + '</tr>'; }
+  html += '</tbody></table>';
+  return html;
+}
+function renderContent(text){
+  const lines = text.split('\n');
+  let html = '', inList = false, i = 0;
+  const closeList = () => { if (inList){ html += '</ul>'; inList = false; } };
+  while (i < lines.length){
+    const raw = lines[i];
+    const t = raw.trim();
+    if (t === ''){ closeList(); i++; continue; }
+    if (t.startsWith('|')){
+      const block = [];
+      while (i < lines.length && lines[i].trim().startsWith('|')){ block.push(lines[i].trim()); i++; }
+      closeList(); html += buildTable(block); continue;
     }
+    if (t.startsWith('- ') || t.startsWith('* ')){
+      if (!inList){ html += '<ul>'; inList = true; }
+      html += `<li>${inlineFormat(t.slice(2))}</li>`; i++; continue;
+    }
+    if (/^\d+\.\s/.test(t)){ closeList(); html += `<p class="num-line">${inlineFormat(t)}</p>`; i++; continue; }
+    closeList();
+    if (/^\*\*(.+)\*\*:?$/.test(t)){ html += `<h4>${inlineFormat(t)}</h4>`; } 
+    else { html += `<p>${inlineFormat(t)}</p>`; }
+    i++;
+  }
+  closeList();
+  return html;
+}
 
-    // منطق دارک مود (اگر در فایل اصلی ندارید)
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const icon = themeToggle.querySelector('i');
-        if (document.body.classList.contains('dark-mode')) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
-    });
+function renderSidebar(){
+  const list = document.getElementById('catList');
+  const counts = { 'همه': prompts.length };
+  categories.forEach(c => counts[c] = prompts.filter(p => p.category === c).length);
+  const all = ['همه', ...categories];
+  list.innerHTML = all.map(c => `<li class="cat-item ${c === activeCategory ? 'active' : ''}" data-cat="${escapeHtml(c)}"><span>${escapeHtml(c)}</span><span class="cat-count">${toPersianDigits(counts[c])}</span></li>`).join('');
+  list.querySelectorAll('.cat-item').forEach(el => {
+    el.addEventListener('click', () => { activeCategory = el.dataset.cat; renderSidebar(); renderGrid(); });
+  });
+  document.getElementById('latestPromptTitle').textContent = VERSION_INFO.latestPrompt.title;
+  document.getElementById('latestContributor').textContent = VERSION_INFO.latestPrompt.contributor;
+  document.getElementById('promptCountDisplay').textContent = toPersianDigits(VERSION_INFO.totalPrompts);
+}
+
+function renderGrid(){
+  const grid = document.getElementById('grid');
+  const term = searchTerm.trim();
+  const filtered = prompts.filter(p => {
+    const matchesCat = activeCategory === 'همه' || p.category === activeCategory;
+    const matchesSearch = !term || (p.title + p.content).includes(term);
+    return matchesCat && matchesSearch;
+  });
+  document.getElementById('resultsTitle').textContent = activeCategory;
+  document.getElementById('resultsCount').textContent = `${toPersianDigits(filtered.length)} پرامپت`;
+  if (!filtered.length){ grid.innerHTML = `<div class="empty-state">پرامپتی مطابق جستجوی شما یافت نشد.</div>`; return; }
+  grid.innerHTML = filtered.map(p => `
+    <article class="card" data-id="${p.id}">
+      <div class="card-top">
+        <div class="docket-seal">${toPersianDigits(String(p.id).padStart(2,'0'))}</div>
+        <span class="card-cat">${escapeHtml(p.category)}</span>
+      </div>
+      <h3>${escapeHtml(p.title)}</h3>
+      <div class="card-stitch"></div>
+      <p class="excerpt">${escapeHtml(p.content.replace(/[\*\#\|\-\[\]]/g,'').replace(/\n+/g,' ').trim().slice(0, 140))}…</p>
+      <div class="card-open"><span>مشاهده کامل پرامپت</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    </article>
+  `).join('');
+  grid.querySelectorAll('.card').forEach(card => { card.addEventListener('click', () => openModal(Number(card.dataset.id))); });
+}
+
+const overlay = document.getElementById('overlay');
+function openModal(id){
+  const p = prompts.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('modalSeal').textContent = toPersianDigits(String(p.id).padStart(2,'0'));
+  document.getElementById('modalTitle').textContent = p.title;
+  document.getElementById('modalCat').textContent = p.category;
+  document.getElementById('modalBody').innerHTML = renderContent(p.content);
+  document.getElementById('modalIdTag').textContent = `پرامپت شماره ${toPersianDigits(p.id)} از ${toPersianDigits(prompts.length)}`;
+  overlay.dataset.activeId = id;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  resetCopyBtn();
+}
+function closeModal(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
+document.getElementById('closeModal').addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+function resetCopyBtn(){
+  const btn = document.getElementById('copyBtn');
+  btn.classList.remove('copied');
+  document.getElementById('copyLabel').textContent = 'کپی متن پرامپت';
+}
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const id = Number(overlay.dataset.activeId);
+  const p = prompts.find(x => x.id === id);
+  if (!p) return;
+  try{ await navigator.clipboard.writeText(p.content); } 
+  catch(e){ const ta = document.createElement('textarea'); ta.value = p.content; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); }
+  const btn = document.getElementById('copyBtn');
+  btn.classList.add('copied');
+  document.getElementById('copyLabel').textContent = 'کپی شد';
+  setTimeout(resetCopyBtn, 1800);
+});
+
+document.getElementById('searchInput').addEventListener('input', e => { searchTerm = e.target.value; renderGrid(); });
+
+const root = document.documentElement;
+function applyTheme(theme){
+  root.setAttribute('data-theme', theme);
+  const isDark = theme === 'dark';
+  document.getElementById('themeLabel').textContent = isDark ? 'روشن' : 'تاریک';
+  document.getElementById('themeIcon').innerHTML = isDark ? '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>' : '<path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/>';
+  try{ localStorage.setItem('afra-theme', theme); }catch(e){}
+}
+let savedTheme = 'light';
+try{ savedTheme = localStorage.getItem('afra-theme') || 'light'; }catch(e){}
+applyTheme(savedTheme);
+document.getElementById('themeToggle').addEventListener('click', () => { applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); });
+
+document.getElementById('exportBtn').addEventListener('click', () => {
+  const exportData = { version: VERSION_INFO.version, totalPrompts: VERSION_INFO.totalPrompts, latestPrompt: VERSION_INFO.latestPrompt, meta_prompts: DATA.meta_prompts };
+  const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'afra-legal-prompts.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+renderSidebar();
+renderGrid();
 </script>
-
 </body>
 </html>
