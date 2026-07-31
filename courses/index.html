@@ -3,103 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دوره‌ها | باشگاه وکلای افرا</title>
+    <title>دوره‌های آموزشی | باشگاه افرا</title>
     <link rel="stylesheet" href="../assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
 <div class="app-container">
     <aside class="sidebar">
         <div class="sidebar-header">
             <img src="../assets/logo.jpg" alt="لوگو" class="sidebar-logo">
             <h2>باشگاه وکلای افرا</h2>
         </div>
-        <nav class="sidebar-nav">
-            <a href="../index.html"><i class="fas fa-home"></i> <span>صفحه اصلی</span></a>
-            <a href="index.html" class="active"><i class="fas fa-graduation-cap"></i> <span>دوره‌ها</span></a>
-            <a href="../prompts/index.html"><i class="fas fa-book-open"></i> <span>کتابخانه پرامپت‌ها</span></a>
-            <a href="../services/index.html"><i class="fas fa-briefcase"></i> <span>خدمات</span></a>
-        </nav>
+        <ul class="sidebar-nav">
+            <li class="nav-item"><a href="../index.html" class="nav-link"><span><i class="fas fa-home"></i> صفحه اصلی</span></a></li>
+            <li class="nav-item open" id="courses-dropdown">
+                <a class="nav-link toggle-dropdown active"><span><i class="fas fa-graduation-cap"></i> دوره‌ها</span> <i class="fas fa-chevron-down arrow"></i></a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item open" id="courses-sub-dropdown">
+                        <a class="toggle-sub-dropdown active"><span>دوره‌های آموزشی</span> <i class="fas fa-chevron-down arrow"></i></a>
+                        <ul class="sub-dropdown">
+                            <li><a href="ai-for-lawyers/index.html">هوش مصنوعی برای وکلا</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../prompts/index.html">کتابخانه پرامپت‌ها</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="../services/index.html" class="nav-link"><span><i class="fas fa-briefcase"></i> خدمات</span></a></li>
+        </ul>
         <div class="sidebar-footer">
-            <button id="theme-toggle" class="btn-theme">
-                <i class="fas fa-moon"></i> حالت تاریک
-            </button>
+            <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i> حالت تاریک</button>
         </div>
     </aside>
 
     <main class="main-content">
         <header class="page-header">
-            <div>
-                <h1>🎓 دوره‌های آموزشی</h1>
-                <p class="page-subtitle">دوره‌های تخصصی برای ارتقای مهارت‌های حقوقی و فناوری</p>
-            </div>
-            <button class="btn-icon btn-logout" title="خروج">
-                <i class="fas fa-sign-out-alt"></i> خروج
-            </button>
+            <div><h1>🎓 دوره‌های آموزشی</h1><p class="page-subtitle">ارتقای مهارت‌های حقوقی و فناوری</p></div>
         </header>
-
-        <div class="courses-grid">
-            <div class="course-card">
-                <div class="course-image"><i class="fas fa-robot"></i></div>
-                <div class="course-body">
-                    <span class="course-badge active">فعال</span>
-                    <h3>هوش مصنوعی برای وکلا</h3>
-                    <p>آشنایی با کاربردهای هوش مصنوعی در حرفه وکالت، از پژوهش تا تنظیم لوایح.</p>
-                    <div class="course-meta">
-                        <span><i class="fas fa-clock"></i> ۸ ساعت</span>
-                        <span><i class="fas fa-users"></i> ۱۲۰ دانش‌پذیر</span>
-                    </div>
-                    <a href="ai-for-lawyers/index.html" class="btn-primary">مشاهده دوره</a>
-                </div>
-            </div>
-
-            <!-- کارت جدید کتابخانه پرامپت -->
-            <div class="course-card">
-                <div class="course-image"><i class="fas fa-book-open"></i></div>
-                <div class="course-body">
-                    <span class="course-badge active">فعال</span>
-                    <h3>کتابخانه پرامپت‌های حقوقی</h3>
-                    <p>مجموعه‌ای از ۱۱ پرامپت مهندسی‌شده برای افزایش بهره‌وری وکلا در پژوهش، تنظیم لوایح و تحلیل پرونده.</p>
-                    <div class="course-meta">
-                        <span><i class="fas fa-file-alt"></i> ۱۱ پرامپت</span>
-                        <span><i class="fas fa-star"></i> نسخه ۱.۰۲</span>
-                    </div>
-                    <a href="../prompts/index.html" class="btn-primary">ورود به کتابخانه</a>
-                </div>
-            </div>
-
-            <div class="course-card">
-                <div class="course-image"><i class="fas fa-gavel"></i></div>
-                <div class="course-body">
-                    <span class="course-badge coming">به‌زودی</span>
-                    <h3>آیین دادرسی پیشرفته</h3>
-                    <p>تکنیک‌های حرفه‌ای دفاع در دادگاه‌های حقوقی و کیفری.</p>
-                    <div class="course-meta">
-                        <span><i class="fas fa-clock"></i> ۱۲ ساعت</span>
-                        <span><i class="fas fa-lock"></i> ثبت‌نام باز نشده</span>
-                    </div>
-                    <button class="btn-primary" disabled>به‌زودی</button>
-                </div>
+        <div class="grid-container">
+            <div class="card">
+                <h3>هوش مصنوعی برای وکلا</h3>
+                <p style="color:var(--text-light); margin:10px 0;">آشنایی با کاربردهای هوش مصنوعی در حرفه وکالت.</p>
+                <a href="ai-for-lawyers/index.html" class="btn-copy" style="display:inline-block; text-align:center;">مشاهده دوره</a>
             </div>
         </div>
     </main>
 </div>
-
-<script>
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const icon = themeToggle.querySelector('i');
-        const text = themeToggle.childNodes[1];
-        if (document.body.classList.contains('dark-mode')) {
-            icon.className = 'fas fa-sun';
-            text.textContent = ' حالت روشن';
-        } else {
-            icon.className = 'fas fa-moon';
-            text.textContent = ' حالت تاریک';
-        }
-    });
-</script>
+<script src="../assets/script.js"></script>
 </body>
 </html>
