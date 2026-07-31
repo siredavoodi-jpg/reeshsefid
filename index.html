@@ -3,74 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>باشگاه وکلای افرا | دورهمی با AI</title>
+    <title>باشگاه وکلای افرا</title>
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
 <div class="app-container">
     <aside class="sidebar">
         <div class="sidebar-header">
             <img src="assets/logo.jpg" alt="لوگو" class="sidebar-logo">
             <h2>باشگاه وکلای افرا</h2>
         </div>
-        <nav class="sidebar-nav">
-            <a href="index.html" class="active"><i class="fas fa-home"></i> <span>صفحه اصلی</span></a>
-            <a href="courses/index.html"><i class="fas fa-graduation-cap"></i> <span>دوره‌ها</span></a>
-            <a href="prompts/index.html"><i class="fas fa-book-open"></i> <span>کتابخانه پرامپت‌ها</span></a>
-            <a href="services/index.html"><i class="fas fa-briefcase"></i> <span>خدمات</span></a>
-        </nav>
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link active"><span><i class="fas fa-home"></i> صفحه اصلی</span></a>
+            </li>
+            <li class="nav-item" id="courses-dropdown">
+                <a class="nav-link toggle-dropdown"><span><i class="fas fa-graduation-cap"></i> دوره‌ها</span> <i class="fas fa-chevron-down arrow"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="courses/index.html">دوره‌های آموزشی</a></li>
+                    <li><a href="prompts/index.html">کتابخانه پرامپت‌ها</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="services/index.html" class="nav-link"><span><i class="fas fa-briefcase"></i> خدمات</span></a>
+            </li>
+        </ul>
         <div class="sidebar-footer">
-            <button id="theme-toggle" class="btn-theme">
-                <i class="fas fa-moon"></i> حالت تاریک
-            </button>
+            <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i> حالت تاریک</button>
         </div>
     </aside>
 
     <main class="main-content">
         <header class="page-header">
-            <div>
-                <h1>⚖️ به باشگاه وکلای افرا خوش آمدید</h1>
-                <p class="page-subtitle">پلتفرم تخصصی آموزش و خدمات هوش مصنوعی برای جامعه حقوقی</p>
-            </div>
-            <button class="btn-icon btn-logout" title="خروج">
-                <i class="fas fa-sign-out-alt"></i> خروج
-            </button>
+            <div><h1>⚖️ به باشگاه وکلای افرا خوش آمدید</h1><p class="page-subtitle">پلتفرم تخصصی آموزش و خدمات هوش مصنوعی</p></div>
         </header>
-
-        <div class="welcome-card">
+        <div class="card">
             <h2>🚀 آینده حرفه حقوقی با هوش مصنوعی</h2>
-            <p>در باشگاه افرا، ما وکلا را با جدیدترین ابزارهای هوش مصنوعی آشنا می‌کنیم تا بتوانند خدمات سریع‌تر، دقیق‌تر و حرفه‌ای‌تری به موکلین خود ارائه دهند.</p>
-            <div class="quick-links">
-                <a href="courses/index.html" class="quick-link">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>دوره‌های آموزشی</span>
-                </a>
-                <a href="services/index.html" class="quick-link">
-                    <i class="fas fa-briefcase"></i>
-                    <span>خدمات حقوقی</span>
-                </a>
-            </div>
+            <p style="margin-top:15px; line-height:1.8; color:var(--text-light);">برای شروع، از منوی سمت راست بخش "دوره‌ها" را باز کرده و وارد کتابخانه پرامپت‌ها یا دوره‌های آموزشی شوید.</p>
         </div>
     </main>
 </div>
-
-<script>
-    const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const icon = themeToggle.querySelector('i');
-        const text = themeToggle.childNodes[1];
-        if (document.body.classList.contains('dark-mode')) {
-            icon.className = 'fas fa-sun';
-            text.textContent = ' حالت روشن';
-        } else {
-            icon.className = 'fas fa-moon';
-            text.textContent = ' حالت تاریک';
-        }
-    });
-</script>
-
+<script src="assets/script.js"></script>
 </body>
 </html>
