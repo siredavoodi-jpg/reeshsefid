@@ -3,52 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>باشگاه وکلای افرا</title>
+    <meta name="description" content="باشگاه وکلای افرا: پلتفرم آموزشی و خدمات هوش مصنوعی تخصصی برای حرفه وکالت و حقوق.">
+    <meta name="keywords" content="هوش مصنوعی, حقوق, وکالت, آموزش حقوقی, پرامپت نویسی, AI for Lawyers">
+    <meta name="author" content="siredavoodi-jpg">
+    <meta name="theme-color" content="#1976d2">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="باشگاه وکلای افرا | هوش مصنوعی برای وکلا">
+    <meta property="og:description" content="پلتفرم آموزشی و خدمات هوش مصنوعی تخصصی برای حرفه وکالت.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://siredavoodi-jpg.github.io/reeshsefid/">
+    <meta property="og:image" content="assets/logo.jpg">
+
+    <title>باشگاه وکلای افرا | خانه</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Font Awesome with SRI (Security) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-<div class="app-container">
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <img src="assets/logo.jpg" alt="لوگو" class="sidebar-logo">
-            <h2>باشگاه وکلای افرا</h2>
-        </div>
-        <ul class="sidebar-nav">
-            <li class="nav-item">
-                <a href="index.html" class="nav-link active"><span><i class="fas fa-home"></i> صفحه اصلی</span></a>
-            </li>
-            <li class="nav-item" id="courses-dropdown">
-                <a class="nav-link toggle-dropdown"><span><i class="fas fa-graduation-cap"></i> دوره‌ها</span> <i class="fas fa-chevron-down arrow"></i></a>
-                <ul class="dropdown-menu">
-                    <li class="nav-item" id="courses-sub-dropdown">
-                        <a class="toggle-sub-dropdown"><span>دوره‌های آموزشی</span> <i class="fas fa-chevron-down arrow"></i></a>
-                        <ul class="sub-dropdown">
-                            <li><a href="courses/ai-for-lawyers/index.html">هوش مصنوعی برای وکلا</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="prompts/index.html">کتابخانه پرامپت‌ها</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a href="services/index.html" class="nav-link"><span><i class="fas fa-briefcase"></i> خدمات</span></a>
-            </li>
-        </ul>
-        <div class="sidebar-footer">
-            <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i> حالت تاریک</button>
-        </div>
-    </aside>
 
-    <main class="main-content">
-        <header class="page-header">
-            <div><h1>⚖️ به باشگاه وکلای افرا خوش آمدید</h1><p class="page-subtitle">پلتفرم تخصصی آموزش و خدمات هوش مصنوعی</p></div>
-        </header>
-        <div class="card">
-            <h2>🚀 آینده حرفه حقوقی با هوش مصنوعی</h2>
-            <p style="margin-top:15px; line-height:1.8; color:var(--text-light);">برای شروع، از منوی سمت راست بخش "دوره‌ها" را باز کرده و وارد دوره‌های آموزشی یا کتابخانه پرامپت‌ها شوید.</p>
-        </div>
-    </main>
-</div>
-<script src="assets/script.js"></script>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" role="navigation" aria-label="منوی اصلی">
+            <div class="sidebar-header">
+                <img src="assets/logo.jpg" alt="لوگو باشگاه وکلای افرا" class="sidebar-logo" width="60" height="60">
+                <h2>باشگاه وکلای افرا</h2>
+            </div>
+            
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active" aria-current="page">
+                        <span><i class="fas fa-home"></i> خانه</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="courses/index.html" class="nav-link">
+                        <span><i class="fas fa-graduation-cap"></i> دوره‌ها</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="courses/ai-for-lawyers/index.html">هوش مصنوعی برای وکلا</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="services/index.html" class="nav-link">
+                        <span><i class="fas fa-briefcase"></i> خدمات</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <button id="theme-toggle" class="btn-theme" aria-label="تغییر حالت روشن/تاریک">
+                    <i class="fas fa-moon"></i>
+                    <span>حالت تاریک</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="page-header">
+                <div>
+                    <h1>🚀 آینده حرفه حقوقی با هوش مصنوعی</h1>
+                    <p class="page-subtitle">برای شروع، از منوی سمت راست بخش دوره‌ها یا خدمات را انتخاب کنید.</p>
+                </div>
+            </header>
+
+            <section class="grid-container">
+                <article class="card">
+                    <h3><i class="fas fa-robot"></i> آموزش هوش مصنوعی</h3>
+                    <p>یادگیری کاربرد ابزارهای AI در پژوهش حقوقی و تنظیم لوایح.</p>
+                    <a href="courses/index.html" class="btn-copy" style="margin-top: 15px; display: inline-block;">مشاهده دوره‌ها</a>
+                </article>
+                
+                <article class="card">
+                    <h3><i class="fas fa-file-contract"></i> خدمات حقوقی هوشمند</h3>
+                    <p>تحلیل پرونده، پیش‌نویس قرارداد و جستجوی پیشرفته رویه قضایی.</p>
+                    <a href="services/index.html" class="btn-copy" style="margin-top: 15px; display: inline-block;">مشاهده خدمات</a>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <!-- Defer JS for Performance -->
+    <script src="assets/script.js" defer></script>
 </body>
 </html>
