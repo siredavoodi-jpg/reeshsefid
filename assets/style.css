@@ -38,7 +38,7 @@ a { text-decoration: none; color: inherit; }
 /* --- Layout --- */
 .app-container { display: flex; min-height: 100vh; }
 
-/* --- Sidebar & Dropdown --- */
+/* --- Sidebar & Multi-level Dropdown --- */
 .sidebar {
     width: 260px;
     background-color: var(--sidebar-bg);
@@ -73,9 +73,9 @@ a { text-decoration: none; color: inherit; }
 .nav-link span { display: flex; align-items: center; gap: 10px; }
 .nav-link:hover, .nav-link.active { background-color: var(--primary-light); color: var(--primary); }
 .nav-link .arrow { font-size: 0.8rem; transition: transform 0.3s; }
-.nav-item.open .nav-link .arrow { transform: rotate(180deg); }
+.nav-item.open > .nav-link .arrow { transform: rotate(180deg); }
 
-/* Dropdown Menu */
+/* Dropdown Level 1 */
 .dropdown-menu {
     list-style: none;
     max-height: 0;
@@ -83,19 +83,38 @@ a { text-decoration: none; color: inherit; }
     transition: max-height 0.3s ease-out;
     padding-right: 15px;
 }
-.nav-item.open .dropdown-menu { max-height: 200px; }
+.nav-item.open > .dropdown-menu { max-height: 500px; }
+
+.dropdown-menu li { margin-bottom: 2px; }
 .dropdown-menu li a {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 10px 15px;
     font-size: 0.9rem;
     color: var(--text-light);
     border-right: 2px solid transparent;
     transition: all 0.2s;
+    border-radius: 6px;
 }
 .dropdown-menu li a:hover, .dropdown-menu li a.active {
     color: var(--primary);
     border-right-color: var(--primary);
     background-color: color-mix(in srgb, var(--primary) 5%, transparent);
+}
+
+/* Dropdown Level 2 (Sub-menu) */
+.sub-dropdown {
+    list-style: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding-right: 15px;
+}
+.dropdown-menu li.open > .sub-dropdown { max-height: 300px; }
+.sub-dropdown li a {
+    padding: 8px 15px;
+    font-size: 0.85rem;
 }
 
 .sidebar-footer { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); }
@@ -120,7 +139,64 @@ a { text-decoration: none; color: inherit; }
 }
 .card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 
-/* --- Prompt Library Specific Styles (Integrated) --- */
+/* --- Course Page Specific --- */
+.course-layout { display: grid; grid-template-columns: 300px 1fr; gap: 25px; }
+.course-sidebar {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px; height: fit-content; position: sticky; top: 20px;
+}
+.lesson-list { list-style: none; }
+.lesson-item {
+    padding: 12px 15px; border-radius: 8px; margin-bottom: 5px;
+    cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 10px;
+}
+.lesson-item:hover { background: var(--primary-light); }
+.lesson-item.active { background: var(--primary); color: white; }
+.lesson-item.locked { opacity: 0.5; cursor: not-allowed; }
+.lesson-item .lock-icon { margin-right: auto; }
+
+.lesson-content {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 30px; min-height: 500px;
+}
+.lesson-content h2 { margin-bottom: 20px; color: var(--primary); }
+.lesson-content p { line-height: 2; margin-bottom: 15px; }
+
+/* --- Search & Bookmark --- */
+.search-box {
+    position: relative; margin-bottom: 20px;
+}
+.search-box input {
+    width: 100%; padding: 10px 40px 10px 15px; border: 1px solid var(--border);
+    border-radius: 8px; background: var(--bg); color: var(--text); font-family: inherit;
+}
+.search-box i {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--text-light);
+}
+
+.bookmark-btn {
+    background: transparent; border: 1px solid var(--primary); color: var(--primary);
+    padding: 8px 16px; border-radius: 6px; cursor: pointer; font-family: inherit;
+    display: inline-flex; align-items: center; gap: 6px;
+}
+.bookmark-btn.bookmarked { background: var(--primary); color: white; }
+
+/* --- Quiz --- */
+.quiz-section {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 20px; margin-top: 20px;
+}
+.quiz-question { font-weight: 600; margin-bottom: 15px; }
+.quiz-options { list-style: none; }
+.quiz-option {
+    padding: 10px 15px; border: 1px solid var(--border); border-radius: 6px;
+    margin-bottom: 8px; cursor: pointer; transition: all 0.2s;
+}
+.quiz-option:hover { background: var(--primary-light); }
+.quiz-option.correct { background: var(--success); color: white; border-color: var(--success); }
+.quiz-option.wrong { background: #d32f2f; color: white; border-color: #d32f2f; }
+
+/* --- Prompt Library --- */
 .search-wrap { position: relative; margin-bottom: 25px; max-width: 500px; }
 .search-wrap input {
     width: 100%; padding: 12px 40px 12px 15px; border: 1px solid var(--border);
@@ -156,4 +232,5 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 768px) {
     .app-container { flex-direction: column; }
     .sidebar { width: 100%; height: auto; position: relative; border-left: none; border-bottom: 1px solid var(--border); }
+    .course-layout { grid-template-columns: 1fr; }
 }
