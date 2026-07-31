@@ -1,4 +1,4 @@
-// مدیریت منوی کشویی (Dropdown)
+// مدیریت منوی کشویی سطح ۱
 document.querySelectorAll('.toggle-dropdown').forEach(toggle => {
     toggle.addEventListener('click', (e) => {
         e.preventDefault();
@@ -7,7 +7,16 @@ document.querySelectorAll('.toggle-dropdown').forEach(toggle => {
     });
 });
 
-// مدیریت حالت تاریک (Dark Mode)
+// مدیریت منوی کشویی سطح ۲ (Sub-dropdown)
+document.querySelectorAll('.toggle-sub-dropdown').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const parent = toggle.parentElement;
+        parent.classList.toggle('open');
+    });
+});
+
+// مدیریت حالت تاریک
 const themeToggle = document.getElementById('theme-toggle');
 const savedTheme = localStorage.getItem('theme') || 'light';
 
