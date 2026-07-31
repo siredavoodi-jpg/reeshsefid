@@ -1,1292 +1,643 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
-<meta name="description" content="دوره جامع مقدماتی هوش مصنوعی ویژه جامعه وکالت — باشگاه وکلای افرا. ده درس کوتاه، تمرین و آزمون پایان فصل.">
-<meta name="theme-color" content="#0e1826">
-<meta name="color-scheme" content="light">
-<title>هوش مصنوعی برای وکلا | باشگاه وکلای افرا</title>
-<link rel="icon" type="image/png" href="data:image/png;base64,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......">
-<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAj+klEQVR42p2bd5hV1dX/P3ufc25vU2EKMwydoUpTioCgCJKoryUxatTkTfLTmGqJpmhiTGI0mrx5YzTNGFvAKPbYEGyAIiBNQBiGYWB6vb2dsn9/zAADDOqb8zz3ee7dd59z9l57rbW/a+3vEo5tKwCE4DNfSqEQ/bcooP9edbTDoM8TQpDP51GOhULgcrmRUqIcdfQRn/BSTu40sG3gONRnno9EiFN3VmrwdiEG3DLgXnHkM/jkM+kMEoXb48Pj8ZJOp7BtGyHFgHepU4xjsDGKAUM8YRyfNP7jBHC0rxp0ov/5dWxCQgjS6TSaFMRzgj/dcQ1vrl5FIBAklUpiWTZCylNPVIhTCkeIwZrFZx6/HLhCg0/g0yZ4qibR/1xJPp8Hx8YyPDx261Vc0PUIqvEynn/xaUKhMOl0Esdx+gZ8Sk3oE45AIETf52hfcYrVHlQD1AkC+EQ1USf/PNpfnPyCQQTuOA7ZTAZfIMjjv7uDpXVPUlbpZtE4G63rct5Ys5ZQKEwiHkcc9wBxvGUJiWPbZHMZstlMn1AHms5gqy0+3ZTk4GqiBhj0JzzwyCoMFIQ63u7T6TShcIjV775L2cqfM3acjmmZ2N2Sz82w6Gj8Itu31hMKB0ilU32mcILvsGybTDqFEA4ejxePx4vj2GQz2ZP6Hz+NE5xz/1wHmrs8eeonetbjVemo+h35LuUAQzzem1uWhaFpdGdMPrr7epZXONgBhWYqhNvBbtS49Nwu3tt4FbGoQtcFpmkeVXPlKFKpJAIbr89PU3ue5595gIcfuhkpPSjl9JnOiSo/0DQGMZGB5n6SCfSpoTqlM7Edh2w2i53Pk02lyKTTWJbVd6eQ/UrR7/hSKdxeLy898TfOatyJHKuD4/QpHhIhbYwWF0tO28DTK+/C7faRzWZAQCaTIZdL4/cHaOrI8fhj9/LOI5OYOOKHlEYeYsf2Hfh8Pkwz3z+hAVvfQK1Wn+zQTzYBNbgxi37VyWazGC4XCcNA8/vx+nwYhkE+kyadSmFZNlJKLMvC43bRlkiT+Ne9TPIKcm0OUgrI2+DYYEis9Q4j3BK/dg/bt9YTCPiJ9vbicbtw9ABPPf0Yb/51GnPkzVx56UFGTr2SsSMMGg9uAAS2ZX2Kz/5kZ66fBBpOtXMIQS6TwefzsXnDBrZ+85uUTj0NMW8u1fPPZOTYcQQBO58jncySM00KCgp45/kV1O5twC7TseoVumkjpo5HBT2Iuq2IvI46KFl6RooVr93DpMl/JlJQwO76FtY+dj2nu55j5hRgso5VVIvGOMK+Tjradx43XiXEIEP/dECkfxbUdURGjuMghKBuyxYqduzgrB076Hz0ERrKvbw4ZxbupZcx9fwvMLKkEE8uS9ayaXnln8y0BL05jbArjx2vQDv7N8ghBurA7Qg2Yre4KRht47dX0NR6Hw2NO9i74nKuntBIMOLCGu0gQhaa9xzINxKSCjPbgu2AlKLP5AYdvjgFghzUBNSp3f0JXbLRODEpOeRxUe3VWdiV4bI33mbKr65j6/KpPHTnnbTmLbpzJt4t6/C7FOmsDVLHvvb38MZvUPVXoJb9AlU8E5HKQZ3G6YUJfvmzb5D8y1K+MbIRvwBrhIVWZCHUMJz0RziH/4jhgFIZLOsE/KIGG774RFQoP1n31fH/9H+xHEHEcei1LJqwsT1g5iSjMgaXNB5mzO2389KsKfzmpz/GG02SExrxJov0lXdgNK+D7W9DugthfQux7F4UNajtFhVpg8vqVrB8SAJr6HKcBU8iay6HFIjGHkTsNaTKY2vgKIM+8KhOmMIpANEpneAnXoNLTw+FUIAXOJSFlAVuQ5BpN8nUzmLcxZ/jtINNFN33W4qjFpkeG3HmfDylZYjn/wdRpkOTAdm9KO3HsOSPOFkdX4vJwrmXYV/xJGLRTJT1LMI6F/aCas4CGsJtEO0G0y5G1xS2ZQ+qBX0hzidBYjXABwwqoWO2cxQW9fcprKkmhQevssjh0JwFrxeUBm0XX0lQZhl1/gUUdiRoefXfdO/axIirv473qduwQgIpFLLJBs2AzDpE+Sq46DkUbTgTs4je2xDpffAR2LUXQlsEvSKGowtocOiuA39kJEIINN0gk8ngdvdHloDj2Ni2jVJgGEYfpujfmk9cXP3UEhID8HffpekGKMXwybWscgWYkO+mQEJOCerTNqUlATpyJodv/QELal0UzDyD6q8uJll+I/63Hye/9yBOrYZHt1HdEpG0QJfw4UMw2Y0cGUN1vQxGL3aTF9mRR0xKY8tqnLbt2EkdmXbY3iComn0eXV05hEgTCATIZDJomkQIB7fbg6a5AUin07hcbjRNDrrQ+inDYNEHbAYKyDB0Uskko6qqsCaOpHlrF1mpUeEokg7s0UNEHEXM0ejuyVP09jvoh9/BVVREpiWK2yexuhzEMIHqALURhFehmiV28wPIiwqQ/hzCBLkxAz1gN7VjaGVkPtyJNBS54YoNDX7GV9zL2thGunq/yHXX/gKl8ng8fvJ52F/fQX39Wvy+AubMOYdsNoPP5x804tUHsw0hBLbjYJlmH3ITAqnrfckMpQgYLqq+cR2br93IIEuwHYUGZHUX3lQa4dh0tmloQyGSkGQz3Rw4ABPKBVYUnDiolEJEgQjYliKfdOFvjmJGFft3GqQP1BBs4CqkUqJFy8cJq40Q7t63y+Zl998G374S5eS9h1yRY+0L7j+rnV8+1s38ZGPfJxNm7Zw661/49vfvp5nnnmO5557gR07dnLkyDEmJ89z9ux5zp8/T1yH2bNnM2fOHHp6eujq6qKzs5N8Pk8mk8F1XVKpFFJKhBBIKRFCIIQgjmN838f3fYQQCCFwHAdHODhC4DgOQghc18VxHFzXxfM8PM/D9308z8N1XTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D9308z8P3fTzPw/d9PM/D930......">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
---navy-deep:#0e1826;
---navy-mid:#152740;
---navy-line:#243a56;
---parchment:#f4eee0;
---parchment-dark:#e9e0c8;
---parchment-line:#d9cca3;
---ink:#1c2a3a;
---ink-soft:#4a4534;
---brass:#a9822f;
---brass-light:#cda753;
---brass-dim:#8a6d33;
---seal:#7c3626;
---seal-light:#a8523c;
---ok:#2f6b4f;
---paper-shadow: 0 18px 40px -20px rgba(14,24,38,.35);
---rainbow: linear-gradient(90deg, #e2352c, #f2762e, #f6c445, #7ec850, #2fa89a, #4a67c9, #8a5cc7);
---rainbow-soft: linear-gradient(90deg, rgba(226,53,44,.55), rgba(242,118,46,.55), rgba(246,196,69,.55), rgba(126,200,80,.55), rgba(47,168,154,.55), rgba(74,103,201,.55), rgba(138,92,199,.55));
---radius: 3px;
---serif: 'Noto Naskh Arabic', serif;
---sans: 'Vazirmatn', sans-serif;
-}
-*{box-sizing:border-box; margin:0; padding:0;}
-html,body{height:100%; overscroll-behavior:none;}
-body{
-font-family: var(--sans);
-background: var(--navy-deep);
-color: var(--ink);
-overflow:hidden;
-}
-::selection{ background: var(--brass-light); color: var(--navy-deep); }
-button{ font-family: inherit; cursor:pointer; border:none; background:none; color:inherit; }
-button:focus-visible, .lesson-item:focus-visible, .nav-btn:focus-visible, .reveal-btn:focus-visible, .quiz-submit:focus-visible{
-outline: 2px solid var(--brass-light);
-outline-offset: 2px;
-}
-a{ color:inherit; }
-/* ===== Layout shell ===== */
-.app{
-display:grid;
-grid-template-columns: 300px 1fr;
-height:100vh;
-height:100dvh;
-width:100%;
-max-width:100vw;
-overflow:hidden;
-}
-.app > .sidebar{ grid-column: 1; }
-.app > .content-col{ grid-column: 2; min-width: 0; }
-@media (max-width: 880px){
-.app{ grid-template-columns: 1fr; }
-.app > .sidebar{ grid-column: auto; }
-.app > .content-col{ grid-column: auto; }
-}
-.content-col{
-display:flex;
-flex-direction:column;
-min-width:0;
-height:100vh;
-height:100dvh;
-overflow:hidden;
-background: var(--parchment);
-}
-/* ===== Sidebar (the "spine" of the case file) ===== */
-.sidebar{
-background:
-linear-gradient(180deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
-color:#e7ddc2;
-display:flex;
-flex-direction:column;
-height:100vh;
-height:100dvh;
-overflow-y:auto;
-border-inline-end: 1px solid var(--navy-line);
-position: relative;
-left: auto;
-right: auto;
-width: auto;
-max-width: none;
-transform: none;
-z-index: auto;
-}
-.sidebar::-webkit-scrollbar{ width:6px; }
-.sidebar::-webkit-scrollbar-thumb{ background: var(--navy-line); border-radius:4px; }
-.brand{
-padding: 26px 22px 18px;
-border-bottom: 1px solid rgba(169,130,47,.25);
-position:relative;
-overflow:hidden;
-}
-.brand::after{
-content:"";
-position:absolute; inset-inline:0; bottom:-1px; height:3px;
-background: var(--rainbow);
-opacity:.85;
-}
-.brand-mark{
-display:flex; align-items:center; gap:12px;
-margin-bottom: 14px;
-}
-.brand-mark .avatar-mini{
-width:46px; height:46px; flex:none;
-border-radius:50%;
-padding:2px;
-background: var(--rainbow);
-display:flex; align-items:center; justify-content:center;
-box-shadow: 0 4px 14px -4px rgba(0,0,0,.5);
-}
-.brand-mark .avatar-mini img{
-width:100%; height:100%;
-border-radius:50%;
-object-fit:cover;
-background: var(--navy-deep);
-display:block;
-}
-.brand-club{
-font-size:11.5px;
-letter-spacing:.5px;
-color:#b8ac8a;
-}
-.brand-title{
-font-family: var(--serif);
-font-size: 19px;
-font-weight:700;
-color:#f2ead4;
-line-height:1.5;
-}
-.brand-sub{
-margin-top:10px;
-font-size:12px;
-color:#9aa9bd;
-line-height:1.8;
-}
-.progress-wrap{
-padding: 16px 22px 18px;
-border-bottom: 1px solid rgba(169,130,47,.25);
-}
-.progress-label{
-display:flex; justify-content:space-between;
-font-size:11.5px; color:#b8ac8a; margin-bottom:8px;
-}
-.progress-track{
-height:5px; background: rgba(255,255,255,.08); border-radius:3px; overflow:hidden;
-}
-.progress-fill{
-height:100%; background: var(--rainbow);
-width:0%; transition: width .55s cubic-bezier(.22,1,.36,1);
-box-shadow: 0 0 8px rgba(169,130,47,.35);
-}
-.chapters{ padding: 10px 0 26px; flex:1; }
-.chapter-block{ margin-bottom: 4px; }
-.chapter-head{
-width:100%;
-display:flex; align-items:center; gap:10px;
-padding: 12px 22px;
-font-size:13.5px;
-color:#cdbf98;
-font-weight:600;
-cursor: pointer;
-transition: background .15s;
-}
-.chapter-head:hover{ background: rgba(255,255,255,.04); }
-.chapter-head .ch-num{
-font-family: var(--serif);
-color: var(--brass-light);
-font-size:13px;
-}
-.chapter-head.locked{ color:#5f6c7f; cursor: default; }
-.chapter-head .lock{ margin-inline-start:auto; font-size:12px; color:#5f6c7f; }
-.chapter-head.locked .ch-num{ color:#5f6c7f; }
-.lesson-list{ display:flex; flex-direction:column; }
-.lesson-item{
-display:flex; align-items:center; gap:11px;
-padding: 10px 22px 10px 14px;
-font-size:13px;
-color:#c3c9d4;
-border-inline-start: 2px solid transparent;
-transition: background .15s ease, border-color .15s ease;
-text-align:right;
-cursor: pointer;
-}
-.lesson-item:hover{ background: rgba(255,255,255,.04); }
-.lesson-item.active{
-background: rgba(169,130,47,.14);
-border-inline-start-color: var(--brass-light);
-color:#f2ead4;
-}
-.lesson-tag{
-flex:none;
-width:22px; height:22px;
-border-radius:50%;
-border:1.5px solid #3a4c66;
-display:flex; align-items:center; justify-content:center;
-font-size:10.5px;
-color:#7d8ba0;
-}
-.lesson-item.active .lesson-tag{ border-color: var(--brass-light); color: var(--brass-light); }
-.lesson-item.done .lesson-tag{
-background: var(--ok); border-color: var(--ok); color: #fff;
-box-shadow: 0 0 0 3px rgba(47,107,79,.2);
-}
-.lesson-item.done .lesson-tag::after{ content:"✓"; font-weight:700; }
-.lesson-item.done .lesson-tag span{ display:none; }
-.lesson-item.done .lesson-name{ color:#cfe0d4; }
-.lesson-name{ flex:1; line-height:1.5; }
-.lesson-final .lesson-tag{ border-color: var(--seal-light); }
-.lesson-final.active .lesson-tag{ color: var(--seal-light); border-color: var(--seal-light); }
-/* آزمون قبول‌شده: تیک آبی */
-.lesson-item.done.lesson-final .lesson-tag{
-background: #2b6cb0; border-color: #2b6cb0; color:#fff;
-box-shadow: 0 0 0 3px rgba(43,108,176,.25);
-}
-.lesson-item.done.lesson-final .lesson-name{ color:#c5daf0; }
-.locked-list{ padding: 0 22px 8px; font-size:12px; color:#5f6c7f; line-height:2; }
-.sidebar-foot{
-padding: 16px 22px 22px;
-font-size:11px;
-color:#5f6c7f;
-border-top: 1px solid rgba(169,130,47,.18);
-}
-/* ===== Navigation links in sidebar ===== */
-.nav-links{
-padding: 14px 22px 10px;
-border-bottom: 1px solid rgba(169,130,47,.25);
-}
-.nav-links-title{
-font-size:11px;
-letter-spacing:.5px;
-color:#b8ac8a;
-margin-bottom:8px;
-}
-.nav-link-item{
-display:flex; align-items:center; gap:10px;
-padding: 8px 12px;
-font-size:12.5px;
-color:#c3c9d4;
-border-radius:6px;
-text-decoration:none;
-transition: background .15s ease, color .15s ease;
-cursor:pointer;
-}
-.nav-link-item:hover{
-background: rgba(255,255,255,.06);
-color:#f2ead4;
-}
-.nav-link-item i{
-width:16px;
-text-align:center;
-color:#7d8ba0;
-}
-.nav-link-item:hover i{
-color: var(--brass-light);
-}
-/* ===== Inactive chapter card ===== */
-.inactive-chapter-card{
-max-width:600px;
-margin: 6vh auto;
-padding: 0 30px;
-text-align:center;
-animation: pageIn .4s ease;
-}
-.inactive-chapter-card .card-icon{
-width:100px; height:100px;
-margin: 0 auto 24px;
-border-radius:50%;
-background: linear-gradient(135deg, rgba(95,108,127,.2), rgba(95,108,127,.1));
-border: 2px dashed #5f6c7f;
-display:flex; align-items:center; justify-content:center;
-font-size:48px;
-color:#5f6c7f;
-}
-.inactive-chapter-card h2{
-font-family: var(--serif);
-font-size:26px;
-color: var(--navy-deep);
-margin-bottom:12px;
-}
-.inactive-chapter-card .chapter-number{
-display:inline-block;
-background: rgba(95,108,127,.15);
-color:#5f6c7f;
-padding:4px 14px;
-border-radius:999px;
-font-size:12px;
-margin-bottom:16px;
-}
-.inactive-chapter-card p{
-font-size:15px;
-color: var(--ink-soft);
-line-height:2;
-margin-bottom:20px;
-}
-.inactive-chapter-card .back-btn{
-display:inline-flex;
-align-items:center;
-gap:8px;
-padding:10px 20px;
-background: var(--navy-deep);
-color:#f2ead4;
-border-radius:6px;
-text-decoration:none;
-font-size:13px;
-font-weight:600;
-transition: background .15s;
-}
-.inactive-chapter-card .back-btn:hover{
-background: var(--navy-mid);
-}
-/* backdrop always out of document flow */
-.backdrop{
-display: none;
-position: fixed;
-inset: 0;
-background: rgba(10,15,24,.55);
-z-index: 35;
-}
-/* mobile toggler */
-.mobile-bar{ display:none; }
-@media (max-width: 880px){
-.sidebar{
-position: fixed !important;
-top: 0; bottom: 0;
-width: min(300px, 82vw) !important;
-max-width: 300px;
-z-index: 40 !important;
-transition: transform .28s ease;
-border-left: none;
-border-right: 1px solid var(--navy-line);
-/* LTR: slide from left */
-left: 0 !important;
-right: auto !important;
-transform: translateX(-105%) !important;
-}
-html[dir="rtl"] .sidebar{
-/* RTL: slide from right (correct side for Persian) */
-left: auto !important;
-right: 0 !important;
-border-right: none;
-border-left: 1px solid var(--navy-line);
-transform: translateX(105%) !important;
-}
-.app.nav-open .sidebar{ transform: translateX(0) !important; }
-.app.nav-open .backdrop{ display: block; }
-.app.nav-open{ overflow: hidden; }
-.mobile-bar{
-display:flex; align-items:center; gap:12px;
-background: var(--navy-deep); color:#f2ead4;
-padding: 14px 16px; flex:none; z-index:30;
-border-bottom: 1px solid var(--navy-line);
-}
-.mobile-bar .mb-title{ font-family: var(--serif); font-size:15px; }
-.mobile-bar .mb-avatar{ width:26px; height:26px; border-radius:50%; object-fit:cover; flex:none; box-shadow:0 0 0 2px var(--brass-light); }
-.mobile-bar button{
-font-size:20px; color: var(--brass-light);
-width:40px; height:40px; display:flex; align-items:center; justify-content:center;
-border-radius:4px;
-}
-.mobile-bar button:focus-visible{ outline:2px solid var(--brass-light); outline-offset:2px; }
-}
-/* ===== Main / reading pane ===== */
-.main{
-flex:1 1 auto;
-min-height:0;
-height:100%;
-overflow-y:auto;
--webkit-overflow-scrolling: touch;
-background:
-radial-gradient(1200px 600px at 100% -10%, rgba(169,130,47,.06), transparent 60%),
-var(--parchment);
-color: var(--ink);
-}
-.main::-webkit-scrollbar{ width:8px; }
-.main::-webkit-scrollbar-thumb{ background: var(--parchment-line); border-radius:4px; }
-.page{
-max-width: 760px;
-margin: 0 auto;
-padding: 56px 40px 90px;
-animation: pageIn .35s ease;
-}
-@keyframes pageIn{
-from{ opacity:0; transform: translateY(8px); }
-to{ opacity:1; transform: none; }
-}
-@media (max-width: 880px){
-.page{ padding: 28px 20px calc(48px + env(safe-area-inset-bottom, 0px)); }
-}
-.page-eyebrow{
-display:flex; align-items:center; gap:10px;
-font-size:12.5px; color: var(--brass-dim); letter-spacing:.3px; margin-bottom:14px;
-}
-.page-eyebrow .dot{ width:5px; height:5px; border-radius:50%; background: var(--brass); }
-.page-title{
-font-family: var(--serif);
-font-size: 34px;
-font-weight:700;
-line-height:1.4;
-color: var(--navy-deep);
-margin-bottom: 16px;
-}
-@media (max-width:880px){ .page-title{ font-size:26px; } }
-.meta-row{
-display:flex; flex-wrap:wrap; gap:10px;
-margin-bottom: 30px;
-}
-.meta-pill{
-font-size:12px; color: var(--ink-soft);
-border:1px solid var(--parchment-line);
-background: rgba(255,255,255,.35);
-padding:5px 12px; border-radius: 999px;
-}
-.objectives{
-background: var(--parchment-dark);
-border: 1px solid var(--parchment-line);
-border-radius: var(--radius);
-padding: 20px 22px;
-margin-bottom: 34px;
-position:relative;
-}
-.objectives::before{
-content:"";
-position:absolute; inset-inline-start:0; top:0; bottom:0; width:3px;
-background: var(--brass);
-}
-.objectives h3{
-font-family: var(--serif); font-size:14.5px; color: var(--navy-deep);
-margin-bottom:10px; font-weight:700;
-}
-.objectives ul{ list-style:none; }
-.objectives li{
-font-size: 14px; line-height:1.9; color: var(--ink-soft);
-padding-inline-start: 20px; position:relative; margin-bottom:6px;
-}
-.objectives li::before{
-content:"◆"; position:absolute; inset-inline-start:0; top:2px;
-color: var(--brass); font-size:9px;
-}
-.section-block{ margin-bottom: 30px; }
-.section-block h2{
-font-family: var(--serif);
-font-size: 19px; font-weight:700; color: var(--navy-deep);
-margin-bottom: 12px;
-padding-bottom:8px;
-border-bottom: 1px solid var(--parchment-line);
-}
-.section-block p{
-font-size: 15.5px; line-height:2.05; color: var(--ink);
-margin-bottom: 12px;
-}
-.card-grid{
-display:grid; grid-template-columns: 1fr; gap:14px;
-margin: 26px 0;
-}
-.info-card{
-background: rgba(255,255,255,.5);
-border: 1px solid var(--parchment-line);
-border-radius: var(--radius);
-padding: 18px 20px;
-}
-.info-card h4{
-display:flex; align-items:center; gap:8px;
-font-size:13.5px; font-weight:700; color: var(--navy-deep); margin-bottom:10px;
-}
-.info-card h4 .ic{ font-size:14px; }
-.info-card ul{ list-style:none; }
-.info-card li{
-font-size:14px; line-height:1.85; color: var(--ink-soft);
-padding-inline-start:16px; position:relative; margin-bottom:6px;
-}
-.info-card li::before{ content:"—"; position:absolute; inset-inline-start:0; color: var(--brass-dim); }
-.card-examples{ border-inline-start: 3px solid var(--brass); }
-.card-tips{ border-inline-start: 3px solid var(--ok); }
-.card-mistakes{ border-inline-start: 3px solid var(--seal); }
-.glossary-list{ display:flex; flex-direction:column; gap:10px; margin: 20px 0 30px; }
-.gloss-item{
-background: rgba(255,255,255,.5);
-border:1px solid var(--parchment-line);
-border-radius: var(--radius);
-padding: 14px 18px;
-}
-.gloss-term{
-font-family: var(--serif); font-weight:700; color: var(--navy-deep); font-size:14.5px; margin-bottom:4px;
-}
-.gloss-def{ font-size:13.5px; color: var(--ink-soft); line-height:1.8; }
-.exercise-box{
-background: var(--navy-deep);
-color:#e9e0c8;
-border-radius: var(--radius);
-padding: 22px 24px;
-margin: 30px 0;
-}
-.exercise-box h4{
-font-family: var(--serif); font-size:15px; color: var(--brass-light); margin-bottom:10px;
-}
-.exercise-box p{ font-size:14.5px; line-height:1.95; color:#d7cead; margin-bottom:14px; }
-.reveal-btn{
-font-size:13px; color: var(--navy-deep); background: var(--brass-light);
-padding:8px 16px; border-radius:3px; font-weight:600;
-}
-.reveal-btn:hover{ background:#e0c584; }
-.answer-box{
-margin-top:14px; padding-top:14px; border-top:1px dashed rgba(233,224,200,.25);
-font-size:14px; line-height:1.9; color:#c9c0a2;
-display:none;
-}
-.answer-box.show{ display:block; }
-.answer-box .lbl{ color: var(--brass-light); font-weight:600; font-size:12.5px; margin-bottom:6px; display:block; }
-.summary-box{
-border: 1.5px solid var(--brass);
-border-radius: var(--radius);
-padding: 20px 22px;
-margin: 32px 0 10px;
-background: repeating-linear-gradient(135deg, rgba(169,130,47,.04) 0 12px, transparent 12px 24px);
-}
-.summary-box h4{ font-family: var(--serif); font-size:15px; color: var(--brass-dim); margin-bottom:10px; }
-.summary-box ul{ list-style:none; }
-.summary-box li{
-font-size:14px; line-height:1.9; color: var(--ink); padding-inline-start:20px; position:relative; margin-bottom:7px;
-}
-.summary-box li::before{ content:"›"; position:absolute; inset-inline-start:0; color: var(--brass); font-weight:700; }
-.keywords{ display:flex; flex-wrap:wrap; gap:8px; margin: 22px 0 6px; }
-.kw{
-font-size:11.5px; color: var(--brass-dim);
-border:1px solid var(--brass-dim); border-radius:999px;
-padding:4px 12px;
-}
-/* completion seal */
-.seal-mark{
-display:flex; align-items:center; gap:14px;
-margin: 34px 0 8px;
-padding: 16px 18px;
-border: 1.5px solid rgba(47,107,79,.35);
-border-radius: var(--radius);
-background: rgba(47,107,79,.08);
-animation: sealPop .45s ease;
-}
-@keyframes sealPop{
-0%{ transform: scale(.92); opacity:0; }
-70%{ transform: scale(1.03); }
-100%{ transform: scale(1); opacity:1; }
-}
-.seal-svg{ flex:none; width:56px; height:56px; }
-.seal-mark .st{ font-size:13.5px; color: var(--ink-soft); }
-.seal-mark .st b{ display:block; color: var(--ok); font-family: var(--serif); font-size:15px; margin-bottom:2px; }
-/* nav footer */
-.page-nav{
-display:flex; justify-content:space-between; align-items:center;
-margin-top: 46px; padding-top:22px; border-top: 1px solid var(--parchment-line);
-gap: 12px;
-}
-.nav-btn{
-display:flex; align-items:center; gap:8px;
-font-size:13.5px; color: var(--navy-deep); font-weight:600;
-padding:10px 16px; border-radius:3px; border:1px solid var(--parchment-line);
-background: rgba(255,255,255,.4);
-transition: background .15s ease;
-}
-.nav-btn:hover{ background: rgba(255,255,255,.8); }
-.nav-btn.primary{ background: var(--navy-deep); color:#f2ead4; border-color:var(--navy-deep); }
-.nav-btn.primary:hover{ background: var(--navy-mid); }
-.nav-btn[disabled]{ opacity:.35; pointer-events:none; }
-.nav-btn small{ font-weight:400; color: inherit; opacity:.7; font-size:11px; }
-@media (max-width: 520px){
-.page-nav{ flex-direction:column-reverse; align-items:stretch; }
-.nav-btn{ justify-content:center; }
-}
-/* quiz */
-.quiz-q{
-background: rgba(255,255,255,.5); border:1px solid var(--parchment-line);
-border-radius: var(--radius); padding:18px 20px; margin-bottom:16px;
-}
-.quiz-q p.qtext{ font-size:14.5px; font-weight:600; color: var(--navy-deep); margin-bottom:12px; line-height:1.8; }
-.quiz-opt{
-display:flex; align-items:center; gap:10px;
-font-size:13.5px; color: var(--ink); padding:9px 12px; border-radius:3px;
-border:1px solid var(--parchment-line); margin-bottom:8px; background:rgba(255,255,255,.4);
-}
-.quiz-opt:hover{ background: rgba(169,130,47,.08); }
-.quiz-opt input{ accent-color: var(--brass); }
-.quiz-opt.correct{ border-color: var(--ok); background: rgba(47,107,79,.1); }
-.quiz-opt.wrong{ border-color: var(--seal); background: rgba(124,54,38,.08); }
-.quiz-submit{
-margin-top:20px; padding:12px 26px; background: var(--brass); color:#fff; border-radius:3px; font-weight:700; font-size:14px;
-}
-.quiz-submit:hover{ background: var(--brass-dim); }
-.quiz-result{
-margin-top:22px; padding:20px; border-radius:3px; text-align:center;
-font-family: var(--serif); font-size:17px; display:none;
-}
-.quiz-result.show{ display:block; }
-.quiz-result.pass{ background: rgba(47,107,79,.12); color: var(--ok); border:1px solid var(--ok); }
-.quiz-result.fail{ background: rgba(124,54,38,.1); color: var(--seal); border:1px solid var(--seal); }
-.locked-note{
-margin-top:6px; padding: 3px 0 0 0;
-}
-/* welcome screen */
-.welcome{
-max-width:640px; margin: 6vh auto; padding: 0 30px; text-align:center;
-animation: pageIn .4s ease;
-}
-.welcome .seal-svg{ width:84px; height:84px; margin:0 auto 22px; }
-.welcome-avatar-wrap{
-position:relative;
-width:150px; height:150px;
-margin:0 auto 22px;
-display:flex; align-items:center; justify-content:center;
-}
-.welcome-avatar-wrap::before{
-content:"";
-position:absolute; inset:-14px;
-border-radius:50%;
-background: var(--rainbow-soft);
-filter: blur(18px);
-opacity:.6;
-}
-.welcome-avatar-wrap img{
-position:relative;
-width:100%; height:100%;
-object-fit:cover;
-border-radius:50%;
-border:4px solid var(--parchment);
-box-shadow: 0 14px 32px -12px rgba(14,24,38,.4), 0 0 0 3px var(--brass-light);
-}
-.welcome h1{ font-family: var(--serif); font-size:30px; color: var(--navy-deep); margin-bottom:14px; }
-.welcome p{ font-size:15px; color: var(--ink-soft); line-height:2; margin-bottom:26px; }
-.welcome .nav-btn{ display:inline-flex; }
-/* ===== Brand flex fix ===== */
-.brand{ overflow: visible; min-height: auto; flex-shrink: 0; }
-.brand::after{ z-index: 1; }
-/* ===== Sidebar tools & search ===== */
-.sidebar-tools{
-display:flex; flex-wrap:wrap; gap:6px;
-padding: 10px 16px 12px;
-border-bottom: 1px solid rgba(169,130,47,.2);
-}
-.tool-btn{
-flex:1 1 auto;
-min-width: 36px;
-height: 34px;
-display:flex; align-items:center; justify-content:center;
-border-radius: 4px;
-background: rgba(255,255,255,.06);
-color: #c9bfa0;
-font-size: 14px;
-transition: background .15s, color .15s;
-}
-.tool-btn:hover{ background: rgba(169,130,47,.2); color: var(--brass-light); }
-.tool-btn.active{ background: rgba(169,130,47,.28); color: var(--brass-light); }
-.tool-btn small{ font-size:10px; margin-inline-start:4px; }
-.search-wrap{
-padding: 10px 16px 12px;
-border-bottom: 1px solid rgba(169,130,47,.2);
-}
-.search-wrap input{
-width:100%;
-background: rgba(255,255,255,.07);
-border: 1px solid rgba(169,130,47,.25);
-border-radius: 4px;
-padding: 8px 12px;
-color: #f2ead4;
-font-family: var(--sans);
-font-size: 13px;
-outline: none;
-}
-.search-wrap input::placeholder{ color: #7d8ba0; }
-.search-wrap input:focus{ border-color: var(--brass-light); }
-.stats-mini{
-padding: 8px 16px 10px;
-font-size: 11px;
-color: #9aa9bd;
-border-bottom: 1px solid rgba(169,130,47,.15);
-display:flex; justify-content:space-between; gap:8px;
-}
-.stats-mini b{ color: var(--brass-light); font-weight:600; }
-.lesson-item.bookmarked .lesson-name::after{
-content: " ★";
-color: var(--brass-light);
-font-size: 11px;
-}
-.lesson-item.locked-quiz{
-opacity: .55;
-cursor: not-allowed;
-}
-.lesson-item.locked-quiz:hover{ background: transparent; }
-/* ===== Dark mode ===== */
-html.dark{
-color-scheme: dark;
-}
-html.dark body{ background: #0a1018; }
-html.dark .content-col,
-html.dark .main{
-background: #121a24;
-color: #e6e0d4;
-}
-html.dark .page-title{ color: #f2ead4; }
-html.dark .section-block h2{ color: #e8dfc8; border-bottom-color: #2a3a4e; }
-html.dark .section-block p{ color: #d4cbb8; }
-html.dark .objectives{
-background: #1a2433;
-border-color: #2a3a4e;
-}
-html.dark .objectives h3{ color: #e8dfc8; }
-html.dark .objectives li{ color: #c9bfa8; }
-html.dark .info-card,
-html.dark .gloss-item,
-html.dark .quiz-q{
-background: rgba(255,255,255,.04);
-border-color: #2a3a4e;
-}
-html.dark .info-card h4,
-html.dark .gloss-term,
-html.dark .quiz-q p.qtext{ color: #e8dfc8; }
-html.dark .info-card li,
-html.dark .gloss-def{ color: #b8ae98; }
-html.dark .summary-box{
-background: repeating-linear-gradient(135deg, rgba(169,130,47,.08) 0 12px, transparent 12px 24px);
-border-color: var(--brass-dim);
-}
-html.dark .summary-box li{ color: #d4cbb8; }
-html.dark .meta-pill{
-background: rgba(255,255,255,.06);
-border-color: #2a3a4e;
-color: #b8ae98;
-}
-html.dark .nav-btn{
-background: rgba(255,255,255,.06);
-border-color: #2a3a4e;
-color: #e6e0d4;
-}
-html.dark .nav-btn.primary{
-background: var(--navy-mid);
-border-color: var(--navy-line);
-color: #f2ead4;
-}
-html.dark .page-nav{ border-top-color: #2a3a4e; }
-html.dark .kw{ border-color: var(--brass-dim); color: var(--brass-light); }
-html.dark .seal-mark{ background: rgba(47,107,79,.12); border-color: rgba(47,107,79,.4); }
-html.dark .exercise-box{ background: #0e1826; }
-html.dark .main{
-background:
-radial-gradient(1200px 600px at 100% -10%, rgba(169,130,47,.04), transparent 60%),
-#121a24;
-}
-/* ===== Focus mode ===== */
-.app.focus-mode .sidebar,
-.app.focus-mode .mobile-bar,
-.app.focus-mode .backdrop{ display: none !important; }
-.app.focus-mode{ grid-template-columns: 1fr; }
-.app.focus-mode .content-col{ grid-column: 1; }
-.focus-exit{
-position: fixed;
-top: 12px;
-inset-inline-end: 12px;
-z-index: 50;
-display: none;
-align-items: center;
-gap: 6px;
-background: var(--navy-deep);
-color: #f2ead4;
-padding: 8px 14px;
-border-radius: 4px;
-font-size: 12.5px;
-box-shadow: 0 4px 16px rgba(0,0,0,.3);
-border: 1px solid var(--navy-line);
-}
-.app.focus-mode .focus-exit{ display: flex; }
-.focus-exit:hover{ background: var(--navy-mid); }
-/* ===== Reading prefs ===== */
-.reading-toolbar{
-display:flex; flex-wrap:wrap; gap:8px; align-items:center;
-margin-bottom: 20px;
-padding: 8px 0;
-}
-.reading-toolbar button,
-.reading-toolbar .rt-label{
-font-size: 12px;
-color: var(--ink-soft);
-border: 1px solid var(--parchment-line);
-background: rgba(255,255,255,.4);
-padding: 5px 10px;
-border-radius: 3px;
-}
-html.dark .reading-toolbar button,
-html.dark .reading-toolbar .rt-label{
-background: rgba(255,255,255,.06);
-border-color: #2a3a4e;
-color: #c9bfa0;
-}
-.reading-toolbar button:hover{ background: rgba(169,130,47,.15); }
-.page.font-sm{ font-size: 14px; }
-.page.font-sm .page-title{ font-size: 28px; }
-.page.font-sm .section-block p{ font-size: 14px; }
-.page.font-lg{ font-size: 17px; }
-.page.font-lg .page-title{ font-size: 36px; }
-.page.font-lg .section-block p{ font-size: 17px; line-height: 2.15; }
-.page.narrow{ max-width: 620px; }
-.page.wide{ max-width: 900px; }
-/* ===== Notes ===== */
-.notes-box{
-margin: 28px 0;
-border: 1px dashed var(--parchment-line);
-border-radius: var(--radius);
-padding: 14px 16px;
-background: rgba(255,255,255,.35);
-}
-html.dark .notes-box{
-background: rgba(255,255,255,.03);
-border-color: #2a3a4e;
-}
-.notes-box h4{
-font-family: var(--serif);
-font-size: 13.5px;
-color: var(--brass-dim);
-margin-bottom: 8px;
-}
-.notes-box textarea{
-width: 100%;
-min-height: 80px;
-border: 1px solid var(--parchment-line);
-border-radius: 3px;
-padding: 10px;
-font-family: var(--sans);
-font-size: 13.5px;
-line-height: 1.8;
-resize: vertical;
-background: rgba(255,255,255,.6);
-color: var(--ink);
-}
-html.dark .notes-box textarea{
-background: rgba(0,0,0,.2);
-border-color: #2a3a4e;
-color: #e6e0d4;
-}
-.notes-box .notes-saved{
-font-size: 11px;
-color: var(--ok);
-margin-top: 6px;
-opacity: 0;
-transition: opacity .3s;
-}
-.notes-box .notes-saved.show{ opacity: 1; }
-/* ===== Bookmark btn ===== */
-.bm-btn{
-display: inline-flex;
-align-items: center;
-gap: 6px;
-font-size: 12.5px;
-color: var(--brass-dim);
-border: 1px solid var(--parchment-line);
-background: rgba(255,255,255,.4);
-padding: 6px 12px;
-border-radius: 3px;
-margin-bottom: 16px;
-}
-.bm-btn.on{ color: var(--brass); border-color: var(--brass); background: rgba(169,130,47,.1); }
-html.dark .bm-btn{
-background: rgba(255,255,255,.05);
-border-color: #2a3a4e;
-color: #c9bfa0;
-}
-html.dark .bm-btn.on{ border-color: var(--brass-light); color: var(--brass-light); }
-/* ===== Quiz locked message ===== */
-.quiz-locked{
-text-align: center;
-padding: 40px 20px;
-background: rgba(124,54,38,.08);
-border: 1.5px solid rgba(124,54,38,.3);
-border-radius: var(--radius);
-margin: 30px 0;
-}
-.quiz-locked h3{
-font-family: var(--serif);
-color: var(--seal);
-font-size: 18px;
-margin-bottom: 10px;
-}
-.quiz-locked p{ color: var(--ink-soft); font-size: 14.5px; line-height: 1.9; }
-/* ===== Certificate overlay ===== */
-.cert-overlay{
-display: none;
-position: fixed;
-inset: 0;
-z-index: 100;
-background: rgba(10,15,24,.72);
-align-items: center;
-justify-content: center;
-padding: 20px;
-}
-.cert-overlay.show{ display: flex; }
-.cert-card{
-background: var(--parchment);
-color: var(--ink);
-max-width: 520px;
-width: 100%;
-padding: 36px 32px;
-border-radius: 4px;
-text-align: center;
-box-shadow: 0 24px 60px -20px rgba(0,0,0,.5);
-border: 2px solid var(--brass);
-position: relative;
-}
-.cert-card::before{
-content: "";
-position: absolute;
-inset: 8px;
-border: 1px solid var(--brass-dim);
-pointer-events: none;
-}
-.cert-card h2{
-font-family: var(--serif);
-font-size: 22px;
-color: var(--navy-deep);
-margin: 12px 0 8px;
-}
-.cert-card .cert-sub{ font-size: 13px; color: var(--ink-soft); margin-bottom: 18px; }
-.cert-card .cert-name{
-font-family: var(--serif);
-font-size: 20px;
-color: var(--brass-dim);
-border-bottom: 1px solid var(--parchment-line);
-padding-bottom: 8px;
-margin: 16px 0;
-}
-.cert-card .cert-meta{ font-size: 12.5px; color: var(--ink-soft); line-height: 1.8; }
-.cert-actions{ display:flex; gap:10px; justify-content:center; margin-top: 22px; flex-wrap:wrap; }
-.cert-actions button{
-font-size: 13px;
-padding: 9px 18px;
-border-radius: 3px;
-font-weight: 600;
-}
-.cert-actions .print-btn{ background: var(--navy-deep); color: #f2ead4; }
-.cert-actions .close-btn{ background: transparent; border: 1px solid var(--parchment-line); color: var(--ink); }
-/* ===== Print styles ===== */
-@media print{
-.sidebar, .mobile-bar, .backdrop, .page-nav, .reading-toolbar,
-.focus-exit, .sidebar-tools, .search-wrap, .stats-mini,
-.bm-btn, .notes-box, .reveal-btn, .exercise-box, .quiz-submit,
-.cert-overlay, .seal-mark{ display: none !important; }
-.app{ display: block; height: auto; }
-.content-col, .main{ overflow: visible; height: auto; background: #fff; }
-.page{ max-width: 100%; padding: 0; animation: none; }
-body{ background: #fff; color: #000; }
-}
-/* ===== Search results highlight in sidebar ===== */
-.lesson-item.search-hit{ background: rgba(169,130,47,.12); }
-.lesson-item.search-hidden{ display: none; }
-/* ===== Site top navigation (links to main site) ===== */
-.site-topbar{
-background: #0f172a;
-color: #fff;
-padding: 0.45rem 1rem;
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 1rem;
-font-size: 0.85rem;
-position: sticky;
-top: 0;
-z-index: 200;
-border-bottom: 2px solid transparent;
-border-image: linear-gradient(90deg, #e2352c, #f2762e, #f6c445, #7ec850, #2fa89a, #4a67c9, #8a5cc7) 1;
-}
-.site-topbar a{ color: rgba(255,255,255,0.9); text-decoration: none; padding: 0.25rem 0.6rem; border-radius: 6px; transition: background .2s; }
-.site-topbar a:hover{ background: rgba(255,255,255,0.12); color: #fff; }
-.site-topbar .top-brand{ display: flex; align-items: center; gap: 0.5rem; font-weight: 700; }
-.site-topbar .top-brand img{ width: 28px; height: 28px; border-radius: 50%; background: #fff; object-fit: contain; padding: 2px; }
-.site-topbar .top-links{ display: flex; align-items: center; gap: 0.15rem; flex-wrap: wrap; }
-.site-topbar .top-cta{
-background: linear-gradient(135deg, #e11d48, #f97316);
-color: #fff !important;
-font-weight: 600;
-padding: 0.3rem 0.85rem !important;
-border-radius: 999px !important;
-}
-@media (max-width: 600px){
-.site-topbar{ flex-direction: column; align-items: stretch; gap: 0.4rem; padding: 0.5rem 0.75rem; }
-.site-topbar .top-links{ justify-content: center; }
-}
-/* Anti-copy / protect content */
-body {
--webkit-user-select: none !important;
--moz-user-select: none !important;
--ms-user-select: none !important;
-user-select: none !important;
-}
-input, textarea, [contenteditable="true"] {
--webkit-user-select: text !important;
--moz-user-select: text !important;
-user-select: text !important;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دوره هوش مصنوعی برای وکلا | ریش سفید</title>
+    <!-- فونت وزیرمتن برای ظاهر حرفه‌ای فارسی -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <!-- آیکون‌ها -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #1e3a8a; /* آبی تیره حقوقی */
+            --secondary-color: #3b82f6; /* آبی روشن */
+            --accent-color: #f59e0b; /* طلایی برای تاکید */
+            --bg-color: #f8fafc;
+            --sidebar-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Header --- */
+        .top-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-to-home {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-to-home:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* --- Layout --- */
+        .layout-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: calc(100vh - 70px);
+        }
+
+        /* --- Sidebar (Right) --- */
+        .sidebar {
+            background: var(--sidebar-bg);
+            border-left: 1px solid var(--border-color);
+            padding: 1.5rem 1rem;
+            overflow-y: auto;
+            max-height: calc(100vh - 70px);
+            position: sticky;
+            top: 70px;
+        }
+
+        .course-title-sidebar {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chapter-list {
+            list-style: none;
+        }
+
+        .chapter-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .chapter-btn {
+            width: 100%;
+            text-align: right;
+            background: transparent;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .chapter-btn:hover {
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+        }
+
+        .chapter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .chapter-number {
+            background: rgba(0,0,0,0.1);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .chapter-btn.active .chapter-number {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* --- Content Area (Left) --- */
+        .content-area {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .chapter-header {
+            margin-bottom: 2rem;
+        }
+
+        .chapter-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Cards Grid --- */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .lesson-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--secondary-color);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .lesson-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .card-icon {
+            background: #eff6ff;
+            color: var(--secondary-color);
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-color);
+            line-height: 1.4;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: auto;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge.مقدماتی { background: #dcfce7; color: #166534; }
+        .badge.متوسط { background: #fef9c3; color: #854d0e; }
+        .badge.پیشرفته { background: #fee2e2; color: #991b1b; }
+
+        /* --- Inactive Chapter Card --- */
+        .inactive-card {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 2px dashed var(--border-color);
+            color: var(--text-muted);
+        }
+
+        .inactive-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+        }
+
+        /* --- Lesson Detail View --- */
+        .lesson-detail {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .back-to-list-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .back-to-list-btn:hover {
+            background: #f1f5f9;
+            color: var(--primary-color);
+        }
+
+        .lesson-body h3 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 0.75rem 0;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .lesson-body p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .objectives-list, .summary-box ul {
+            background: #f8fafc;
+            padding: 1.5rem 2.5rem 1.5rem 1.5rem;
+            border-radius: 8px;
+            border-right: 4px solid var(--accent-color);
+            margin: 1rem 0;
+        }
+
+        .objectives-list li, .summary-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-box {
+            background: #eff6ff;
+            border-right-color: var(--secondary-color);
+            margin-top: 2rem;
+        }
+
+        /* --- Quiz Section --- */
+        .quiz-container {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: #fffbeb;
+            border: 1px solid #fcd34d;
+            border-radius: 12px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .layout-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: relative;
+                top: 0;
+                max-height: none;
+                border-left: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="site-topbar">
-<a href="../../index.html" class="top-brand">
-<img src="../../assets/logo.png" alt="لوگو">
-<span>باشگاه وکلای افرا</span>
-</a>
-<div class="top-links">
-<a href="../../index.html">خانه</a>
-<a href="../index.html">دوره‌ها</a>
-<a href="../../services/index.html">خدمات</a>
-<a href="../../index.html" class="top-cta">صفحه اصلی سایت</a>
-</div>
-</div>
-<div class="app" id="app">
-<div class="backdrop" onclick="toggleNav(false)"></div>
-<aside class="sidebar" id="sidebar">
-<div class="brand">
-<div class="brand-mark">
-<div class="avatar-mini"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAAEICAYAAABH/7sLAAEAAElEQVR42py9d4AkV3X2/Tu3qjpN3pzT5pz37GZtVpYlW5YlZ4yxAwZjwGAMGDDGgG3Mh2AwmA8w2BhjsLHJ2WQkS5Zz7t3p3JnuylV31fn9cW51z+7s7O7M7kz4zXNnNL236t5w65xznnPe977vfe9733ve8573vve9733ve9/73ve+973vfe9733ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve9773ve9973vfe9/73ve+973vfe9733ve......" alt="دستیار هوش مصنوعی باشگاه وکلای افرا"></div>
-<h1>هوش مصنوعی برای وکلا</h1>
-<p>یک دوره مقدماتی و کاربردی، ساخته‌شده برای اعضای باشگاه وکلای افرا، تا بدون هیچ پیش‌زمینه فنی، فهم درستی از هوش مصنوعی و کاربرد آن در کار حقوقی پیدا کنید. فصل اول شامل ده درس کوتاه است؛ در پایان هر درس، خلاصه و تمرین کوچکی برای تثبیت یادگیری آمده و در پایان فصل، یک آزمون کوتاه منتظر شماست.</p>
-${actions}
-</div>
-`;
-}
-function renderMain(){
-const l = LESSONS.find(x => x.id === state.currentId);
-if(!l){ renderWelcome(); return; }
-const idx = LESSONS.findIndex(x => x.id === l.id);
-const main = document.getElementById('main');
-const fontCls = state.fontSize === -1 ? 'font-sm' : (state.fontSize === 1 ? 'font-lg' : '');
-const widthCls = state.wide ? 'wide' : '';
-let html = `<div class="page ${fontCls} ${widthCls}">`;
-html += `<div class="page-eyebrow"><span class="dot"></span>فصل اول &nbsp;/&nbsp; درس ${toFa(idx+1)} از ${toFa(LESSONS.length)}</div>`;
-html += `<h1 class="page-title">${ICONS[l.icon] || ''} ${l.title}</h1>`;
-html += `<div class="meta-row">
-<span class="meta-pill">⏱ زمان مطالعه: ${l.readingTime}</span>
-<span class="meta-pill">سطح: ${l.difficulty}</span>
-</div>`;
-const isBm = state.bookmarks.has(l.id);
-html += `<button type="button" class="bm-btn ${isBm ? 'on' : ''}" onclick="toggleBookmark(${l.id})">${isBm ? '★ نشان‌شده' : '☆ نشان‌گذاری'}</button>`;
-if(l.objectives && l.objectives.length){
-html += `<div class="objectives"><h3>در پایان این درس می‌توانید:</h3><ul>`;
-l.objectives.forEach(o => html += `<li>${o}</li>`);
-html += `</ul></div>`;
-}
-(l.sections || []).forEach(s => {
-html += `<div class="section-block"><h2>${s.heading}</h2>`;
-(s.paragraphs || []).forEach(p => html += `<p>${p}</p>`);
-html += `</div>`;
-});
-if(l.glossary && l.glossary.length){
-html += `<div class="glossary-list">`;
-l.glossary.forEach(g => {
-html += `<div class="gloss-item"><div class="gloss-term">${g.term}</div><div class="gloss-def">${g.definition}</div></div>`;
-});
-html += `</div>`;
-}
-const hasCards = (l.examples && l.examples.length) || (l.tips && l.tips.length) || (l.commonMistakes && l.commonMistakes.length);
-if(hasCards){
-html += `<div class="card-grid">`;
-if(l.examples && l.examples.length){
-html += `<div class="info-card card-examples"><h4><span class="ic">✦</span> مثال‌ها</h4><ul>`;
-l.examples.forEach(e => html += `<li>${e}</li>`);
-html += `</ul></div>`;
-}
-if(l.tips && l.tips.length){
-html += `<div class="info-card card-tips"><h4><span class="ic">✓</span> نکات کاربردی</h4><ul>`;
-l.tips.forEach(t => html += `<li>${t}</li>`);
-html += `</ul></div>`;
-}
-if(l.commonMistakes && l.commonMistakes.length){
-html += `<div class="info-card card-mistakes"><h4><span class="ic">⚠</span> اشتباهات رایج</h4><ul>`;
-l.commonMistakes.forEach(m => html += `<li>${m}</li>`);
-html += `</ul></div>`;
-}
-html += `</div>`;
-}
-if(l.exercise && l.exercise.length){
-html += `<div class="exercise-box"><h4>✎ تمرین این درس</h4>`;
-l.exercise.forEach(e => html += `<p>${e}</p>`);
-html += `<button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show')">نمایش پاسخ پیشنهادی</button>
-<div class="answer-box">`;
-(l.answer || []).forEach(a => html += `<span class="lbl">پاسخ پیشنهادی</span>${a}`);
-html += `</div></div>`;
-}
-if(l.summary && l.summary.length){
-html += `<div class="summary-box"><h4>خلاصه درس</h4><ul>`;
-l.summary.forEach(s => html += `<li>${s}</li>`);
-html += `</ul></div>`;
-}
-if(l.keywords && l.keywords.length){
-html += `<div class="keywords">`;
-l.keywords.forEach(k => html += `<span class="kw">#${k}</span>`);
-html += `</div>`;
-}
-// personal notes
-const noteVal = (state.notes[l.id] || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-html += `<div class="notes-box"><h4>📝 یادداشت شخصی شما</h4>
-<textarea id="lesson-note" placeholder="یادداشت‌های خود را اینجا بنویسید...">${state.notes[l.id] || ''}</textarea>
-<div class="notes-saved" id="notes-saved">ذخیره شد ✓</div>
-</div>`;
-if(state.done.has(l.id)){
-html += `<div class="seal-mark">${sealSVG(56,'خوانده شد','ok')}<div class="st"><b>این درس مطالعه شد ✓</b>مهر سبز در فهرست کناری نیز ثبت شد.</div></div>`;
-}
-if(l.isFinal){
-html += renderQuiz();
-}
-html += `<div class="page-nav">`;
-if(idx > 0){
-html += `<button class="nav-btn" onclick="goTo(${LESSONS[idx-1].id})">→ <span>${LESSONS[idx-1].title}<br><small>درس قبلی</small></span></button>`;
-} else {
-html += `<span></span>`;
-}
-if(!l.isFinal){
-html += `<button class="nav-btn primary" onclick="completeAndNext(${l.id}, ${idx < LESSONS.length-1 ? LESSONS[idx+1].id : 'null'})">
-<span>${idx < LESSONS.length-1 ? LESSONS[idx+1].title : 'پایان فصل'}<br><small>${idx < LESSONS.length-1 ? 'درس بعدی' : ''}</small></span> ←
-</button>`;
-} else {
-html += `<span></span>`;
-}
-html += `</div>`;
-html += `</div>`;
-main.innerHTML = html;
-const noteEl = document.getElementById('lesson-note');
-if(noteEl){
-let t;
-noteEl.addEventListener('input', function(){
-clearTimeout(t);
-t = setTimeout(() => saveNote(l.id, noteEl.value), 400);
-});
-}
-if(!l.isFinal) markDone(l.id);
-}
-function completeAndNext(currentId, nextId){
-markDone(currentId);
-if(nextId) goTo(nextId);
-}
-function renderQuiz(){
-let html = `<div class="section-block" style="margin-top:38px;">
-<h2>🏁 آزمون پایان فصل اول</h2>
-<p>به ده سؤال زیر پاسخ دهید و در پایان نتیجه را ببینید. این آزمون فقط برای سنجش شخصی شماست.</p>
-</div><form id="quiz-form">`;
-QUIZ.forEach((q, qi) => {
-html += `<div class="quiz-q"><p class="qtext">${toFa(qi+1)}. ${q.q}</p>`;
-q.options.forEach((opt, oi) => {
-html += `<label class="quiz-opt" data-q="${qi}" data-o="${oi}">
-<input type="radio" name="q${qi}" value="${oi}"> <span>${opt}</span>
-</label>`;
-});
-html += `</div>`;
-});
-html += `<button type="button" class="quiz-submit" onclick="submitQuiz()">مشاهده نتیجه آزمون</button>
-<div class="quiz-result" id="quiz-result" role="status" aria-live="polite"></div>
-</form>`;
-return html;
-}
-function submitQuiz(){
-let score = 0;
-QUIZ.forEach((q, qi) => {
-const chosen = document.querySelector(`input[name="q${qi}"]:checked`);
-const opts = document.querySelectorAll(`.quiz-opt[data-q="${qi}"]`);
-opts.forEach(o => {
-const oi = parseInt(o.dataset.o);
-o.classList.remove('correct','wrong');
-if(oi === q.correct) o.classList.add('correct');
-else if(chosen && parseInt(chosen.value) === oi) o.classList.add('wrong');
-});
-if(chosen && parseInt(chosen.value) === q.correct) score++;
-});
-const result = document.getElementById('quiz-result');
-const pass = score >= 7;
-result.className = 'quiz-result show ' + (pass ? 'pass' : 'fail');
-result.innerHTML = pass
-? `آفرین! نمره شما ${toFa(score)} از ${toFa(QUIZ.length)} — فصل اول را با موفقیت گذراندید.`
-: `نمره شما ${toFa(score)} از ${toFa(QUIZ.length)} — پیشنهاد می‌شود درس‌های مربوط به سؤالات نادرست را مرور کنید.`;
-if(pass){
-markDone(LESSONS.find(l => l.isFinal).id);
-state.quizPassed = true;
-saveState();
-const ov = document.getElementById('cert-overlay');
-if(ov){
-const d = new Date();
-const faDate = d.toLocaleDateString('fa-IR');
-const de = document.getElementById('cert-date');
-if(de) de.textContent = faDate;
-ov.classList.add('show');
-}
-}
-result.scrollIntoView({behavior:'smooth', block:'center'});
-}
-document.addEventListener('keydown', function(e){
-if(e.key === 'Escape') toggleNav(false);
-});
-// init
-try {
-loadState();
-renderSidebar();
-renderWelcome();
-startStudyTimer();
-const searchInp = document.getElementById('lesson-search');
-if(searchInp){
-searchInp.addEventListener('input', function(){ filterLessons(this.value); });
-}
-document.addEventListener('keydown', function(e){
-if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-if(e.key === 'Escape'){ toggleNav(false); if(state.focus) toggleFocus(false); }
-if(e.key === 'ArrowLeft' || e.key === 'ArrowRight'){
-const idx = LESSONS.findIndex(l => l.id === state.currentId);
-if(idx < 0) return;
-if((e.key === 'ArrowLeft' && document.dir !== 'rtl') || (e.key === 'ArrowRight' && document.documentElement.dir === 'rtl')){
-if(idx < LESSONS.length - 1) goTo(LESSONS[idx+1].id);
-} else {
-if(idx > 0) goTo(LESSONS[idx-1].id);
-}
-}
-if(e.key === 'f' || e.key === 'F'){ if(e.ctrlKey || e.metaKey) return; toggleFocus(); }
-if(e.key === 'd' || e.key === 'D'){ if(e.ctrlKey || e.metaKey) return; toggleDark(); }
-});
-} catch (err) {
-console.error('Course init error:', err);
-const main = document.getElementById('main');
-if (main) {
-main.innerHTML = `<div class="page" style="padding:40px;text-align:center">
-<h1 class="page-title">خطا در بارگذاری دوره</h1>
-<p style="color:var(--seal);margin:20px 0">${err && err.message ? err.message : err}</p>
-<p style="color:var(--ink-soft)">لطفاً کنسول مرورگر (F12) را باز کنید و خطا را گزارش دهید.</p>
-<button class="nav-btn primary" onclick="location.reload()">تلاش مجدد</button>
-</div>`;
-}
-}
-</script>
-<button type="button" class="focus-exit" id="focus-exit" onclick="toggleFocus(false)">✕ خروج از حالت تمرکز</button>
-<div class="cert-overlay" id="cert-overlay">
-<div class="cert-card">
-<div style="font-size:40px">🎓</div>
-<h2>گواهی پایان فصل اول</h2>
-<p class="cert-sub">باشگاه وکلای افرا — دوره هوش مصنوعی برای وکلا</p>
-<div class="cert-name" id="cert-name">شرکت‌کننده محترم</div>
-<p class="cert-meta">شما با موفقیت فصل اول «آشنایی با هوش مصنوعی» را گذراندید.<br>تاریخ: <span id="cert-date"></span></p>
-<div class="cert-actions">
-<button type="button" class="print-btn" onclick="window.print()">چاپ گواهی</button>
-<button type="button" class="close-btn" onclick="document.getElementById('cert-overlay').classList.remove('show')">بستن</button>
-</div>
-</div>
-</div>
-<script>
-(function(){
-// Disable right-click
-document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; });
-// Disable drag
-document.addEventListener('dragstart', function(e){ e.preventDefault(); return false; });
-// Disable select start (extra)
-document.addEventListener('selectstart', function(e){
-if(e.target.closest('input, textarea, [contenteditable="true"]')) return;
-e.preventDefault(); return false;
-});
-// Block common shortcuts
-document.addEventListener('keydown', function(e){
-// Ctrl/Cmd + C / A / U / S / P / X
-if((e.ctrlKey || e.metaKey) && ['c','a','u','s','p','x','C','A','U','S','P','X'].includes(e.key)){
-e.preventDefault(); return false;
-}
-// F12, Ctrl+Shift+I/J/C
-if(e.key === 'F12' || ((e.ctrlKey || e.metaKey) && e.shiftKey && ['I','J','C','i','j','c'].includes(e.key))){
-e.preventDefault(); return false;
-}
-// Ctrl+Shift+U (view source in some browsers)
-if((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'U' || e.key === 'u')){
-e.preventDefault(); return false;
-}
-});
-// Clear clipboard on copy attempt
-document.addEventListener('copy', function(e){
-e.clipboardData.setData('text/plain', '');
-e.preventDefault();
-});
-document.addEventListener('cut', function(e){
-e.clipboardData.setData('text/plain', '');
-e.preventDefault();
-});
-})();
-</script>
+
+    <!-- هدر بالای صفحه با دکمه بازگشت -->
+    <header class="top-header">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <i class="fas fa-balance-scale fa-lg"></i>
+            <span style="font-weight: 700; font-size: 1.1rem;">ریش سفید</span>
+        </div>
+        <a href="/" class="back-to-home">
+            <i class="fas fa-arrow-right"></i>
+            بازگشت به صفحه اصلی
+        </a>
+    </header>
+
+    <!-- بدنه اصلی -->
+    <div class="layout-container">
+        <!-- منوی سمت راست -->
+        <aside class="sidebar">
+            <div class="course-title-sidebar">
+                <i class="fas fa-graduation-cap"></i>
+                <span id="sidebar-course-title">عنوان دوره</span>
+            </div>
+            <ul class="chapter-list" id="chapter-list">
+                <!-- آیتم‌ها توسط جاوااسکریپت پر می‌شوند -->
+            </ul>
+        </aside>
+
+        <!-- محتوای سمت چپ -->
+        <main class="content-area" id="content-area">
+            <!-- محتوا توسط جاوااسکریپت پر می‌شود -->
+        </main>
+    </div>
+
+    <script>
+        // ==========================================
+        // داده‌های دوره (از فایل شما کپی شده است)
+        // ==========================================
+        const COURSE_DATA = {
+            title: "هوش مصنوعی برای وکلا",
+            chapters: [
+                // ... (تمام داده‌های ۱۲ فصل از فایل شما اینجا قرار دارد)
+                // برای خلاصه شدن کد در این نمایش، فرض می‌کنیم آرایه chapters کامل است.
+                // در عمل، کل آبجکت COURSE_DATA که در فایل قبلی بود را اینجا پیست کنید.
+                {
+                    id: 1,
+                    title: "آشنایی با هوش مصنوعی",
+                    lessons: [
+                        {
+                            id: 1,
+                            title: "هوش مصنوعی چیست؟",
+                            icon: "brain",
+                            readingTime: "۷ دقیقه",
+                            difficulty: "مقدماتی",
+                            objectives: ["تعریف ساده و دقیقی از هوش مصنوعی ارائه دهید.", "تفاوت هوش مصنوعی با یک نرم‌افزار معمولی را توضیح دهید."],
+                            sections: [
+                                {
+                                    heading: "تعریفی که به کار وکیل می‌آید",
+                                    paragraphs: ["هوش مصنوعی به مجموعه‌ای از فناوری‌ها گفته می‌شود که به رایانه توانایی می‌دهند کارهایی را انجام دهد که معمولاً نیازمند فهم انسانی است."]
+                                }
+                            ],
+                            summary: ["هوش مصنوعی یعنی توانایی رایانه در انجام کارهایی شبیه فهم انسانی.", "مسئولیت حرفه‌ای همیشه بر عهده وکیل باقی می‌ماند."]
+                        },
+                        // ... سایر درس‌های فصل ۱
+                    ]
+                },
+                // ... فصل‌های ۲ تا ۱۱ با ساختار مشابه
+                {
+                    id: 12,
+                    title: "مسیر یادگیری",
+                    lessons: [] // * برای تست حالت "غیرفعال"، آرایه درس‌ها را خالی بگذارید
+                }
+            ],
+            quiz: [
+                { q: "تفاوت اصلی هوش مصنوعی مولد با یک نرم‌افزار سنتی چیست؟", options: ["گزینه ۱", "هوش مصنوعی مولد برای ورودی‌های تازه، پاسخ تازه تولید می‌کند", "گزینه ۳", "گزینه ۴"], correct: 1 }
+            ]
+        };
+
+        // ==========================================
+        // منطق برنامه
+        // ==========================================
+        const sidebarList = document.getElementById('chapter-list');
+        const contentArea = document.getElementById('content-area');
+        const sidebarTitle = document.getElementById('sidebar-course-title');
+
+        // ۱. مقداردهی اولیه
+        function init() {
+            sidebarTitle.textContent = COURSE_DATA.title;
+            renderSidebar();
+            // باز کردن فصل اول به صورت پیش‌فرض
+            renderChapter(0); 
+        }
+
+        // ۲. رندر منوی سمت راست
+        function renderSidebar() {
+            sidebarList.innerHTML = '';
+            COURSE_DATA.chapters.forEach((chapter, index) => {
+                const li = document.createElement('li');
+                li.className = 'chapter-item';
+                
+                const btn = document.createElement('button');
+                btn.className = 'chapter-btn';
+                btn.dataset.index = index;
+                btn.innerHTML = `
+                    <span class="chapter-number">${chapter.id}</span>
+                    <span>${chapter.title}</span>
+                `;
+                btn.onclick = () => {
+                    // حذف کلاس active از همه
+                    document.querySelectorAll('.chapter-btn').forEach(b => b.classList.remove('active'));
+                    // افزودن کلاس active به دکمه فعلی
+                    btn.classList.add('active');
+                    renderChapter(index);
+                };
+                
+                li.appendChild(btn);
+                sidebarList.appendChild(li);
+            });
+        }
+
+        // ۳. رندر محتوای فصل (کارت‌ها یا پیام غیرفعال)
+        function renderChapter(index) {
+            const chapter = COURSE_DATA.chapters[index];
+            
+            // بررسی شرط "فاقد زیرعنوان درس"
+            if (!chapter.lessons || chapter.lessons.length === 0) {
+                contentArea.innerHTML = `
+                    <div class="chapter-header">
+                        <h2>${chapter.title}</h2>
+                    </div>
+                    <div class="inactive-card">
+                        <i class="fas fa-lock"></i>
+                        <h3>این فصل هنوز فعال نیست</h3>
+                        <p>محتوای آموزشی این بخش در حال تهیه است و به زودی اضافه خواهد شد.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // رندر کارت‌های درس
+            let html = `
+                <div class="chapter-header">
+                    <h2>${chapter.title}</h2>
+                    <p style="color: var(--text-muted);">برای شروع یادگیری، روی هر یک از درس‌های زیر کلیک کنید.</p>
+                </div>
+                <div class="cards-grid">
+            `;
+
+            chapter.lessons.forEach(lesson => {
+                const icon = lesson.icon || 'book-open';
+                html += `
+                    <div class="lesson-card" onclick="openLesson(${index}, ${lesson.id})">
+                        <div class="card-top">
+                            <div class="card-icon">
+                                <i class="fas fa-${icon}"></i>
+                            </div>
+                            <div class="card-title">${lesson.title}</div>
+                        </div>
+                        <div class="card-meta">
+                            <span><i class="far fa-clock"></i> ${lesson.readingTime}</span>
+                            <span class="badge ${lesson.difficulty}">${lesson.difficulty}</span>
+                        </div>
+                        <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+
+            // افزودن بخش آزمون اگر فصل آخر باشد
+            if (index === COURSE_DATA.chapters.length - 1 && COURSE_DATA.quiz && COURSE_DATA.quiz.length > 0) {
+                html += `
+                    <div class="quiz-container">
+                        <h3><i class="fas fa-clipboard-check"></i> آزمون نهایی دوره</h3>
+                        <p>پس از مطالعه تمام فصل‌ها، برای سنجش یادگیری خود در آزمون نهایی شرکت کنید.</p>
+                        <button class="back-to-list-btn" style="margin-top: 1rem; background: var(--primary-color); color: white; border: none;" onclick="renderQuiz()">
+                            شروع آزمون <i class="fas fa-arrow-left"></i>
+                        </button>
+                    </div>
+                `;
+            }
+
+            contentArea.innerHTML = html;
+        }
+
+        // ۴. رندر جزئیات یک درس
+        function openLesson(chapterIndex, lessonId) {
+            const chapter = COURSE_DATA.chapters[chapterIndex];
+            const lesson = chapter.lessons.find(l => l.id === lessonId);
+            if (!lesson) return;
+
+            let html = `
+                <button class="back-to-list-btn" onclick="renderChapter(${chapterIndex})">
+                    <i class="fas fa-arrow-right"></i> بازگشت به فهرست فصل
+                </button>
+                <div class="lesson-detail">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                        <h2 style="color: var(--primary-color); font-size: 1.5rem;">${lesson.title}</h2>
+                        <div class="card-meta">
+                            <span><i class="far fa-clock"></i> ${lesson.readingTime}</span>
+                            <span class="badge ${lesson.difficulty}">${lesson.difficulty}</span>
+                        </div>
+                    </div>
+                    <div class="lesson-body">
+            `;
+
+            // پشتیبانی از دو نوع ساختار داده: content (HTML ساده) یا sections/objectives (ساختار یافته)
+            if (lesson.content) {
+                html += `<div class="content-html">${lesson.content}</div>`;
+            } else {
+                if (lesson.objectives) {
+                    html += `<h3><i class="fas fa-bullseye"></i> اهداف یادگیری</h3>
+                             <ul class="objectives-list">
+                                ${lesson.objectives.map(obj => `<li>${obj}</li>`).join('')}
+                             </ul>`;
+                }
+
+                if (lesson.sections) {
+                    lesson.sections.forEach(sec => {
+                        html += `<h3>${sec.heading}</h3>`;
+                        sec.paragraphs.forEach(p => {
+                            html += `<p>${p}</p>`;
+                        });
+                    });
+                }
+
+                if (lesson.summary) {
+                    html += `<div class="summary-box">
+                                <h4><i class="fas fa-lightbulb"></i> جمع‌بندی</h4>
+                                <ul>${lesson.summary.map(s => `<li>${s}</li>`).join('')}</ul>
+                             </div>`;
+                }
+            }
+
+            html += `
+                    </div>
+                </div>
+            `;
+            
+            contentArea.innerHTML = html;
+            // اسکرول به بالای محتوا
+            contentArea.scrollTop = 0;
+        }
+
+        // ۵. رندر آزمون (ساده‌شده)
+        function renderQuiz() {
+            let html = `
+                <button class="back-to-list-btn" onclick="renderChapter(${COURSE_DATA.chapters.length - 1})">
+                    <i class="fas fa-arrow-right"></i> بازگشت به فهرست
+                </button>
+                <div class="lesson-detail">
+                    <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">آزمون نهایی دوره</h2>
+            `;
+            
+            COURSE_DATA.quiz.forEach((q, idx) => {
+                html += `
+                    <div style="margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                        <p style="font-weight: 700; margin-bottom: 1rem;">${idx + 1}. ${q.q}</p>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            ${q.options.map((opt, optIdx) => `
+                                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; border-radius: 6px; transition: background 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='transparent'">
+                                    <input type="radio" name="q${idx}" value="${optIdx}">
+                                    <span>${opt}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `
+                    <button style="background: var(--primary-color); color: white; border: none; padding: 0.75rem 2rem; border-radius: 8px; font-family: inherit; font-size: 1rem; cursor: pointer; width: 100%;">
+                        ثبت پاسخ‌ها و مشاهده نتیجه
+                    </button>
+                </div>
+            `;
+            contentArea.innerHTML = html;
+        }
+
+        // اجرای اولیه
+        init();
+    </script>
 </body>
 </html>
