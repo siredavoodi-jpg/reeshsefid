@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دوره‌های آموزشی | باشگاه وکلای افرا</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="../assets/logo.png" alt="لوگو" class="sidebar-logo">
+            <h2>باشگاه وکلای افرا</h2>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a href="../index.html" class="nav-link"><span><i class="fas fa-home"></i> صفحه اصلی</span></a>
+            </li>
+            <li class="nav-item open">
+                <a class="nav-link toggle-dropdown active"><span><i class="fas fa-graduation-cap"></i> دوره‌ها</span> <i class="fas fa-chevron-down arrow"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="ai-for-lawyers/index.html" class="active">هوش مصنوعی برای وکلا</a></li>
+                    <li><a href="../prompts/index.html">کتابخانه پرامپت‌ها</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="../services/index.html" class="nav-link"><span><i class="fas fa-briefcase"></i> خدمات</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="../pricing/index.html" class="nav-link"><span><i class="fas fa-tags"></i> قیمت‌گذاری</span></a>
+            </li>
+            <li class="nav-item" data-auth-member style="display:none">
+                <a href="../dashboard/index.html" class="nav-link"><span><i class="fas fa-th-large"></i> داشبورد</span></a>
+            </li>
+            <li class="nav-item" data-auth-guest>
+                <a href="../auth/login.html" class="nav-link"><span><i class="fas fa-sign-in-alt"></i> ورود</span></a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i> حالت تاریک</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="page-header">
+            <div>
+                <h1>دوره‌های آموزشی</h1>
+                <p class="page-subtitle">ارتقای مهارت‌های حقوقی و فناوری</p>
+            </div>
+        </header>
+        <div class="grid-container">
+            <div class="card">
+                <h3><i class="fas fa-robot"></i> هوش مصنوعی برای وکلا</h3>
+                <p style="color:var(--text-light); margin:10px 0;">۱۲ فصل — از مبانی تا کاربردهای تخصصی. فصل اول رایگان است.</p>
+                <a href="ai-for-lawyers/index.html" class="btn-copy" style="display:inline-block; margin-top:12px;">مشاهده دوره</a>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="../assets/script.js"></script>
+<script src="../assets/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="باشگاه وکلای افرا — آموزش و خدمات هوش مصنوعی تخصصی برای وکلا">
+    <meta name="theme-color" content="#3f7a68">
+    <title>باشگاه وکلای افرا | هوش مصنوعی برای وکلا</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Top Nav (marketing) -->
+<header class="top-nav">
+    <div class="top-nav-inner">
+        <a href="index.html" class="brand">
+            <img src="assets/logo.png" alt="لوگو" width="36" height="36">
+            <span>باشگاه وکلای افرا</span>
+        </a>
+        <nav class="top-nav-links">
+            <a href="#courses">دوره‌ها</a>
+            <a href="#services">خدمات</a>
+            <a href="pricing/index.html">قیمت‌گذاری</a>
+            <a href="prompts/index.html">پرامپت‌ها</a>
+        </nav>
+        <div class="top-nav-actions">
+            <a href="auth/login.html" class="btn-nav-ghost" data-auth-guest>ورود</a>
+            <a href="auth/register.html" class="btn-nav-primary" data-auth-guest>عضویت</a>
+            <a href="dashboard/index.html" class="btn-nav-primary" data-auth-member style="display:none">
+                <i class="fas fa-user"></i> <span data-user-name>داشبورد</span>
+            </a>
+        </div>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="منو">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<main>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-badge"><i class="fas fa-scale-balanced"></i> هوش مصنوعی در خدمت حرفه وکالت</p>
+            <h1>آینده حرفه حقوقی با<br><span class="text-accent">هوش مصنوعی</span></h1>
+            <p class="hero-desc">
+                باشگاه وکلای افرا، پلتفرمی تخصصی برای آموزش و ارائه خدمات هوش مصنوعی به جامعه حقوقی —
+                از پژوهش رویه قضایی تا تنظیم قرارداد و تحلیل پرونده.
+            </p>
+            <div class="hero-cta">
+                <a href="auth/register.html" class="btn-primary-lg" data-auth-guest>شروع رایگان</a>
+                <a href="dashboard/index.html" class="btn-primary-lg" data-auth-member style="display:none">ورود به داشبورد</a>
+                <a href="courses/ai-for-lawyers/index.html" class="btn-outline-lg">مشاهده دوره نمونه</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><strong>+۴۰۰</strong><span>وکیل عضو</span></div>
+                <div class="stat"><strong>+۶۰</strong><span>درس آموزشی</span></div>
+                <div class="stat"><strong>۱۲</strong><span>فصل تخصصی</span></div>
+                <div class="stat"><strong>۹۸٪</strong><span>رضایت اعضا</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why -->
+    <section class="section" id="why">
+        <div class="section-inner">
+            <p class="section-label">چرا افرا؟</p>
+            <h2 class="section-title">پلتفرمی ساخته‌شده برای وکلا</h2>
+            <p class="section-desc">هوش مصنوعی را به زبان و نیاز جامعه حقوقی ایران ترجمه کرده‌ایم.</p>
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3>حریم خصوصی و امنیت</h3>
+                    <p>اسناد شما رمزگذاری می‌شود و برای آموزش مدل‌های عمومی استفاده نمی‌شود.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-gavel"></i></div>
+                    <h3>تخصص‌گرا در حقوق ایران</h3>
+                    <p>ابزارها و آموزش‌ها بر اساس قوانین و رویه قضایی ایران طراحی شده‌اند.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>آموزش گام‌به‌گام</h3>
+                    <p>از مبانی تا تکنیک‌های پیشرفته، با مسیر یادگیری ساختاریافته.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                    <h3>دستیار همیشه در دسترس</h3>
+                    <p>پرامپت‌های آماده و راهنمایی برای استفاده روزمره از AI در کار حقوقی.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses -->
+    <section class="section section-alt" id="courses">
+        <div class="section-inner">
+            <p class="section-label">آموزش</p>
+            <h2 class="section-title">دوره‌های هوش مصنوعی حقوقی</h2>
+            <p class="section-desc">مسیر یادگیری ساختاریافته برای ورود وکلا به دنیای هوش مصنوعی.</p>
+            <div class="course-cards">
+                <article class="course-card featured">
+                    <span class="badge-level">مقدماتی تا پیشرفته</span>
+                    <h3>هوش مصنوعی برای وکلا</h3>
+                    <p>۱۲ فصل — از مفاهیم پایه تا پرامپت‌نویسی پیشرفته و کاربردهای تخصصی حقوقی.</p>
+                    <ul class="course-meta">
+                        <li><i class="fas fa-book"></i> ۱۲ فصل</li>
+                        <li><i class="fas fa-clock"></i> حدود ۲۰ ساعت</li>
+                        <li><i class="fas fa-unlock"></i> فصل ۱ رایگان</li>
+                    </ul>
+                    <a href="courses/ai-for-lawyers/index.html" class="btn-copy">شروع یادگیری</a>
+                </article>
+            </div>
+            <p style="text-align:center;margin-top:1.5rem">
+                <a href="pricing/index.html" class="link-accent">مشاهده پلن‌ها و قیمت‌گذاری ←</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Services preview -->
+    <section class="section" id="services">
+        <div class="section-inner">
+            <p class="section-label">خدمات</p>
+            <h2 class="section-title">خدمات حقوقی هوشمند</h2>
+            <p class="section-desc">تحلیل پرونده، پیش‌نویس قرارداد و جستجوی رویه — در دسترس اعضای باشگاه.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-search"></i>
+                    <h3>پژوهش حقوقی هوشمند</h3>
+                    <p>جستجوی پیشرفته در منابع حقوقی با کمک AI</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>تنظیم قرارداد</h3>
+                    <p>پیش‌نویس قرارداد با استانداردهای حقوقی</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>تحلیل پرونده</h3>
+                    <p>پیش‌بینی روند پرونده با داده‌های آماری</p>
+                </div>
+            </div>
+            <p style="text-align:center;margin-top:1.5rem">
+                <a href="services/index.html" class="link-accent">مشاهده همه خدمات ←</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-band">
+        <div class="section-inner" style="text-align:center">
+            <h2>به باشگاه وکلای افرا بپیوندید</h2>
+            <p>فصل اول دوره رایگان است. همین امروز شروع کنید.</p>
+            <a href="auth/register.html" class="btn-primary-lg" data-auth-guest>ثبت‌نام رایگان</a>
+            <a href="dashboard/index.html" class="btn-primary-lg" data-auth-member style="display:none">داشبورد من</a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div>
+            <strong>باشگاه وکلای افرا</strong>
+            <p>پلتفرم هوش مصنوعی حقوقی</p>
+        </div>
+        <div class="footer-links">
+            <a href="pricing/index.html">قیمت‌گذاری</a>
+            <a href="courses/index.html">دوره‌ها</a>
+            <a href="prompts/index.html">پرامپت‌ها</a>
+            <a href="auth/login.html">ورود</a>
+        </div>
+        <p class="footer-copy">© ۱۴۰۵ باشگاه وکلای افرا</p>
+    </div>
+</footer>
+<script src="assets/script.js"></script>
+<script src="assets/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/auth.js"></script>
+</body>
+</html>

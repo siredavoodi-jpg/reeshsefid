@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قیمت‌گذاری | باشگاه وکلای افرا</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header class="top-nav">
+    <div class="top-nav-inner">
+        <a href="../index.html" class="brand">
+            <img src="../assets/logo.png" alt="لوگو" width="36" height="36">
+            <span>باشگاه وکلای افرا</span>
+        </a>
+        <nav class="top-nav-links">
+            <a href="../index.html">خانه</a>
+            <a href="../courses/index.html">دوره‌ها</a>
+            <a href="index.html" class="active-link">قیمت‌گذاری</a>
+        </nav>
+        <div class="top-nav-actions">
+            <a href="../auth/login.html" class="btn-nav-ghost" data-auth-guest>ورود</a>
+            <a href="../auth/register.html" class="btn-nav-primary" data-auth-guest>عضویت</a>
+            <a href="../dashboard/index.html" class="btn-nav-primary" data-auth-member style="display:none">داشبورد</a>
+        </div>
+    </div>
+</header>
+
+<main class="section">
+    <div class="section-inner">
+        <p class="section-label">قیمت‌گذاری</p>
+        <h1 class="section-title" style="text-align:center">پلنی مناسب خود را انتخاب کنید</h1>
+        <p class="section-desc" style="text-align:center;margin-bottom:2.5rem">فصل اول برای همه رایگان است. با ارتقا، همه فصل‌ها و پرامپت‌ها باز می‌شوند.</p>
+
+        <div class="pricing-grid">
+            <article class="price-card">
+                <h3>رایگان</h3>
+                <div class="price">۰ <span>تومان</span></div>
+                <ul class="price-features">
+                    <li><i class="fas fa-check"></i> فصل ۱ دوره (۱۰ درس)</li>
+                    <li><i class="fas fa-check"></i> چند پرامپت نمونه</li>
+                    <li><i class="fas fa-check"></i> دسترسی به داشبورد</li>
+                    <li class="muted"><i class="fas fa-times"></i> فصل‌های ۲ تا ۱۲</li>
+                    <li class="muted"><i class="fas fa-times"></i> کتابخانه کامل پرامپت</li>
+                </ul>
+                <a href="../auth/register.html" class="btn-outline-lg" data-auth-guest style="width:100%;text-align:center">ثبت‌نام رایگان</a>
+                <button class="btn-outline-lg" data-auth-member style="width:100%;display:none" disabled>پلن فعلی شما</button>
+            </article>
+
+            <article class="price-card featured-price">
+                <span class="popular-badge">پیشنهادی</span>
+                <h3>عضویت کامل</h3>
+                <div class="price">۱٬۹۰۰٬۰۰۰ <span>تومان</span></div>
+                <p class="price-note">دسترسی یک‌ساله</p>
+                <ul class="price-features">
+                    <li><i class="fas fa-check"></i> همه ۱۲ فصل دوره</li>
+                    <li><i class="fas fa-check"></i> کتابخانه کامل پرامپت</li>
+                    <li><i class="fas fa-check"></i> به‌روزرسانی محتوا</li>
+                    <li><i class="fas fa-check"></i> پشتیبانی اولویت‌دار</li>
+                    <li><i class="fas fa-check"></i> گواهی پایان دوره</li>
+                </ul>
+                <button id="buy-full" class="btn-primary-lg" style="width:100%">خرید و فعال‌سازی</button>
+            </article>
+
+            <article class="price-card">
+                <h3>فقط دوره</h3>
+                <div class="price">۱٬۲۰۰٬۰۰۰ <span>تومان</span></div>
+                <p class="price-note">دسترسی مادام‌العمر به دوره</p>
+                <ul class="price-features">
+                    <li><i class="fas fa-check"></i> همه ۱۲ فصل دوره</li>
+                    <li><i class="fas fa-check"></i> پرامپت‌های مرتبط با دوره</li>
+                    <li class="muted"><i class="fas fa-times"></i> به‌روزرسانی سالانه</li>
+                    <li class="muted"><i class="fas fa-times"></i> پشتیبانی اولویت‌دار</li>
+                </ul>
+                <button id="buy-course" class="btn-outline-lg" style="width:100%">خرید دوره</button>
+            </article>
+        </div>
+
+        <p class="payment-note">
+            <i class="fas fa-info-circle"></i>
+            در نسخه فعلی، پرداخت شبیه‌سازی می‌شود و اشتراک بلافاصله فعال می‌گردد.
+            برای اتصال درگاه واقعی (زرین‌پال) در مرحله بعد اقدام می‌کنیم.
+        </p>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <p class="footer-copy">© ۱۴۰۵ باشگاه وکلای افرا</p>
+    </div>
+</footer>
+<script>
+    AFRA_AUTH.updateNav();
+
+    async function handleBuy(plan) {
+        if (!AFRA_AUTH.isLoggedIn()) {
+            alert('ابتدا وارد حساب شوید یا ثبت‌نام کنید.');
+            location.href = '../auth/register.html';
+            return;
+        }
+        const res = await AFRA_AUTH.activatePlan(plan);
+        if (res.ok) {
+            alert('اشتراک شما با موفقیت فعال شد!');
+            location.href = '../dashboard/index.html';
+        } else {
+            alert(res.error || 'خطا در فعال‌سازی');
+        }
+    }
+
+    document.getElementById('buy-full').addEventListener('click', () => handleBuy('full'));
+    document.getElementById('buy-course').addEventListener('click', () => handleBuy('course'));
+</script>
+<script src="../assets/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/auth.js"></script>
+</body>
+</html>

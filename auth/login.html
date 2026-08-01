@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود | باشگاه وکلای افرا</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-page">
+    <div class="auth-card">
+        <a href="../index.html" class="auth-brand">
+            <img src="../assets/logo.png" alt="لوگو" width="48" height="48">
+            <span>باشگاه وکلای افرا</span>
+        </a>
+        <h1>ورود به حساب</h1>
+        <p class="auth-sub">به باشگاه خوش آمدید</p>
+
+        <form id="login-form" class="auth-form">
+            <div class="form-group">
+                <label for="email">ایمیل</label>
+                <input type="email" id="email" name="email" required placeholder="name@example.com" autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label for="password">رمز عبور</label>
+                <input type="password" id="password" name="password" required placeholder="••••••••" autocomplete="current-password" minlength="6">
+            </div>
+            <p id="form-error" class="form-error" hidden></p>
+            <button type="submit" class="btn-primary-lg" style="width:100%">ورود</button>
+        </form>
+
+        <p class="auth-footer">
+            حساب ندارید؟ <a href="register.html">ثبت‌نام رایگان</a>
+        </p>
+        <p class="auth-footer" style="margin-top:0.5rem">
+            <a href="../index.html">← بازگشت به صفحه اصلی</a>
+        </p>
+    </div>
+    <script>
+        if (AFRA_AUTH.isLoggedIn()) {
+            location.href = '../dashboard/index.html';
+        }
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const err = document.getElementById('form-error');
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            const res = await AFRA_AUTH.login({ email, password });
+            btn.disabled = false;
+            if (!res.ok) {
+                err.textContent = res.error;
+                err.hidden = false;
+                return;
+            }
+            location.href = '../dashboard/index.html';
+        });
+    </script>
+<script src="../assets/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/auth.js"></script>
+</body>
+</html>

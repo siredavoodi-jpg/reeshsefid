@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد | باشگاه وکلای افرا</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="../assets/logo.png" alt="لوگو" class="sidebar-logo">
+            <h2>باشگاه وکلای افرا</h2>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link active"><span><i class="fas fa-th-large"></i> داشبورد</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="../courses/ai-for-lawyers/index.html" class="nav-link"><span><i class="fas fa-graduation-cap"></i> دوره من</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="../prompts/index.html" class="nav-link"><span><i class="fas fa-book-open"></i> پرامپت‌ها</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="../pricing/index.html" class="nav-link"><span><i class="fas fa-tags"></i> ارتقای اشتراک</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="../index.html" class="nav-link"><span><i class="fas fa-home"></i> صفحه اصلی</span></a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i> حالت تاریک</button>
+            <button id="logout-btn" class="btn-theme" style="margin-top:8px;color:var(--danger)">
+                <i class="fas fa-sign-out-alt"></i> خروج
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="page-header">
+            <div>
+                <h1>سلام، <span data-user-name>عضو</span> 👋</h1>
+                <p class="page-subtitle">به داشبورد باشگاه خوش آمدید</p>
+            </div>
+        </header>
+
+        <div class="dash-grid">
+            <div class="card dash-card">
+                <h3><i class="fas fa-graduation-cap"></i> دوره هوش مصنوعی برای وکلا</h3>
+                <p id="plan-status" style="color:var(--text-light);margin:10px 0">در حال بارگذاری...</p>
+                <div class="progress-bar" style="margin:12px 0">
+                    <div class="progress-fill" id="dash-progress" style="width:0%"></div>
+                </div>
+                <p style="font-size:0.85rem;color:var(--text-muted)" id="progress-label">۰٪ تکمیل شده</p>
+                <a href="../courses/ai-for-lawyers/index.html" class="btn-copy" style="margin-top:14px">ادامه یادگیری</a>
+            </div>
+
+            <div class="card dash-card">
+                <h3><i class="fas fa-book-open"></i> کتابخانه پرامپت</h3>
+                <p style="color:var(--text-light);margin:10px 0">پرامپت‌های آماده حقوقی برای استفاده روزمره</p>
+                <a href="../prompts/index.html" class="btn-copy" style="margin-top:14px">مشاهده پرامپت‌ها</a>
+            </div>
+
+            <div class="card dash-card" id="upgrade-card">
+                <h3><i class="fas fa-crown"></i> ارتقای اشتراک</h3>
+                <p style="color:var(--text-light);margin:10px 0">دسترسی کامل به همه فصل‌ها و پرامپت‌ها</p>
+                <a href="../pricing/index.html" class="btn-copy" style="margin-top:14px">مشاهده پلن‌ها</a>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem">
+            <h3 style="margin-bottom:12px">دسترسی سریع</h3>
+            <div class="quick-links">
+                <a href="../courses/ai-for-lawyers/index.html"><i class="fas fa-play"></i> شروع / ادامه دوره</a>
+                <a href="../prompts/index.html"><i class="fas fa-copy"></i> کپی پرامپت</a>
+                <a href="../services/index.html"><i class="fas fa-briefcase"></i> خدمات</a>
+                <a href="../pricing/index.html"><i class="fas fa-credit-card"></i> خرید اشتراک</a>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="../assets/script.js"></script>
+<script>
+    if (!AFRA_AUTH.isLoggedIn()) {
+        location.href = '../auth/login.html';
+    }
+    AFRA_AUTH.updateNav();
+
+    const user = AFRA_AUTH.getUser();
+    const isMember = AFRA_AUTH.isMember();
+    const statusEl = document.getElementById('plan-status');
+    if (isMember) {
+        statusEl.innerHTML = '<span style="color:var(--success)">✓ اشتراک فعال — دسترسی کامل</span>';
+        document.getElementById('upgrade-card').style.display = 'none';
+    } else {
+        statusEl.innerHTML = 'پلن رایگان — فقط فصل ۱ باز است. برای دسترسی کامل اشتراک تهیه کنید.';
+    }
+
+    // پیشرفت از localStorage دوره
+    try {
+        const saved = localStorage.getItem('ai-course-state-v2');
+        if (saved) {
+            const p = JSON.parse(saved);
+            const viewed = (p.viewedLessons || []).length;
+            // تخمین: فصل ۱ حدود ۱۰ درس دارد
+            const pct = Math.min(100, Math.round((viewed / 10) * 100));
+            document.getElementById('dash-progress').style.width = pct + '%';
+            document.getElementById('progress-label').textContent = pct + '٪ تکمیل شده';
+        }
+    } catch(e) {}
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+        AFRA_AUTH.logout();
+        location.href = '../index.html';
+    });
+</script>
+<script src="../assets/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/auth.js"></script>
+</body>
+</html>

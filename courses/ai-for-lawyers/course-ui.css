@@ -1,0 +1,740 @@
+/* =====================================================
+   course-ui.css — استایل اختصاصی دوره هوش مصنوعی برای وکلا
+   سازگار با سیستم رنگ و دارک‌مود سایت اصلی
+   ===================================================== */
+
+:root {
+  --course-primary: #3f7a68;
+  --course-primary-light: #5e9583;
+  --course-accent: #c08f2e;
+  --course-success: #16a34a;
+  --course-danger: #dc2626;
+  --course-radius: 12px;
+  --course-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  --course-shadow-hover: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+body.dark-mode {
+  --course-primary: #5e9583;
+  --course-primary-light: #5e9583;
+  --course-accent: #d6a846;
+}
+
+/* ---------- Layout دوره ---------- */
+.course-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+.course-sidebar {
+  width: 280px;
+  background: var(--sidebar-bg, #fff);
+  border-left: 1px solid var(--border, #e0e0e0);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 50;
+  transition: transform 0.3s ease, background 0.3s;
+}
+
+.course-main {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+  background: var(--bg, #f8f9fa);
+  transition: background 0.3s;
+}
+
+/* ---------- هدر دوره + نوار پیشرفت ---------- */
+.course-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.course-header h1 {
+  font-size: 1.45rem;
+  color: var(--course-primary);
+  margin: 0 0 0.25rem 0;
+}
+
+.course-header .subtitle {
+  color: var(--text-light, #666);
+  font-size: 0.9rem;
+}
+
+.progress-wrap {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 10px;
+  padding: 0.75rem 1.1rem;
+  min-width: 200px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-light, #666);
+  margin-bottom: 0.4rem;
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--border, #e0e0e0);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--course-primary-light), var(--course-accent));
+  border-radius: 99px;
+  transition: width 0.5s ease;
+}
+
+/* ---------- سایدبار فصل‌ها ---------- */
+.sidebar-brand {
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid var(--border, #e0e0e0);
+  text-align: center;
+}
+
+.sidebar-brand img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-brand h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.sidebar-nav-course {
+  list-style: none;
+  padding: 0.75rem;
+  flex: 1;
+}
+
+.sidebar-nav-course .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 8px;
+  color: var(--text-light, #666);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.sidebar-nav-course .nav-link:hover,
+.sidebar-nav-course .nav-link.active {
+  background: var(--primary-light, #e3f2fd);
+  color: var(--primary, #1976d2);
+}
+
+.chapters-accordion {
+  list-style: none;
+  padding: 0.25rem 0.5rem 0.5rem;
+}
+
+.chapter-item-btn {
+  width: 100%;
+  text-align: right;
+  background: transparent;
+  border: none;
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--text, #333);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.2s;
+}
+
+.chapter-item-btn:hover {
+  background: var(--primary-light, #e3f2fd);
+  color: var(--primary, #1976d2);
+}
+
+.chapter-item-btn.active {
+  background: var(--course-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.chapter-item-btn.locked {
+  opacity: 0.55;
+}
+
+.ch-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.chapter-item-btn.active .ch-num {
+  background: rgba(255,255,255,0.25);
+}
+
+.ch-progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border, #e0e0e0);
+  margin-right: auto;
+  flex-shrink: 0;
+}
+
+.ch-progress-dot.done {
+  background: var(--course-success);
+}
+
+.sidebar-footer-course {
+  padding: 1rem;
+  border-top: 1px solid var(--border, #e0e0e0);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.btn-sidebar {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--border, #e0e0e0);
+  background: var(--bg, #f8f9fa);
+  color: var(--text, #333);
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.2s;
+}
+
+.btn-sidebar:hover {
+  border-color: var(--primary, #1976d2);
+  color: var(--primary, #1976d2);
+}
+
+/* ---------- کارت‌های درس ---------- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.15rem;
+  margin-top: 1.25rem;
+}
+
+.lesson-card {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: var(--course-radius);
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--course-shadow);
+}
+
+.lesson-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 4px; height: 100%;
+  background: var(--course-primary-light);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.lesson-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--course-shadow-hover);
+}
+
+.lesson-card:hover::before { opacity: 1; }
+
+.lesson-card.viewed {
+  border-color: #86efac;
+}
+
+.lesson-card.viewed::after {
+  content: '✓';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 22px;
+  height: 22px;
+  background: var(--course-success);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--primary-light, #e3f2fd);
+  color: var(--primary, #1976d2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.card-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text, #333);
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.78rem;
+  color: var(--text-light, #666);
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 0.18rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.badge.مقدماتی { background: #dcfce7; color: #166534; }
+.badge.متوسط { background: #fef9c3; color: #854d0e; }
+.badge.پیشرفته { background: #fee2e2; color: #991b1b; }
+
+body.dark-mode .badge.مقدماتی { background: #14532d; color: #86efac; }
+body.dark-mode .badge.متوسط { background: #713f12; color: #fde68a; }
+body.dark-mode .badge.پیشرفته { background: #7f1d1d; color: #fca5a5; }
+
+/* ---------- کارت غیرفعال / خالی ---------- */
+.inactive-card, .empty-state {
+  background: var(--card-bg, #fff);
+  border: 2px dashed var(--border, #e0e0e0);
+  border-radius: var(--course-radius);
+  padding: 3rem 2rem;
+  text-align: center;
+  color: var(--text-light, #666);
+  margin-top: 1.25rem;
+}
+
+.inactive-card i, .empty-state i {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: #cbd5e1;
+  display: block;
+}
+
+body.dark-mode .inactive-card i,
+body.dark-mode .empty-state i { color: #475569; }
+
+/* ---------- جزئیات درس ---------- */
+.lesson-detail {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: var(--course-radius);
+  padding: 1.75rem;
+  box-shadow: var(--course-shadow);
+}
+
+.lesson-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.btn-tool {
+  background: transparent;
+  border: 1px solid var(--border, #e0e0e0);
+  color: var(--text-light, #666);
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s;
+}
+
+.btn-tool:hover {
+  background: var(--primary-light, #e3f2fd);
+  color: var(--primary, #1976d2);
+  border-color: var(--primary, #1976d2);
+}
+
+.btn-tool.bookmarked {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #92400e;
+}
+
+body.dark-mode .btn-tool.bookmarked {
+  background: #78350f;
+  border-color: #f59e0b;
+  color: #fde68a;
+}
+
+.btn-tool.primary {
+  background: var(--course-primary);
+  color: #fff;
+  border-color: var(--course-primary);
+}
+
+.btn-tool.primary:hover {
+  background: var(--course-primary-light);
+  border-color: var(--course-primary-light);
+  color: #fff;
+}
+
+.btn-tool.success {
+  background: var(--course-success);
+  color: #fff;
+  border-color: var(--course-success);
+}
+
+/* خواندن پیشرفت درس */
+.reading-progress {
+  position: sticky;
+  top: 0;
+  height: 3px;
+  background: var(--border, #e0e0e0);
+  z-index: 20;
+  margin: -1.75rem -1.75rem 1.25rem;
+  border-radius: var(--course-radius) var(--course-radius) 0 0;
+  overflow: hidden;
+}
+
+.reading-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--course-accent);
+  transition: width 0.15s linear;
+}
+
+/* محتوای درس غنی */
+.objectives-box {
+  background: var(--bg, #f8f9fa);
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border-right: 4px solid var(--course-accent);
+  margin: 1rem 0;
+}
+
+.objectives-box strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--course-primary);
+}
+
+.objectives-box ul {
+  padding-right: 1.2rem;
+  margin: 0;
+}
+
+.objectives-box li { margin-bottom: 0.3rem; }
+
+.section-heading {
+  color: var(--course-primary);
+  font-size: 1.15rem;
+  margin: 1.5rem 0 0.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border, #e0e0e0);
+}
+
+.example-box, .tips-box, .mistakes-box, .exercise-box {
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  border-right: 4px solid;
+}
+
+.example-box { background: #fffbeb; border-color: #f59e0b; }
+.tips-box { background: #eff6ff; border-color: #3b82f6; }
+.mistakes-box { background: #fef2f2; border-color: #dc2626; }
+.exercise-box { background: #f5f3ff; border-color: #7c3aed; }
+
+body.dark-mode .example-box { background: #422006; }
+body.dark-mode .tips-box { background: #1e3a5f; }
+body.dark-mode .mistakes-box { background: #450a0a; }
+body.dark-mode .exercise-box { background: #2e1065; }
+
+.summary-box {
+  background: #eff6ff;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border-right: 4px solid var(--course-primary-light);
+  margin-top: 1.75rem;
+}
+
+body.dark-mode .summary-box { background: #1e3a5f; }
+
+.keywords-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+}
+
+.keyword-tag {
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+}
+
+body.dark-mode .keyword-tag {
+  background: #312e81;
+  color: #c7d2fe;
+}
+
+.answer-details {
+  margin-top: 0.75rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+}
+
+body.dark-mode .answer-details {
+  background: #14532d;
+  border-color: #166534;
+}
+
+.answer-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #166534;
+}
+
+body.dark-mode .answer-details summary { color: #86efac; }
+
+.notes-area {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border, #e0e0e0);
+}
+
+.notes-area textarea {
+  width: 100%;
+  min-height: 90px;
+  padding: 0.7rem;
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.92rem;
+  resize: vertical;
+  background: var(--bg, #f8f9fa);
+  color: var(--text, #333);
+}
+
+.lesson-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- آزمون ---------- */
+.quiz-box {
+  margin-top: 1.75rem;
+  padding: 1.4rem;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: var(--course-radius);
+}
+
+body.dark-mode .quiz-box {
+  background: #422006;
+  border-color: #a16207;
+}
+
+.quiz-option-btn {
+  text-align: right;
+  padding: 0.9rem 1rem;
+  border: 2px solid var(--border, #e0e0e0);
+  border-radius: 10px;
+  background: var(--card-bg, #fff);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.92rem;
+  transition: all 0.2s;
+  width: 100%;
+  color: var(--text, #333);
+}
+
+.quiz-option-btn:hover {
+  border-color: var(--course-primary);
+  background: var(--primary-light, #e3f2fd);
+}
+
+/* ---------- Focus Mode ---------- */
+body.focus-mode .course-sidebar {
+  transform: translateX(100%);
+  position: fixed;
+}
+
+body.focus-mode .course-main {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* ---------- Mobile Hamburger ---------- */
+.mobile-header {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--course-primary);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 60;
+}
+
+.mobile-header .menu-btn {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 45;
+}
+
+.sidebar-overlay.open { display: block; }
+
+/* ---------- جستجو ---------- */
+.search-box-course {
+  position: relative;
+  margin: 0.75rem;
+}
+
+.search-box-course input {
+  width: 100%;
+  padding: 0.55rem 2rem 0.55rem 0.75rem;
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 8px;
+  background: var(--bg, #f8f9fa);
+  color: var(--text, #333);
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+.search-box-course i {
+  position: absolute;
+  left: 0.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light, #666);
+  font-size: 0.85rem;
+}
+
+/* ---------- Skeleton ---------- */
+.skeleton {
+  background: linear-gradient(90deg, var(--border, #e0e0e0) 25%, var(--bg, #f8f9fa) 50%, var(--border, #e0e0e0) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.2s infinite;
+  border-radius: 8px;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .mobile-header { display: flex; }
+
+  .course-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    transform: translateX(100%);
+    box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+  }
+
+  .course-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .course-main {
+    padding: 1rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.focus-mode .course-sidebar {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 480px) {
+  .course-header h1 { font-size: 1.2rem; }
+  .lesson-detail { padding: 1.1rem; }
+}

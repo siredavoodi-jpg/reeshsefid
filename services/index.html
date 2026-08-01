@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="خدمات حقوقی هوشمند باشگاه وکلای افرا: پژوهش حقوقی، تنظیم قرارداد و تحلیل پرونده با کمک هوش مصنوعی.">
+    <meta name="theme-color" content="#3f7a68">
+    <title>خدمات | باشگاه وکلای افرا</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="../assets/logo.png" alt="لوگو" class="sidebar-logo">
+            <h2>باشگاه وکلای افرا</h2>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a href="../index.html" class="nav-link"><span><i class="fas fa-home"></i> صفحه اصلی</span></a>
+            </li>
+            <li class="nav-item" id="courses-dropdown">
+                <a class="nav-link toggle-dropdown"><span><i class="fas fa-graduation-cap"></i> دوره‌ها</span> <i class="fas fa-chevron-down arrow"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="../courses/index.html">دوره‌های آموزشی</a></li>
+                    <li><a href="../prompts/index.html">کتابخانه پرامپت‌ها</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="index.html" class="nav-link active" aria-current="page"><span><i class="fas fa-briefcase"></i> خدمات</span></a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <button id="theme-toggle" class="btn-theme">
+                <i class="fas fa-moon"></i> حالت تاریک
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="page-header">
+            <div>
+                <h1>💼 خدمات حقوقی</h1>
+                <p class="page-subtitle">خدمات تخصصی مبتنی بر هوش مصنوعی برای وکلا و حقوق‌دانان</p>
+            </div>
+        </header>
+
+        <div class="grid-container">
+            <article class="card">
+                <h3><i class="fas fa-search"></i> پژوهش حقوقی هوشمند</h3>
+                <p>جستجوی پیشرفته در منابع حقوقی با کمک AI</p>
+            </article>
+            <article class="card">
+                <h3><i class="fas fa-file-contract"></i> تنظیم قرارداد</h3>
+                <p>پیش‌نویس قرارداد با استانداردهای حقوقی</p>
+            </article>
+            <article class="card">
+                <h3><i class="fas fa-chart-line"></i> تحلیل پرونده</h3>
+                <p>پیش‌بینی روند پرونده با داده‌های آماری</p>
+            </article>
+        </div>
+    </main>
+</div>
+
+<script src="../assets/script.js"></script>
+<script src="../assets/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/auth.js"></script>
+</body>
+</html>
