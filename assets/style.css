@@ -1,75 +1,77 @@
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
 
 /* =====================================================
-   باشگاه وکلای افرا — نزدیک به طراحی Bolt
-   پالت: سبز تیره / teal + طلایی
+   باشگاه وکلای افرا — هویت بصری افرا v2
+   پالت: آبی حقوقی (#0B3A82) + نارنجی (#FF9800) + سبز لوگو برای success
    ساختار سایدبار حفظ شده
    ===================================================== */
 
 :root {
-    /* Primary – Forest Teal (از Bolt) */
-    --primary: #3f7a68;
-    --primary-dark: #2e6155;
-    --primary-darker: #1a342f;
-    --primary-light: #e8f3ef;
-    --primary-soft: rgba(63, 122, 104, 0.12);
+    /* Primary – Deep Legal Blue (JSON) */
+    --primary: #0B3A82;
+    --primary-dark: #082c63;
+    --primary-darker: #061e45;
+    --primary-light: #E8F0FB;
+    --primary-soft: rgba(11, 58, 130, 0.12);
+    --secondary: #1E88E5;
 
-    /* Accent – Gold (از Bolt) */
-    --accent: #c08f2e;
-    --accent-light: #f7efd9;
-    --accent-soft: rgba(192, 143, 46, 0.15);
+    /* Accent – Orange (JSON) */
+    --accent: #FF9800;
+    --accent-light: #FFF3E0;
+    --accent-soft: rgba(255, 152, 0, 0.15);
 
     /* Surfaces */
-    --bg: #f7f8f6;
+    --bg: #FAFBFD;
     --sidebar-bg: #ffffff;
-    --text: #262623;
-    --text-light: #5c5c55;
-    --text-muted: #8a8a82;
-    --border: #e5e5e0;
-    --card-bg: #ffffff;
+    --text: #1A2332;
+    --text-light: #5A6577;
+    --text-muted: #8B95A8;
+    --border: #E2E8F0;
+    --card-bg: #FFFFFF;
 
-    /* Status */
-    --success: #2e7d32;
-    --success-bg: #e8f5e9;
-    --danger: #c62828;
-    --danger-bg: #ffebee;
+    /* Status — سبز لوگو فقط برای موفقیت / رایگان */
+    --success: #2E9B6A;
+    --success-bg: #E6F7EF;
+    --danger: #D32F2F;
+    --danger-bg: #FFEBEE;
 
     /* Effects */
-    --shadow-sm: 0 1px 3px rgba(26, 52, 47, 0.05);
-    --shadow: 0 4px 14px rgba(26, 52, 47, 0.07);
-    --shadow-hover: 0 10px 28px rgba(26, 52, 47, 0.12);
-    --radius: 12px;
-    --radius-sm: 8px;
+    --shadow-sm: 0 1px 3px rgba(11, 58, 130, 0.06);
+    --shadow: 0 4px 16px rgba(11, 58, 130, 0.08);
+    --shadow-hover: 0 12px 32px rgba(11, 58, 130, 0.14);
+    --radius: 14px;
+    --radius-sm: 10px;
     --transition: 0.2s ease;
 }
 
 body.dark-mode {
-    --primary: #5e9583;
-    --primary-dark: #3f7a68;
-    --primary-darker: #0d1f1c;
-    --primary-light: #1a342f;
-    --primary-soft: rgba(94, 149, 131, 0.15);
+    --primary: #4B8FE8;
+    --primary-dark: #1E88E5;
+    --primary-darker: #0A1628;
+    --primary-light: #132A4A;
+    --primary-soft: rgba(75, 143, 232, 0.18);
+    --secondary: #64B5F6;
 
-    --accent: #d6a846;
-    --accent-light: #3d2e12;
-    --accent-soft: rgba(214, 168, 70, 0.15);
+    --accent: #FFB74D;
+    --accent-light: #3D2E12;
+    --accent-soft: rgba(255, 183, 77, 0.18);
 
-    --bg: #0d1f1c;
-    --sidebar-bg: #132a26;
-    --text: #f0f0eb;
-    --text-light: #a8b5b0;
-    --text-muted: #6b7c77;
-    --border: #1f3f39;
-    --card-bg: #16332e;
+    --bg: #0A1628;
+    --sidebar-bg: #0F1F38;
+    --text: #F0F4FA;
+    --text-light: #A8B4C8;
+    --text-muted: #6B7A94;
+    --border: #1E3355;
+    --card-bg: #12243F;
 
-    --success: #66bb6a;
-    --success-bg: #1b3a1e;
-    --danger: #ef5350;
-    --danger-bg: #3d1515;
+    --success: #4CAF7A;
+    --success-bg: #143028;
+    --danger: #EF5350;
+    --danger-bg: #3D1515;
 
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
-    --shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-    --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.4);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -389,7 +391,7 @@ body.dark-mode .page-header h1 { color: var(--text); }
     position: fixed;
     inset: 0;
     z-index: 100;
-    background: rgba(13, 31, 28, 0.6);
+    background: rgba(6, 30, 69, 0.55);
     backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
@@ -619,7 +621,7 @@ body.dark-mode .brand { color: var(--text); }
 
 /* Hero */
 .hero {
-    background: linear-gradient(160deg, var(--primary-darker) 0%, #254e45 50%, var(--primary) 100%);
+    background: linear-gradient(160deg, var(--primary-darker) 0%, var(--primary-dark) 50%, var(--primary) 100%);
     color: #fff;
     padding: 4rem 1.5rem 3.5rem;
     text-align: center;
@@ -984,3 +986,223 @@ body.dark-mode .price { color: var(--text); }
     .hero-stats { gap: 1.25rem; }
     .price-card.featured-price { transform: none; }
 }
+
+/* Trust bar & access table */
+.trust-bar {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 1rem;
+}
+.trust-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem 2rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-light);
+}
+.trust-items i { color: var(--primary); margin-left: 6px; }
+
+.access-table-wrap { overflow-x: auto; }
+.access-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.access-table th,
+.access-table td {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.access-table th {
+  background: var(--primary-darker);
+  color: #fff;
+  font-weight: 700;
+}
+.access-table td:first-child,
+.access-table th:first-child {
+  text-align: right;
+  font-weight: 600;
+}
+.access-table .yes { color: var(--success); font-weight: 700; }
+.access-table .no { color: var(--text-muted); }
+
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* =====================================================
+   کاتالوگ واحد — بج‌های سطح دسترسی + کارت‌های قفل‌شده
+   ===================================================== */
+.badge-free { background: var(--success-bg); color: var(--success); }
+.badge-member { background: var(--primary-soft); color: var(--primary); }
+.badge-lawyer { background: var(--accent-soft); color: var(--accent); }
+.badge-paid { background: var(--accent-soft); color: var(--accent); }
+.catalog-card { display: flex; flex-direction: column; gap: 10px; }
+.catalog-card .badge { display: inline-flex; align-items: center; gap: 5px; width: fit-content; }
+.catalog-card.is-locked { opacity: 0.72; }
+.catalog-card .catalog-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+
+/* بنر تبلیغ داشبورد ویژه وکلا */
+.lawyer-promo-banner {
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    color: #fff; border-radius: var(--radius); padding: 26px 28px;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+.lawyer-promo-banner h3 { font-size: 1.15rem; margin-bottom: 6px; }
+.lawyer-promo-banner p { color: rgba(255,255,255,0.88); font-size: 0.9rem; }
+.lawyer-promo-banner .btn-copy { background: #fff; color: var(--primary-dark); border-color: #fff; }
+
+/* کارت دونیت */
+.donate-card { border: 1.5px dashed var(--accent); background: var(--accent-soft); }
+.donate-card i { color: var(--accent); font-size: 1.6rem; margin-bottom: 8px; display: block; }
+
+/* گروه‌بندی محتوای صفحه اصلی داخل سایدبار */
+.catalog-section-title { display: flex; align-items: center; gap: 8px; font-size: 1.05rem; font-weight: 800; margin: 30px 0 14px; }
+.catalog-section-title:first-child { margin-top: 0; }
+.catalog-section-title i { color: var(--primary); }
+
+/* =====================================================
+   نظرات اعضا + دکمه تم فشرده در Top Nav
+   ===================================================== */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+.testimonial-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.35rem 1.4rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.testimonial-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.testimonial-stars {
+  color: var(--accent);
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+}
+.testimonial-text {
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: var(--text);
+  flex: 1;
+}
+.testimonial-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+.testimonial-meta strong { color: var(--primary-darker); }
+body.dark-mode .testimonial-meta strong { color: var(--text); }
+.testimonial-meta span { color: var(--text-muted); }
+
+.btn-theme-compact {
+  width: auto !important;
+  padding: 0.4rem 0.65rem !important;
+  margin: 0;
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+.btn-theme-compact:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.top-nav-actions .btn-theme { margin: 0; }
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+@media (max-width: 768px) {
+  .top-nav-links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 1.25rem 1rem;
+    gap: 0.75rem;
+    z-index: 95;
+  }
+  .top-nav { position: sticky; }
+  .top-nav-inner { position: relative; flex-wrap: wrap; }
+}
+
+/* =====================================================
+   ایلاستریشن و mascot — v2
+   ===================================================== */
+.hero-visual {
+  margin-top: 2rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-hover);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.hero-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.illust-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+}
+.illust-card img { width: 100%; height: auto; display: block; }
+.section-illust {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 2rem;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .section-illust { grid-template-columns: 1fr; }
+  .section-illust .illust-card { order: -1; }
+}
+.icon-svg {
+  width: 1.25em;
+  height: 1.25em;
+  display: inline-block;
+  vertical-align: -0.2em;
+}
+.feature-icon img, .feature-icon .icon-svg {
+  width: 22px;
+  height: 22px;
+}
+/* کمی فشرده‌تر برای دروازه ورود */
+.section { padding: 2.75rem 1.5rem; }
+.hero { padding: 3.25rem 1.5rem 2.75rem; }
